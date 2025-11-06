@@ -53,6 +53,7 @@ hal_client_domain(hal_fingerprint_default, hal_health)
 get_prop(hal_fingerprint_default, system_oplus_project_prop)
 set_prop(hal_fingerprint_default, system_fingerprint_prop)
 set_prop(hal_fingerprint_default, vendor_fingerprint_prop)
+set_prop(hal_fingerprint_default, vendor_oplus_prop)
 set_prop(hal_fingerprint_default, default_prop)
 
 binder_call(hal_fingerprint_default, hal_performance_oplus)

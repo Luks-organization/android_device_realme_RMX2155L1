@@ -14,7 +14,7 @@ prebuilt_etc {
 prebuilt_etc {
     name: "init.target.rc",
     src: "init.target.rc",
-    relative_install_path: "init",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
@@ -131,8 +131,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.sensor_1_0.rc",
-    src: "init.sensor_1_0.rc",
+    name: "init.sensor.rc",
+    src: "init.sensor.rc",
     relative_install_path: "init/hw",
     vendor: true,
 }

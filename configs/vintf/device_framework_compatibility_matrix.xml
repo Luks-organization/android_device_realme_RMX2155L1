@@ -15,6 +15,15 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.camera.provider</name>
+        <transport>hwbinder</transport>
+        <version>2.4-6</version>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>internal/0</instance>
+        </interface>
+    </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.camera.provider</name>
         <interface>
@@ -70,16 +79,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.media.c2</name>
-        <version>1.0-2</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>software</instance>
-            <instance>default</instance>
-	    <instance>ozoaudio</instance>
-        </interface>
-    </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.sensors</name>
         <version>2</version>
@@ -106,6 +105,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>arm.mali.platform</name>
+        <version>1</version>
         <interface>
             <name>ICompression</name>
             <instance>default</instance>
@@ -153,7 +153,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.vibrator</name>
-        <version>2</version>
+        <version>1</version>
         <interface>
             <name>IVibrator</name>
             <instance>default</instance>
@@ -229,20 +229,12 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.gnss</name>
-        <version>1.0-1</version>
-        <version>2.0-1</version>
+        <version>1.0</version>
+        <version>2.0</version>
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
             <instance>gnss_vendor</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.frameworks.stats</name>
-        <version>1-2</version>
-        <interface>
-            <name>IStats</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -263,7 +255,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.graphics.composer</name>
-        <version>2.1-2</version>
+        <version>2.1</version>
         <interface>
             <name>IComposer</name>
             <instance>default</instance>
@@ -271,7 +263,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.soundtrigger</name>
-        <version>2.0-3</version>
+        <version>2.0</version>
         <interface>
             <name>ISoundTriggerHw</name>
             <instance>default</instance>
@@ -280,7 +272,7 @@
     <hal format="hidl" optional="true">
         <name>android.hardware.dumpstate</name>
         <transport>hwbinder</transport>
-        <version>1.0-1</version>
+        <version>1.0</version>
         <interface>
             <name>IDumpstateDevice</name>
             <instance>default</instance>
@@ -292,14 +284,6 @@
         <version>1.0</version>
         <interface>
             <name>IPowerStats</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.sensors</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISensors</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -369,6 +353,14 @@
     <hal format="hidl" optional="true">
         <name>vendor.oplus.hardware.touch</name>
         <version>1.0</version>
+        <interface>
+            <name>IOplusTouch</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.oplus.hardware.touch</name>
+        <version>2</version>
         <interface>
             <name>IOplusTouch</name>
             <instance>default</instance>
@@ -776,5 +768,10 @@
             <name>IFastCharge</name>
             <instance>default</instance>
         </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.health</name>
+        <version>3</version>
+        <fqname>IHealth/default</fqname>
     </hal>
 </compatibility-matrix>

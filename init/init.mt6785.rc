@@ -5,9 +5,9 @@ import /vendor/etc/init/hw/init.mt6785.power.rc
 import /vendor/etc/init/hw/init.mt6785.usb.rc
 import /vendor/etc/init/hw/init.nfc_detect.rc
 import /vendor/etc/init/hw/init.project.rc
-import /vendor/etc/init/hw/init.sensor_1_0.rc
+import /vendor/etc/init/hw/init.sensor.rc
 import /vendor/etc/init/hw/init.oplus.rc
-import /vendor/etc/init/init.target.rc
+import /vendor/etc/init/hw/init.target.rc
 import /vendor/etc/init/init.volte_ua.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
@@ -43,7 +43,7 @@ on late-init
 # enable rcu_expedited
     write /sys/kernel/rcu_expedited 1
 
-on charger
+on property:init.svc.vendor.charger=running
     start charger
     start vendor.lineage.health-service.default
 
@@ -345,6 +345,18 @@ on post-fs-data
 
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
+
+    # Fingerprint
+    chmod 0660 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+    mkdir /data/vendor/fpc 0777 system system
+    mkdir /data/vendor/goodix 0777 system system
+    
+    #vdec-fmt
+    chmod 0660 /dev/vdec-fmt
+    chown media system /dev/vdec-fmt
+    chmod 0660 /dev/fmt_sync
+    chown system system /dev/fmt_sync
 
     #VideoCodec
     chmod 0660 /dev/vcu
@@ -859,10 +871,6 @@ on boot
     chmod 660 /dev/ttyGS1
     chown system radio /dev/ttyGS1
 
-    # Fingerprint
-    chmod 0660 /dev/goodix_fp
-    chown system system /dev/goodix_fp
-
     # OTG
     write /sys/class/power_supply/usb/otg_switch 1
 
@@ -886,10 +894,6 @@ on property:sys.boot_completed=1
 
     chown system system /sys/devices/system/cpu/cpufreq/mtk/lcluster_min_freq
     chmod 0664 /sys/devices/system/cpu/cpufreq/mtk/lcluster_min_freq
-
-# Disable AOSP RIL if MTK RIL is up
-on property:vendor.ril.mtk=1
-    stop vendor.ril-daemon
 
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
@@ -940,70 +944,18 @@ on property:sys.boot_completed=1
     write /sys/block/dm-3/queue/read_ahead_kb 128
     write /sys/block/dm-4/queue/read_ahead_kb 128
     write /sys/block/dm-5/queue/read_ahead_kb 128
-	
     write /sys/devices/platform/10012000.dvfsrc/helio-dvfsrc/dvfsrc_req_ddr_opp -1
+
     # Only owner can acces this node
     chmod 440 /proc/net/unix
-
-# Battery info
-on property:persist.vendor.mediatek.fg.disable=1
-    write /sys/devices/platform/battery_meter/FG_daemon_disable 1
-    write /sys/bus/platform/devices/battery/FG_daemon_disable 1
-
-on property:persist.vendor.mediatek.fg.force25c=1
-    write /sys/devices/platform/battery_meter/FG_drv_force25c 1
-    write /sys/bus/platform/devices/battery/Battery_Temperature 25
-
-on property:persist.vendor.mediatek.fg.force25c=0
-    write /sys/devices/platform/battery_meter/FG_drv_force25c 0
-    write /sys/bus/platform/devices/battery/Battery_Temperature 65535
-
-on property:persist.vendor.mediatek.fg.log.enable=1
-    write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
-    write /sys/bus/platform/devices/battery/FG_daemon_log_level 7
-    write /proc/sys/kernel/printk 8
-#ifdef OPLUS_FEATURE_TP_BSPFWUPDATE
-
-#laichenhui@bsp.Storage.Ufs 2018-08-21,Add interface to get proper fw
-service bspFwUpdate /system_ext/bin/bspFwUpdate
-    class main
-    user system
-    group system
-    disabled
-    oneshot
-#endif /* OPLUS_FEATURE_TP_BSPFWUPDATE */
-# add meta_tst for ATM
-service meta_tst /vendor/bin/meta_tst
-    class core
-    user root
-    group radio gps system wifi audio bluetooth media
-    capabilities NET_RAW NET_ADMIN
-    socket meta-atci stream 660 radio system
-    disabled
-    oneshot
-
-service factory_no_image /vendor/bin/factory
-    user root
-    group radio system wifi media gps audio bluetooth wakelock nfc
-    capabilities BLOCK_SUSPEND NET_RAW NET_ADMIN SYS_ADMIN SYS_BOOT
-    socket factory-atci stream 660 radio system
-    disabled
-    oneshot	
-
-# start meta_tst for ATM
-on property:sys.boot_completed=1 && property:ro.boot.atm=enable
-    start meta_tst
 
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
 
-service charger /system/bin/charger
-    class charger
-    user system
-    group system graphics wakelock input
-    capabilities SYS_BOOT
-    file /dev/kmsg w
-    file /sys/fs/pstore/console-ramoops-0 r
-    file /sys/fs/pstore/console-ramoops r
-    file /proc/last_kmsg r
+on property:persist.vendor.radio.port_index=""
+    setprop sys.usb.config adb
+
+# Disable AOSP RIL if MTK RIL is up
+on property:vendor.ril.mtk=1
+    stop vendor.ril-daemon

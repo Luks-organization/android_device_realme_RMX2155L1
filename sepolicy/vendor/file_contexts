@@ -20,7 +20,7 @@
 /sys/devices/platform/leds-mt65xx/leds/lcd-backlight(/.*)?                                              u:object_r:sysfs_leds:s0
 
 # Sensors
-/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@2\.0-service-multihal\.MT6785                 u:object_r:hal_sensors_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors-service\.oplus-multihal                       u:object_r:hal_sensors_default_exec:s0
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.oplusSensor@1\.0-service                              u:object_r:hal_sensors_default_exec:s0
 /dev/m_virtual_sensor_misc                                                                              u:object_r:virtual_sensor_device:s0
 /dev/block/sdc4                                                                                         u:object_r:oplus_block_device:s0
@@ -50,7 +50,7 @@
 /data/vendor/optical_fingerprint(/.*)?                                                                  u:object_r:oplus_fingerprint_file:s0
 /mnt/vendor/persist/fingerprint(/.*)?                                                                   u:object_r:oplus_fingerprint_file:s0
 /mnt/vendor/persist/cali_data\.so                                                                       u:object_r:oplus_fingerprint_file:s0
-/mnt/vendor/persist/fingerprint/jiiov(/.*)?	                                                        u:object_r:factorytestreport_vendor_data_file:s0
+/mnt/vendor/persist/fingerprint/jiiov(/.*)?	                                                            u:object_r:factorytestreport_vendor_data_file:s0
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.biometrics\.fingerprint@2\.1-service                  u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.oplus           u:object_r:hal_fingerprint_default_exec:s0
 
@@ -94,3 +94,9 @@
 
 # Oplus Radio
 /(vendor|odm)/bin/hw/vendor\.oplus\.hardware\.mtkmodemaci@1\.0-service                                  u:object_r:hal_mtkmodemaci_oplus_exec:s0
+
+# Perfmgr
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr                       u:object_r:hal_power_default_exec:s0
+/vendor/bin/sendhint                                                                                    u:object_r:sendhint_vendor_exec:s0
+/dev/cpu_dma_latency                                                                                    u:object_r:latency_device:s0
+/dev/socket/pps                                                                                         u:object_r:pps_socket:s0

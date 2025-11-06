@@ -6,7 +6,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),RMX2155)
+ifeq ($(TARGET_DEVICE),RMX2155L1)
   subdir_makefiles=$(call first-makefiles-under,$(LOCAL_PATH))
   $(call add-radio-file,dynamic-remove-oppo)
   $(foreach mk,$(subdir_makefiles),$(info including $(mk) ...)$(eval include $(mk)))

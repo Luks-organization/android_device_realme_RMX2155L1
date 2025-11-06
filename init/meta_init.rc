@@ -199,21 +199,12 @@ on init
     write /proc/sys/kernel/hung_task_timeout_secs 0
     write /proc/cpu/alignment 4
 
-    # scheduler tunables
-    # Disable auto-scaling of scheduler tunables with hotplug. The tunables
-    # will vary across devices in unpredictable ways if allowed to scale with
-    # cpu cores.
-    write /proc/sys/kernel/sched_tunable_scaling 0
-    write /proc/sys/kernel/sched_latency_ns 10000000
-    write /proc/sys/kernel/sched_wakeup_granularity_ns 2000000
-    write /proc/sys/kernel/sched_child_runs_first 0
-
     write /proc/sys/kernel/randomize_va_space 2
     write /proc/sys/vm/mmap_min_addr 32768
     write /proc/sys/net/ipv4/ping_group_range "0 2147483647"
     write /proc/sys/net/unix/max_dgram_qlen 600
-    write /proc/sys/kernel/sched_rt_runtime_us 950000
-    write /proc/sys/kernel/sched_rt_period_us 1000000
+    # write /proc/sys/kernel/sched_rt_runtime_us 950000
+    # write /proc/sys/kernel/sched_rt_period_us 1000000
 
     # Assign reasonable ceiling values for socket rcv/snd buffers.
     # These should almost always be overridden by the target per the

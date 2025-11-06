@@ -6,8 +6,8 @@
 
 #pragma once
 
-#ifndef INIT_RMX2155_H
-#define INIT_RMX2155_H
+#ifndef INIT_RMX2155L1_H
+#define INIT_RMX2155L1_H
 
 #include <string>
 #include <vector>
@@ -16,8 +16,7 @@ extern std::vector<std::string> ro_props_default_source_order;
 
 void property_override(const char* prop, const char* value, bool add = true);
 void set_ro_build_prop(const std::string& prop, const std::string& value, bool product = true);
-void load_dalvik_properties(void);
 void set_device_props(void);
 void vendor_load_properties(void);
 
-#endif // INIT_RMX2155_H
+#endif // INIT_RMX2155L1_H

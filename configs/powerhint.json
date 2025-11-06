@@ -99,6 +99,33 @@
       "ResetOnInit": true
     },
     {
+      "Name": "RestrictedCpuset",
+      "Path": "/dev/cpuset/restricted/cpus",
+      "Values": [
+        "0-3",
+        "0-7"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "TopAppCpuset",
+      "Path": "/dev/cpuset/top-app/cpus",
+      "Values": [
+        "0-3",
+        "0-7"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "ForegroundCpuset",
+      "Path": "/dev/cpuset/foreground/cpus",
+      "Values": [
+        "0-2",
+        "0-5,7"
+      ],
+      "ResetOnInit": true
+    },
+    {
       "Name": "GPUSchedMode",
       "Path": "/sys/devices/platform/13040000.mali/js_ctx_scheduling_mode",
       "Values": [
@@ -559,6 +586,65 @@
       "Node": "GPUBlockBoost",
       "Duration": 0,
       "Value": "50"
+    },
+    {
+      "PowerHint": "DISPLAY_IDLE",
+      "Type": "DoHint",
+      "Value": "DISPLAY_INACTIVE"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "CPUEfficiencyClusterMinFreq",
+      "Duration": 0,
+      "Value": "500000"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "CPUSuperClusterMinFreq",
+      "Duration": 0,
+      "Value": "774000"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "CPUEfficiencyClusterMaxFreq",
+      "Duration": 0,
+      "Value": "500000"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "CPUSuperClusterMaxFreq",
+      "Duration": 0,
+      "Value": "774000"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "FGUclampMin",
+      "Duration": 0,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "TAUclampMin",
+      "Duration": 0,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "RestrictedCpuset",
+      "Duration": 0,
+      "Value": "0-3"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "ForegroundCpuset",
+      "Duration": 0,
+      "Value": "0-2"
+    },
+    {
+      "PowerHint": "DISPLAY_INACTIVE",
+      "Node": "TopAppCpuset",
+      "Duration": 0,
+      "Value": "0-3"
     },
     {
       "PowerHint": "DOUBLE_TAP_TO_WAKE",

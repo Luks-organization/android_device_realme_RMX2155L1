@@ -5,11 +5,11 @@
 //
 
 cc_library_static {
-    name: "libinit_RMX2155",
+    name: "libinit_RMX2155L1",
     export_include_dirs: ["include"],
     recovery_available: true,
     srcs: [
-        "init_RMX2155.cpp"
+        "init_RMX2155L1.cpp"
     ],
     include_dirs: [
         "system/core/init"

@@ -4,7 +4,7 @@
 //
 
 runtime_resource_overlay {
-    name: "CarrierConfigOverlay",
-    system_ext_specific: true,
-    aaptflags: ["--keep-raw-values"],
+    name: "SettingsProviderOverlayRMX2155",
+    resource_dirs: ["res"],
+    vendor: true,
 }

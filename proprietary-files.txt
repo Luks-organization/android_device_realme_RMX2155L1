@@ -28,6 +28,7 @@ odm/etc/audio/awinic/AW_DSP.bin
 odm/lib/soundfx/awinic.haptic.effect.so
 odm/lib/soundfx/libhaptic_effect.so
 odm/lib/libawinicsmartpaparse.so
+system_ext/lib/libaudiotoolkit.so
 vendor/bin/atci_service
 vendor/bin/mt6660_calibration
 vendor/bin/rt5512_calibration
@@ -306,6 +307,20 @@ vendor/etc/audio_param/VolumeGainMap_ParamUnitDesc.xml
 vendor/etc/audio_param/Volume_AudioParam.xml
 vendor/etc/audio_param/Volume_ParamUnitDesc.xml
 
+# Audio (Engineering)
+#system/lib64/libaudio_param_parser-sys.so:system_ext/lib64/libaudio_param_parser-sys.so
+#system/lib64/libaudioutilmtk.so:system_ext/lib64/libaudioutilmtk.so;DISABLE_DEPS
+#system/lib64/libem_aoltest_jni.so:system_ext/lib64/libem_aoltest_jni.so
+#system/lib64/libem_audio_jni.so:system_ext/lib64/libem_audio_jni.so
+#system/lib64/libem_usb_jni.so:system_ext/lib64/libem_usb_jni.so
+#system/lib64/libem_wifi_jni.so:system_ext/lib64/libem_wifi_jni.so
+system/lib/libaudio_param_parser-sys.so:system_ext/lib/libaudio_param_parser-sys.so
+system/lib/libaudioutilmtk.so:system_ext/lib/libaudioutilmtk.so;DISABLE_DEPS
+system/lib/libem_aoltest_jni.so:system_ext/lib/libem_aoltest_jni.so
+system/lib/libem_audio_jni.so:system_ext/lib/libem_audio_jni.so
+system/lib/libem_usb_jni.so:system_ext/lib/libem_usb_jni.so
+system/lib/libem_wifi_jni.so:system_ext/lib/libem_wifi_jni.so
+
 # Audio (Firmware haptic)
 odm/firmware/awinic_haptic_gun_params.bin
 odm/firmware/awinic_haptic_params.bin
@@ -326,7 +341,6 @@ odm/firmware/aw87359/aw87359_dspk_ftm.bin
 odm/bin/hw/vendor.oplus.hardware.performance@1.0-service
 odm/etc/init/vendor.oplus.hardware.performance@1.0-service.rc
 odm/etc/vintf/manifest/manifest_oplus_performance.xml
-odm/lib/vendor.oplus.hardware.performance@1.0.so;MODULE_SUFFIX=_odm
 odm/lib64/vendor.oplus.hardware.performance@1.0.so;MODULE_SUFFIX=_odm
 
 # Bluetooth
@@ -342,14 +356,10 @@ vendor/lib64/libbluetoothem_mtk.so
 vendor/lib64/libbt-vendor.so
 
 # Bluetooth (LDAC)
-system/lib/libldacBT_abr.so
-system/lib/libldacBT_enc.so
 system/lib64/libldacBT_abr.so
 system/lib64/libldacBT_enc.so
 
 # Bluetooth (LHDC)
-system/lib/liblhdc.so
-system/lib/liblhdcBT_enc.so
 system/lib64/liblhdc.so
 system/lib64/liblhdcBT_enc.so
 
@@ -394,6 +404,8 @@ odm/lib64/libstfaceunlockppl.so
 odm/lib64/libtfavib.so
 odm/lib64/vendor.oplus.hardware.engcamera@1.0.so
 vendor/bin/hw/camerahalserver
+vendor/etc/asd/class.tflite
+vendor/etc/asd/detect.tflite
 vendor/etc/init/camerahalserver.rc
 vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.atms@1.0-impl.so
@@ -1044,6 +1056,7 @@ vendor/lib64/libaal_cust.so
 vendor/lib64/libaal_key.so
 vendor/lib64/libaal_mtk.so
 vendor/lib64/libaalservice.so
+vendor/lib64/libacdk.so
 vendor/lib64/libarcsoft_distortion_correction.so
 vendor/lib64/libarcsoft_dualcam_bokeh_api.so
 vendor/lib64/libarcsoft_dualcam_refocus_left.so
@@ -1476,6 +1489,7 @@ vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service
 vendor/etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc
 vendor/etc/init/vendor.mediatek.hardware.pq@2.2-service.rc
 vendor/etc/vintf/manifest/manifest_hwcomposer.xml
+vendor/lib/egl/egl.cfg
 vendor/lib/arm.graphics-V1-ndk_platform.so
 vendor/lib/libion_mtk.so
 vendor/lib/libion_ulit.so
@@ -1543,7 +1557,7 @@ system_ext/priv-app/daxService/daxService.apk|93adcc9c87375f06122c8e1f4bd40b059e
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service|76fe11bc5778d47f6f88f2233b6b2b2022733241
 vendor/bin/hw/vendor.dolby.media.c2@1.0-service|64cd5aa414e40476b07affd9e794cea8740b2811
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc|29296ebfe89b2697fec573be73cc3757fd97bed6
-vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc|38ccbb48345ca07875e39073df33f2a79a55eafb
+vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc|6b84790de69c9d70edf5a56f3072079cf2069235
 vendor/lib/soundfx/libdlbvol.so|4430011e9603a25e06d17b635223ac9887220cef
 vendor/lib/soundfx/libspatialaudio.so|c84a1098a775401344d97d3c7638498d9207ccad
 vendor/lib/soundfx/libswdap.so|0dded004fcf5295786d5ea7a274446d4f6634722
@@ -1609,7 +1623,6 @@ odm/lib64/vendor.oplus.hardware.commondcs@1.0.so
 odm/init.oplus.face.rc
 odm/init.oplus.fingerprints.rc
 odm/init.oplus.seccommon.rc
-vendor/lib/vendor.oplus.hardware.commondcs@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.oplus.hardware.commondcs@1.0.so;MODULE_SUFFIX=_vendor
 
 # Firmware
@@ -1929,8 +1942,8 @@ odm/lib64/vendor.oplus.hardware.ims@1.0.so
 system/lib/libvsim-adaptor-client.so:system_ext/lib/libvsim-adaptor-client.so
 system/lib64/libvsim-adaptor-client.so:system_ext/lib64/libvsim-adaptor-client.so
 system_ext/lib64/vendor.mediatek.hardware.lbs@1.0.so
-vendor/bin/hw/vtservice_hidl
 vendor/bin/hw/vendor.mediatek.hardware.mmagent@1.1-service
+vendor/bin/hw/vtservice_hidl
 vendor/bin/ipsec_mon
 vendor/bin/lbs_hidl_service
 vendor/bin/rcs_volte_stack
@@ -1942,12 +1955,12 @@ vendor/bin/volte_rcs_ua
 vendor/bin/volte_stack
 vendor/bin/volte_ua
 vendor/bin/xcap
-vendor/etc/init/init.vtservice_hidl.rc
 vendor/etc/init/init.volte_imcb.rc
 vendor/etc/init/init.volte_imsm_93.rc
 vendor/etc/init/init.volte_md_status.rc
 vendor/etc/init/init.volte_stack.rc
 vendor/etc/init/init.volte_ua.rc
+vendor/etc/init/init.vtservice_hidl.rc
 vendor/etc/init/init.xcap.rc
 vendor/etc/init/ipsec_mon.rc
 vendor/etc/init/lbs_hidl_service.rc
@@ -1962,6 +1975,7 @@ vendor/lib/libvolte_core_shr.so
 vendor/lib/libvolte_xdmc_shr.so
 vendor/lib/libvt_custom.so
 vendor/lib/vendor.mediatek.hardware.rcs@2.0.so
+vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 vendor/lib64/lbs_hidl_service-impl.so
 vendor/lib64/libipsec_ims_shr.so
 vendor/lib64/libmmagent.so
@@ -1969,7 +1983,6 @@ vendor/lib64/vendor.mediatek.hardware.clientapi@1.0.so
 vendor/lib64/vendor.mediatek.hardware.lbs@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
-vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
 # Kernel Modules
@@ -2080,8 +2093,6 @@ vendor/lib/libMtkOmxAlacDec.so
 vendor/lib/libmp3dec_mtk.so
 
 # Misc
-vendor/lib/libminiui.so
-vendor/lib/libpixelflinger.so
 vendor/lib64/libminiui.so
 vendor/lib64/libml_util.so
 vendor/lib64/libpixelflinger.so
@@ -2149,14 +2160,11 @@ odm/etc/tm_nt37701_2048_tm_nt37701_42_srgb_eyeprotect_data.xml
 
 # ORMS
 #vendor/lib/liboppo_arcSoftBokehEngine_new.so
-odm/lib/libormshalclient.so
-odm/lib/vendor.oplus.hardware.orms@1.0.so
 odm/lib64/libormshalclient.so
 odm/lib64/vendor.oplus.hardware.orms@1.0.so
 vendor/lib64/liboppo_arcSoftBokehEngine_new.so
 
 # Power
-vendor/lib/libpowerhalwrap_vendor.so
 vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so
 
@@ -2296,9 +2304,10 @@ odm/etc/init/vendor.oplus.hardware.oplusSensor@1.0-service.rc
 odm/etc/sensor/sensor_config.json
 odm/etc/vintf/manifest/manifest_oplusSensor.xml
 odm/lib64/libhwm-oplus.so
+odm/lib64/libmmc.so
+odm/lib64/libmxmafa.so
 odm/lib64/oplus.sensors.ssc.so
 odm/lib64/vendor.oplus.hardware.oplusSensor@1.0.so
-vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
 vendor/lib64/hw/sensors.mt6785.so
 vendor/lib64/libhwm-oplus.so;MODULE_SUFFIX=_vendor
 vendor/lib64/libhwm.so
@@ -2307,7 +2316,7 @@ vendor/lib64/libksensor.so
 vendor/lib64/librgbwlightsensor.so
 vendor/lib64/libsensor_custom.so
 
-# Sound trigger
+# Sound (trigger)
 vendor/lib/hw/sound_trigger.primary.default.so:vendor/lib/hw/sound_trigger.primary.mt6785.so
 vendor/lib/libvow_ap_test_aa.so
 vendor/lib/libvow_ap_test_dd.so
@@ -2404,7 +2413,7 @@ vendor/lib64/vendor.trustonic.tee@1.0.so
 vendor/lib64/vendor.trustonic.tee@1.1.so
 
 # Thermal
-odm/etc/temperature_profile/sys_high_temp_protect_realme_2068A.xml
+odm/etc/temperature_profile/sys_high_temp_protect_realme_2068A.xml:odm/etc/temperature_profile/sys_high_temp_protect_realme_20682.xml
 odm/etc/temperature_profile/sys_thermal_control_config.xml
 vendor/bin/thermal
 vendor/bin/thermal_manager
@@ -2429,7 +2438,6 @@ vendor/lib64/hw/thermal_hal.so
 odm/bin/hw/vendor.oplus.hardware.displaypanelfeature@1.0-service
 odm/etc/init/vendor.oplus.hardware.displaypanelfeature@1.0-service.rc
 odm/etc/vintf/manifest/manifest_oplus_displaypanelfeature.xml
-odm/lib/vendor.oplus.hardware.displaypanelfeature@1.0.so
 odm/lib64/vendor.oplus.hardware.displaypanelfeature@1.0.so
 
 # Touch - HIDL
@@ -2461,9 +2469,6 @@ odm/firmware/tp/20730/FW_GT9886_SAMSUNG.img
 odm/firmware/tp/20730/FW_GT9886_SAMSUNG_FAE.img
 odm/firmware/tp/20730/LIMIT_FT3518_SAMSUNG.img
 odm/firmware/tp/20730/LIMIT_GT9886_SAMSUNG.img
-odm/lib/libmxmafa.so
-odm/lib64/libmmc.so
-odm/lib64/libmxmafa.so
 
 # Vibrator
 odm/etc/aac_richtap.config

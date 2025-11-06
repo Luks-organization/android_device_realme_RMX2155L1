@@ -4,7 +4,7 @@
 //
 
 runtime_resource_overlay {
-    name: "SettingsProviderOverlayR7",
+    name: "SettingsProviderOverlayRMX2151",
     resource_dirs: ["res"],
-    device_specific: true,
+    vendor: true,
 }

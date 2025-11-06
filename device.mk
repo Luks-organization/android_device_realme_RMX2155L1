@@ -4,7 +4,10 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/realme/RMX2155
+DEVICE_PATH := device/realme/RMX2155L1
+
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
 
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
@@ -16,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 
 # Inherit vendor the proprietary files
-$(call inherit-product, vendor/realme/RMX2155/RMX2155-vendor.mk)
+$(call inherit-product, vendor/realme/RMX2155L1/RMX2155L1-vendor.mk)
 
 # IMS
 $(call inherit-product, vendor/mediatek/ims/ims.mk)
@@ -85,8 +88,7 @@ PRODUCT_PACKAGES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth-service.mediatek \
-    android.hardware.bluetooth.audio-impl \
-    libbluetooth_audio_session
+    android.hardware.bluetooth.audio-impl
 
 # Library Codec
 PRODUCT_PACKAGES += \
@@ -127,33 +129,26 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-com.dolby.daxappui2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxappui2.xml \
     $(DEVICE_PATH)/configs/default-permissions/default-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/default-permissions/default-com.dolby.daxservice.xml
 
-# Spatial Audio
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/android.hardware.sensor.dynamic.head_tracker.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.dynamic.head_tracker.xml
-
-# Spatial Audio: optimize spatializer effect
+# Dolby Prop
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.spatializer.effect.util_clamp_min=300
+    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1
 
-# Spatial Audio: declare use of spatial audio
+# Spatial Audio Prop
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.audio.spatializer_enabled=true \
     ro.audio.headtracking_enabled=true \
     ro.audio.spatializer_transaural_enabled_default=false \
     persist.vendor.audio.spatializer.speaker_enabled=true \
+    audio.spatializer.effect.util_clamp_min=300
 
-# Codec2 Props
+# Codec c2 Prop
 PRODUCT_VENDOR_PROPERTIES += \
     vendor.audio.c2.preferred=true \
     debug.c2.use_dmabufheaps=1 \
     vendor.qc2audio.suspend.enabled=true \
-    vendor.qc2audio.per_frame.flac.dec.enabled=true
-
-# Dolby Props
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1 \
+    vendor.qc2audio.per_frame.flac.dec.enabled=true \
     vendor.audio.dolby.ds2.hardbypass=false \
-    vendor.audio.dolby.ds2.enabled=false
+    vendor.audio.dolby.ds2.enabled=true
 
 # RealmePearts
 PRODUCT_PACKAGES += \
@@ -163,7 +158,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OssiDeviceService
 
-# Doze
+# Oplus
 PRODUCT_PACKAGES += \
     OplusDoze
 
@@ -191,13 +186,17 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    com.android.hardware.drm.clearkey \
-    android.hardware.drm@1.4.vendor \
+    android.hardware.drm-service.clearkey \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
     libmockdrmcryptoplugin
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.safe_union@1.0.vendor
+    android.hidl.safe_union@1.0.vendor \
+    android.hidl.allocator@1.0.vendor \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder.vendor
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -221,10 +220,10 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.0-service-multihal.MT6785 \
-    vendor.lineage.oplus_als.service \
-    sensors.als_wrapper \
-    sensors.oplus_virtual
+    android.hardware.sensors-service.oplus-multihal \
+    android.hardware.sensors@2.0-subhal-impl-1.0 \
+    sensors.dynamic_sensor_hal:64 \
+    sensors.oplus
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -243,15 +242,14 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
     android.hardware.gatekeeper@1.0-impl
 
+PRODUCT_PACKAGES += \
+    libgatekeeper.vendor
+
 # GNSS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss.measurement_corrections@1.0.vendor \
     android.hardware.gnss.measurement_corrections@1.1.vendor \
     android.hardware.gnss.visibility_control@1.0.vendor \
-    android.hardware.gnss@1.0.vendor:64 \
-    android.hardware.gnss@1.1.vendor:64 \
-    android.hardware.gnss@2.0.vendor:64 \
-    android.hardware.gnss@2.1.vendor:64 \
+    android.hardware.gnss@2.1.vendor \
     libexpat.vendor \
     libcurl.vendor \
     libssl.vendor
@@ -261,9 +259,9 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-service \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-impl.recovery
+    android.hardware.health-service.mediatek \
+    android.hardware.health-service.mediatek-recovery \
+    charger_res_images_vendor
 
 # Lineage Health
 PRODUCT_PACKAGES += \
@@ -295,16 +293,15 @@ PRODUCT_PACKAGES += \
 TARGET_SUPPORTS_OMX_SERVICE := false
 
 PRODUCT_PACKAGES += \
-    libstagefright_softomx_plugin.vendor
+    libstagefright_softomx_plugin.vendor \
+    libstagefright_foundation-v33
 
 # Media (C2)
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
 $(call soong_config_set,stagefright,target_disables_thumbnail_block_model,true)
 
@@ -323,27 +320,26 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Overlays
 PRODUCT_PACKAGES += \
+    OplusDozeOverlay \
+    DialerOverlayCommon \
     LineageSettingsOverlay \
     LineageSDKOverlay \
     ApertureOverlay \
-    DialerOverlayCommon \
     ApertureIconOverlay \
     ApertureQRScannerOverlay
 
 PRODUCT_PACKAGES += \
     FrameworkResOverlayPlatform \
-    DolbyFrameworksResCommon \
     SettingsProviderOverlay \
     SettingsOverlayPlatform \
     SystemUIOverlayPlatform \
     TetheringConfigOverlay \
-    CarrierConfigOverlay \
-    OplusDozeOverlay \
     NfcResOverlay \
     WifiOverlay
 
 PRODUCT_PACKAGES += \
-    SettingsProviderOverlayR7
+    SettingsProviderOverlayRMX2155 \
+    SettingsProviderOverlayRMX2151
 
 # Public libraries
 PRODUCT_COPY_FILES += \
@@ -357,6 +353,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/privapp-permissions-com.mediatek.engineermode.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-com.mediatek.engineermode.xml \
     $(DEVICE_PATH)/configs/permissions/com.android.hotwordenrollment.common.util.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.hotwordenrollment.common.util.xml \
     $(DEVICE_PATH)/configs/permissions/com.mediatek.hardware.vow_dsp.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.mediatek.hardware.vow_dsp.xml \
+    frameworks/native/data/etc/android.hardware.sensor.dynamic.head_tracker.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.dynamic.head_tracker.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.audio.pro.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.pro.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
@@ -411,10 +408,19 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
     vendor.mediatek.hardware.mtkpower@1.2-service.stub \
     libmtkperf_client_vendor \
     libmtkperf_client
+
+PRODUCT_PACKAGES += \
+    android.hardware.power-service.pixel-libperfmgr
+
+# sendhint utility
+PRODUCT_PACKAGES += \
+    sendhint
+
+PRODUCT_PACKAGES += \
+    PowerOffAlarm
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
@@ -424,16 +430,19 @@ PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/cgroups.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
     $(DEVICE_PATH)/configs/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
-PRODUCT_PACKAGES += \
-    PowerOffAlarm
+# Libinit
+$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_RMX2155L1)
 
-# Ramdisk
+# Init
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/init/init.recovery.mt6785.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6785.rc
+
 PRODUCT_PACKAGES += \
     init.connectivity.common.rc \
     init.connectivity.rc \
     init.modem.rc \
     init.project.rc \
-    init.sensor_1_0.rc \
+    init.sensor.rc \
     init_connectivity.rc \
     init.mt6785.power.rc \
     init.mt6785.rc \
@@ -459,13 +468,16 @@ PRODUCT_PACKAGES += \
     multi_init.rc \
     nfc_detect.sh
 
+# Properties
+include $(DEVICE_PATH)/configs/props/vendor_prop.mk
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
     $(DEVICE_PATH)/touch \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek/libmtkperf_client \
     hardware/mediatek \
     hardware/oplus
@@ -492,9 +504,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full.vendor \
-    libprotobuf-cpp-lite.vendor \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
+    libprotobuf-cpp-lite.vendor
 
 # Rcs Service
 PRODUCT_PACKAGES += \
@@ -529,13 +539,3 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
-
-# InitRecovery
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/init/init.recovery.mt6785.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.mt6785.rc
-
-# InitSalaa
-$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_RMX2155)
-
-# Log tag
-include $(DEVICE_PATH)/configs/props/vendor_logtag.mk

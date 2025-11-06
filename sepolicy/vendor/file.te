@@ -54,6 +54,7 @@ type sysfs_mtk_gpufreq, fs_type, sysfs_type;
 # GPU
 type proc_gpufreq, fs_type, proc_type;
 type vendor_sysfs_gpu, fs_type, sysfs_type;
+type pps_socket, file_type;
 
 # Emmc 
 type emmc_base_info_node, fs_type, sysfs_type;

@@ -20,7 +20,7 @@ unzip vendor/realme/RMX2155/proprietary/odm/lib64/libstfaceunlockppl.zip -d vend
 #cd ../../../
 
 # Apply patch
-#cd device/realme/RMX2155/patches && ./apply.sh && cd && cd evo
+#cd device/realme/RMX2155L1/patches && ./apply.sh && cd && cd evo
 
 # Make the build faster using ccache
 #export CCACHE_EXEC=/usr/bin/ccache

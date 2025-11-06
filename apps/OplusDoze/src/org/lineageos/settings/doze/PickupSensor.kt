@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2025 The LineageOS Project
+ * Copyright (C) 2025 The LineageOS Project
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -39,7 +39,7 @@ class PickupSensor(
         if (event.values[0] == sensorValue) {
             if (Utils.isPickUpSetToWake(context)) {
                 wakeLock.acquire(WAKELOCK_TIMEOUT_MS)
-                powerManager.wakeUpWithProximityCheck(
+                powerManager.wakeUp(
                     SystemClock.uptimeMillis(),
                     PowerManager.WAKE_REASON_GESTURE,
                     TAG,

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "init_RMX2155.h"
+#include "init_RMX2155L1.h"
 
 #include <vector>
 #include <cstdlib>
@@ -68,51 +68,9 @@ void set_ro_build_prop(const string& prop, const string& value, bool product) {
     }
 }
 
-void load_dalvik_properties(void) {
-    char const *heapstartsize;
-    char const *heapgrowthlimit;
-    char const *heapsize;
-    char const *heapminfree;
-    char const *heapmaxfree;
-    char const *heaptargetutilization;
-    struct sysinfo sys;
-
-    sysinfo(&sys);
-
-    if (sys.totalram >= 7ull * 1024 * 1024 * 1024) {
-        heapstartsize = "24m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.46";
-        heapminfree = "8m";
-        heapmaxfree = "48m";
-    } else if (sys.totalram >= 5ull * 1024 * 1024 * 1024) {
-        heapstartsize = "16m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.5";
-        heapminfree = "8m";
-        heapmaxfree = "32m";
-    } else {
-        heapstartsize = "8m";
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
-        heaptargetutilization = "0.6";
-        heapminfree = "8m";
-        heapmaxfree = "16m";
-    }
-
-    property_override("dalvik.vm.heapstartsize", heapstartsize);
-    property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_override("dalvik.vm.heapsize", heapsize);
-    property_override("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_override("dalvik.vm.heapminfree", heapminfree);
-    property_override("dalvik.vm.heapmaxfree", heapmaxfree);
-}
-
 void set_device_props(void) {
     char const *operator_code_file = "/proc/oplusVersion/operatorName";
-    std::string operator_code_raw, device, model, marketname, fingerprint;
+    std::string operator_code_raw, model, device, marketname, fingerprint;
 
     if (ReadFileToString(operator_code_file, &operator_code_raw)) {
         int operator_code = stoi(operator_code_raw);
@@ -121,22 +79,22 @@ void set_device_props(void) {
             case 141:
             case 146:
             case 149:
-                device = "RMX2151L1";
                 model = "RMX2151";
+                device = "RMX2151L1";
                 marketname = "realme 7";
                 fingerprint = "realme/RMX2151/RMX2151L1:12/SP1A.210812.016/Q.bf75e7-1:user/release-keys";
                 break;
             case 94:
             case 148:
-                device = "RMX2155L1";
                 model = "RMX2155";
+                device = "RMX2155L1";
                 marketname = "realme 7";
                 fingerprint = "realme/RMX2155EEA/RMX2155L1:12/SP1A.210812.016/Q.GDPR.bf75e7-1:user/release-keys";
                 break;
             default:
                 LOG(ERROR) << "Unknown operator found: " << operator_code;
-                device = "";
                 model = "";
+                device = "";
                 marketname = "";
                 fingerprint = "";
         }
@@ -168,5 +126,4 @@ void vendor_load_properties(void) {
 #ifndef __ANDROID_RECOVERY__
     set_device_props();
 #endif
-    load_dalvik_properties();
 }

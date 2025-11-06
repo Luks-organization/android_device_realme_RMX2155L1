@@ -4,13 +4,9 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.settings.doze.overlay.RMX2155">
-
-    <application android:hasCode="false" />
-
+    package="org.lineageos.settings.doze.overlay.RMX2155L1">
     <overlay 
-        android:targetPackage="org.lineageos.settings.doze"
+        android:targetPackage="com.android.settings"
         android:isStatic="true"
-        android:priority="6969"/>
-
+        android:priority="600"/>
 </manifest>

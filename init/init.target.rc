@@ -30,14 +30,6 @@ on boot
     setprop vendor.powerhal.init 1
 
 # Dalvik configuration
-on property:ro.vendor.hw.ram=8GB
-    setprop dalvik.vm.heapstartsize 24m
-    setprop dalvik.vm.heapgrowthlimit 256m
-    setprop dalvik.vm.heapsize 512m
-    setprop dalvik.vm.heaptargetutilization 0.46
-    setprop dalvik.vm.heapminfree 8m
-    setprop dalvik.vm.heapmaxfree 48m
-
 on property:ro.vendor.hw.ram=6GB
     setprop dalvik.vm.heapstartsize 16m
     setprop dalvik.vm.heapgrowthlimit 256m
@@ -45,6 +37,13 @@ on property:ro.vendor.hw.ram=6GB
     setprop dalvik.vm.heaptargetutilization 0.5
     setprop dalvik.vm.heapminfree 8m
     setprop dalvik.vm.heapmaxfree 32m
+on property:ro.vendor.hw.ram=8GB
+    setprop dalvik.vm.heapstartsize 24m
+    setprop dalvik.vm.heapgrowthlimit 256m
+    setprop dalvik.vm.heapsize 512m
+    setprop dalvik.vm.heaptargetutilization 0.46
+    setprop dalvik.vm.heapminfree 8m
+    setprop dalvik.vm.heapmaxfree 48m
 
 on property:ro.vendor.hw.ram=4GB
     setprop dalvik.vm.heapstartsize 8m

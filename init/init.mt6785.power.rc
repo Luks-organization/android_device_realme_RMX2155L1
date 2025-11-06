@@ -39,10 +39,21 @@ on init
     chmod 0666 /dev/stune/io/tasks
 
     # update cpus for cpuset cgroup
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/background/cpus 0-3
-    write /dev/cpuset/system-background/cpus 0-5
+    write /dev/cpuset/foreground/cpus 0-6
+    write /dev/cpuset/foreground/boost/cpus 0-7
+    write /dev/cpuset/background/cpus 1-3
+    write /dev/cpuset/system-background/cpus 1-5
     write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/restricted/cpus 0-3
+
+    setprop dalvik.vm.dex2oat-cpu-set 4,5,6,7
+    setprop dalvik.vm.dex2oat-threads 4
+    setprop dalvik.vm.image-dex2oat-cpu-set 4,5,6,7
+    setprop dalvik.vm.image-dex2oat-threads 4
+
+on enable-low-power
+    write /proc/cpufreq/cpufreq_sched_disable 0
+    write /sys/devices/system/cpu/eas/enable 2
 
     # Set default SchedTune values
     chown system system /dev/stune/foreground/schedtune.prefer_idle
@@ -51,17 +62,35 @@ on init
     write /dev/stune/foreground/schedtune.prefer_idle 0
     write /dev/stune/top-app/schedtune.prefer_idle 0
     write /dev/stune/rt/schedtune.prefer_idle 0
-    write /dev/stune/top-app/schedtune.boost 1
-
-on enable-low-power
-    write /proc/cpufreq/cpufreq_sched_disable 0
     write /proc/sys/kernel/sched_migration_cost_ns 200000
+    write /dev/stune/top-app/schedtune.boost 1
 
     # Enable PowerHAL hint processing
     setprop vendor.powerhal.init 1
 
 on property:sys.boot_completed=1
     trigger enable-low-power
+
+    # Power Hal
+    chown system system /proc/ppm/policy/cluster_0_max_freq
+    chown system system /proc/ppm/policy/cluster_0_min_freq
+    chown system system /proc/ppm/policy/cluster_1_max_freq
+    chown system system /proc/ppm/policy/cluster_1_min_freq
+    chown system system /dev/cpuctl/foreground/cpu.uclamp.min
+    chown system system /dev/cpuctl/top-app/cpu.uclamp.min
+    chown system system /dev/cpuctl/camera-daemon/cpu.uclamp.min
+    chown system system /proc/perfmgr/boost_ctrl/eas_ctrl/sched_boost
+    chown system system /proc/touchpanel/double_tap_enable
+
+    chmod 0664 /proc/ppm/policy/cluster_0_max_freq
+    chmod 0664 /proc/ppm/policy/cluster_0_min_freq
+    chmod 0664 /proc/ppm/policy/cluster_1_max_freq
+    chmod 0664 /proc/ppm/policy/cluster_1_min_freq
+    chmod 0664 /dev/cpuctl/foreground/cpu.uclamp.min
+    chmod 0664 /dev/cpuctl/top-app/cpu.uclamp.min
+    chmod 0664 /dev/cpuctl/camera-daemon/cpu.uclamp.min
+    chmod 0664 /proc/perfmgr/boost_ctrl/eas_ctrl/sched_boost
+    chmod 0664 /proc/touchpanel/double_tap_enable
 
 service vendor.gralloc-4-0 /vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
     override
