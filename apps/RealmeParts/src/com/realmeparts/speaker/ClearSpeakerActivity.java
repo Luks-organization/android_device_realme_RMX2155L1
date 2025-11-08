@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts.speaker;
+package com.realmeparts.speaker;
 
 import android.app.Activity;
 import android.app.Fragment;

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts;
+package com.realmeparts;
 
 import android.content.Context;
 import android.text.TextUtils;

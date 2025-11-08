@@ -4,8 +4,14 @@ type oplus_charger_device, dev_type, fs_type;
 # Sensors
 type virtual_sensor_device, dev_type;
 
+# Display
+type oplus_display_device, dev_type;
+
 # Oplus block device
 type oplus_block_device, dev_type;
 
 # Power
 type latency_device, dev_type;
+
+# IIO
+type sysfs_iio_devices, dev_type, fs_type, sysfs_type;

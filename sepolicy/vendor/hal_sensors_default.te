@@ -1,3 +1,4 @@
+binder_use(hal_sensors_default)
 typeattribute hal_sensors_default socket_between_core_and_vendor_violators;
 hal_client_domain(hal_sensors_default, hal_lineage_oplus_als)
 
@@ -8,7 +9,6 @@ r_dir_file(hal_sensors_default, vendor_sysfs_graphics)
 r_dir_file(hal_sensors_default, persist_engineer_file)
 r_dir_file(hal_sensors_default, sysfs_leds)
 
-allow hal_sensors_default vendor_proc_oplus_sensor_feature:dir { search };
 allow hal_sensors_default mnt_vendor_file:dir r_dir_perms;
 allow hal_sensors_default mnt_vendor_file:file rw_file_perms;
 allow hal_sensors_default persist_data_file:dir { getattr search };
@@ -28,6 +28,11 @@ allow hal_sensors_default device:dir r_dir_perms;
 allow hal_sensors_default hidraw_device:chr_file rw_file_perms;
 allow hal_sensors_default vendor_proc_oplus_sensor_als:file w_file_perms;
 allow hal_sensors_default vendor_oplus_prop:file { read open map };
+allow hal_sensors_default vendor_proc_oplus_sensor_feature:dir { search };
+allow hal_sensors_default sysfs_iio_devices:dir r_dir_perms;
+allow hal_sensors_default sysfs_iio_devices:file r_file_perms;
+allow hal_sensors_default sysfs_iio_writable:dir r_dir_perms;
+allow hal_sensors_default sysfs_iio_writable:file r_file_perms;
 
 get_prop(hal_sensors_default, system_sensors_als_prop)
 get_prop(hal_sensors_default, vendor_default_prop)

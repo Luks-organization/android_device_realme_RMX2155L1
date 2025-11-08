@@ -94,10 +94,12 @@ mediatek.wlan.ctia=0
 ro.mediatek.wlan.p2p=1
 ro.mediatek.wlan.wsc=1
 ro.vendor.net.enable_dual_wifi=1
+wifi.supplicant_scan_interval=15
 wifi.direct.interface=p2p0
 wifi.interface=wlan0
 wifi.tethering.interface=ap0
 persist.vendor.wfc.sys_wfc_support=1
+
 
 # Zygote
 ro.zygote.preload.enable=0

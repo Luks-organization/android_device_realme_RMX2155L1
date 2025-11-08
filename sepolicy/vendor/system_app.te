@@ -32,6 +32,7 @@ allow system_app proc_filesystems:file r_file_perms;
 get_prop(system_app, vendor_variant_prop)
 set_prop(system_app, vendor_audio_tuning_prop)
 
+binder_call(system_app, hal_sensors_default)
 binder_call(system_app, hal_audio_default)
 binder_call(system_app, hal_health_default)
 binder_call(system_app, hal_light_default)

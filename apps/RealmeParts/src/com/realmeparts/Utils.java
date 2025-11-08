@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts;
+package com.realmeparts;
 
 import android.content.Context;
 import android.content.Intent;
@@ -141,7 +141,7 @@ public class Utils {
     }
 
     public static String getStringForResourceName(Resources res, String resourceName, String defaultValue) {
-        int resId = res.getIdentifier(resourceName, "string", "com.realme.realmeparts");
+        int resId = res.getIdentifier(resourceName, "string", "com.realmeparts");
         return resId > 0 ? res.getString(resId) : defaultValue;
     }
 

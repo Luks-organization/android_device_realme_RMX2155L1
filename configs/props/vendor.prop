@@ -1,22 +1,18 @@
-# AAL
-ro.vendor.mtk_aal_support=1
-ro.vendor.pq.mtk_aal_support=1
-
 # AEE
-ro.vendor.aee.convert64=1
+ro.vendor.aee.convert64=0
 ro.vendor.have_aee_feature=1
 ro.vendor.have_aeev_feature=1
 
 # ALS
-vendor.sensors.als_correction.bias=0
 vendor.sensors.als_correction.grabrect=656 2 692 38
-vendor.sensors.als_correction.grayscale_weights=0.232 0.415 0.353
+vendor.sensors.als_correction.bias=0
 vendor.sensors.als_correction.hbr=true
 vendor.sensors.als_correction.rgbw_max_lux_div=829.0 1537.0 1319.0 673.0
 vendor.sensors.als_correction.rgbw_poly1=2.4E-05 0.00599 0.21617 0.0
 vendor.sensors.als_correction.rgbw_poly2=4.8E-05 0.0108 0.24531 0.0
 vendor.sensors.als_correction.rgbw_poly3=3.7E-05 0.01138 0.05037 0.0
 vendor.sensors.als_correction.rgbw_poly4=7.4E-05 0.01022 0.53187 0.0
+vendor.sensors.als_correction.grayscale_weights=0.232 0.415 0.353
 vendor.sensors.als_correction.sensor_gaincal_points=45.0 115.0 170.0 0.0
 vendor.sensors.als_correction.sensor_inverse_gain=0.11 0.282 0.140 0.035
 
@@ -77,24 +73,6 @@ vendor.camera.aux.packagelist=com.android.camera,com.google.camera,org.lineageos
 vendor.camera.mdp.cz.enable=1
 vendor.camera.mdp.dre.enable=1
 
-# Charging
-ro.vendor.mtk_fast_charging_support=1
-
-# Disable vsync for cpu rendered apps
-debug.cpurend.vsync=false
-
-# Display
-debug.mediatek.disp_decompress=1
-persist.vendor.light.max_brightness=2047
-ro.hardware.egl=meow
-ro.hardware.vulkan=mali
-ro.vendor.composer_version=2.2
-ro.vendor.smvr.p2batch.fhd=4
-ro.vendor.smvr.p2batch.hd=8
-ro.vendor.smvr.p2batch.vga=16
-vendor.display.disable_idle_time_hdr=1
-vendor.display.disable_idle_time_video=1
-
 # HWUI
 debug.hwui.render_dirty_regions=false
 debug.hwui.skia_atrace_enabled=false
@@ -138,24 +116,13 @@ ro.surface_flinger.has_HDR_display=true
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.primary_display_orientation=ORIENTATION_0
 ro.surface_flinger.protected_contents=true
-ro.surface_flinger.set_display_power_timer_ms=1000
-ro.surface_flinger.set_idle_timer_ms=80
-ro.surface_flinger.set_touch_timer_ms=200
-ro.surface_flinger.use_content_detection_for_refresh_rate=true
 
 # DRAM
 ro.vendor.mtk_config_max_dram_size=0x800000000
 
-# DRM
-drm.service.enabled=true
-ro.netflix.bsp_rev=MTK6785-18787-1
-ro.vendor.mtk_mvpu_security_support=0
-ro.vendor.mtk_sec_video_path_support=1
-ro.vendor.mtk_widevine_drm_l1_support=1
-
 # Dex
 persist.bg.dexopt.enable=true
-pm.dexopt.install=speed-profile
+pm.dexopt.install=everything
 
 # Fastbootd
 ro.fastbootd.available=true
@@ -169,17 +136,37 @@ ro.vendor.fm.use_audio_session=true
 #debug.media.codec2=2
 debug.c2.use_dmabufheaps=1
 debug.stagefright.c2inputsurface=-1
-media.c2.dmabuf.padding=512
+media.c2.dmabuf.padding=3072
 persist.mm.enable.prefetch=true
 ro.mediaserver.64b.enable=true
+ro.netflix.bsp_rev=MTK6785-18787-1
+ro.vendor.mtk.c2.vdec.fmt.support.level=3
+ro.vendor.mtk_mvpu_security_support=0
+ro.vendor.mtk_sec_video_path_support=1
+ro.vendor.mtk_widevine_drm_l1_support=1
+ro.vendor.mtk_video_hevc_enc_support=1
+vendor.mtk.vdec.waitkeyframeforplay=15
+vendor.media.omx=0
+
+# Display
+debug.mediatek.disp_decompress=1
+persist.vendor.light.max_brightness=2047
+ro.opengles.version=196610
+ro.hardware.egl=meow
+ro.hardware.vulkan=mali
+ro.vendor.composer_version=2.2
+ro.vendor.smvr.p2batch.fhd=4
+ro.vendor.smvr.p2batch.hd=8
+ro.vendor.smvr.p2batch.vga=16
 ro.mtk_pq.ctrld_dpi_support=1
 ro.vendor.jpeg_decode_sw_opt=1
 ro.vendor.mml.mtk_mml_support=0
 ro.vendor.mtk_flv_playback_support=1
+ro.vendor.mtk_aal_support=1
 ro.vendor.mtk_hdr_video_support=1
 ro.vendor.mtk_pq_color_mode=1
 ro.vendor.mtk_pq_support=2
-ro.vendor.mtk_video_hevc_enc_support=1
+ro.vendor.pq.mtk_aal_support=1
 ro.vendor.pq.mtk_ai_scence_pq_support=0
 ro.vendor.pq.mtk_ai_sdr_to_hdr_support=0
 ro.vendor.pq.mtk_backlight_smooth_support=1
@@ -205,9 +192,16 @@ ro.vendor.pq.mtk_ultra_dimming_support=0
 ro.vendor.pq.mtk_ultra_resolution_support=1
 ro.vendor.pq.mtk_video_transition=1
 ro.vendor.pref_scale_enable_cfg=1
-vendor.media.omx=0
-vendor.mtk.vdec.waitkeyframeforplay=9
 vendor.mtk_thumbnail_optimization=true
+vendor.display.disable_idle_time_hdr=1
+vendor.display.disable_idle_time_video=1
+
+# Display Refresh Rate
+ro.surface_flinger.set_idle_timer_ms?=2000
+ro.surface_flinger.set_touch_timer_ms?=3000 
+ro.surface_flinger.set_display_power_timer_ms?=1500
+ro.surface_flinger.use_content_detection_for_refresh_rate=true
+#vendor.display.defer_fps_frame_count?=1
 
 # LMKD
 ro.lmk.downgrade_pressure=60
@@ -223,7 +217,7 @@ ro.lmk.thrashing_limit_decay=50
 ro.vendor.gps.chrdev=gps_drv
 ro.vendor.mtk_agps_app=1
 ro.vendor.mtk_gps_support=1
-ro.vendor.mtk_log_hide_gps=0
+ro.vendor.mtk_log_hide_gps=1
 
 # Connsys
 persist.vendor.connsys.chipid=-1
@@ -320,9 +314,13 @@ ro.oem_unlock_supported=1
 #ro.usb.uvc.payload_transfer_size=1024
 
 # USB
-ro.vendor.mtk.sensor.support=yes
 sys.usb.mtp.batchcancel=1
-vendor.usb.diag.func.name=diag vendor.usb.use_ffs_mtp=1 vendor.usb.use_gadget_hal=1 # Sensors
+vendor.usb.diag.func.name=diag
+vendor.usb.use_ffs_mtp=1
+vendor.usb.use_gadget_hal=1
+
+# Sensors
+ro.vendor.mtk.sensor.support=yes
 
 # Incremental
 ro.incremental.enable=yes

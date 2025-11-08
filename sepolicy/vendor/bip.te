@@ -1,2 +1,2 @@
-allow bip net_dns_prop:file { read open };
-allow bip net_dns_prop:file { getattr map };
+allow bip net_dns_prop:file { read open map };
+get_prop(bip, net_dns_prop)

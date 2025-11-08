@@ -83,3 +83,10 @@ genfscon sysfs /devices/platform/11013000.spi3/spi_master/spi3/spi3.0/wakeup/wak
 genfscon sysfs /devices/platform/11013000.spi3/spi_master/spi3/spi3.0/wakeup/wakeup24                   u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/charger/power_supply/usb/wakeup27                                      u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/charger/power_supply/usb/wakeup26                                      u:object_r:sysfs_wakeup:s0
+
+# IIO
+genfscon sysfs /bus/iio/devices                                                                         u:object_r:sysfs_iio_devices:s0
+genfscon sysfs /devices/platform/11001000.auxadc/iio:device0                                            u:object_r:sysfs_iio_writable:s0
+genfscon sysfs /devices/platform/1000d000.pwrap/1000d000.pwrap:mt6359-pmic/mt635x-auxadc/iio:device1    u:object_r:sysfs_iio_writable:s0
+genfscon sysfs /devices/platform/11016000.i2c5/i2c-5/5-0034/mt6360_pmu_adc.1.auto/iio:device2           u:object_r:sysfs_iio_writable:s0
+genfscon sysfs /devices/platform/nanohub_ipi/iio:device3                                                u:object_r:sysfs_iio_writable:s0

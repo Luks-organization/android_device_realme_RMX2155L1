@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts.speaker;
+package com.realmeparts.speaker;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
@@ -21,7 +21,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import com.realme.realmeparts.R;
+import com.realmeparts.R;
 
 import java.io.IOException;
 

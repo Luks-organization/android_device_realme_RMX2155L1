@@ -4,15 +4,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts;
+package com.realmeparts;
 
 import android.content.Context;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 
-public class OTGModeSwitch implements OnPreferenceChangeListener {
+public class SRGBModeSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/devices/virtual/oplus_chg/usb/otg_switch";
+    private static final String FILE = "/sys/kernel/oplus_display/seed";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {

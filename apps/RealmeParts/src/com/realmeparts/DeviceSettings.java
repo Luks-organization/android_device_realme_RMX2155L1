@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package com.realme.realmeparts;
+package com.realmeparts;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -27,7 +27,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-import com.realme.realmeparts.speaker.ClearSpeakerActivity;
+import com.realmeparts.speaker.ClearSpeakerActivity;
 
 public class DeviceSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {

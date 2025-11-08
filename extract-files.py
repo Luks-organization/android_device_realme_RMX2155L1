@@ -72,7 +72,6 @@ blob_fixups: blob_fixups_user_type = {
        .add_needed('libprocessgroup_shim.so'),
     'system_ext/etc/init/kpoc_charger.rc': blob_fixup()
        .regex_replace('/system', '/system_ext'),
-    (
     'vendor/lib64/libmnl.so': blob_fixup()
        .add_needed('libcutils.so'),
     'vendor/etc/init/android.hardware.neuralnetworks@1.3-service-mtk-neuron.rc': blob_fixup()

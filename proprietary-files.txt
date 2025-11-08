@@ -41,7 +41,6 @@ vendor/lib/lib_iir.so
 vendor/lib/lib_speech_enh.so
 vendor/lib/libaal_mtk.so
 vendor/lib/libadpcmdec_mtk.so
-vendor/lib/libakm.so
 vendor/lib/libapmonitor_vendor.so
 vendor/lib/libaudio_engineer_test.so
 vendor/lib/libaudio_param_parser-vnd.so
@@ -2308,10 +2307,11 @@ odm/lib64/libmmc.so
 odm/lib64/libmxmafa.so
 odm/lib64/oplus.sensors.ssc.so
 odm/lib64/vendor.oplus.hardware.oplusSensor@1.0.so
-vendor/lib64/hw/sensors.mt6785.so
 vendor/lib64/libhwm-oplus.so;MODULE_SUFFIX=_vendor
+vendor/lib64/hw/sensors.mt6785.so
 vendor/lib64/libhwm.so
 vendor/lib64/libimgsensorca.so
+vendor/lib64/libakm.so
 vendor/lib64/libksensor.so
 vendor/lib64/librgbwlightsensor.so
 vendor/lib64/libsensor_custom.so

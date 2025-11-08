@@ -42,6 +42,9 @@ type vendor_proc_oplus_sensor_cali, fs_type, proc_type;
 type vendor_proc_oplus_sensor_als, fs_type, proc_type;
 type oplus_sensor_file, data_file_type, file_type;
 
+# IIO
+type sysfs_iio_writable, fs_type, sysfs_type;
+
 # Oplus Version
 type vendor_proc_oplus_version, fs_type, proc_type;
 

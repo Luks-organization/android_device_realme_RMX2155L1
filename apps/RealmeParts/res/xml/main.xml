@@ -10,7 +10,7 @@
         android:key="graphics"
         android:title="@string/display_title">
 
-        <com.realme.realmeparts.SecureSettingListPreference
+        <com.realmeparts.SecureSettingListPreference
             android:icon="@drawable/ic_cabc"
             android:key="cabc"
             android:dialogTitle="@string/cabc_dialogTitle"
@@ -44,8 +44,8 @@
             android:summary="@string/clear_speaker_summary">
             <intent
                  android:action="android.intent.action.MAIN"
-                 android:targetPackage="com.realme.realmeparts"
-                 android:targetClass="com.realme.realmeparts.speaker.ClearSpeakerActivity"/>
+                 android:targetPackage="com.realmeparts"
+                 android:targetClass="com.realmeparts.speaker.ClearSpeakerActivity"/>
         </Preference>
 
     </PreferenceCategory> 
