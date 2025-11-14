@@ -4,5 +4,5 @@ binder_call(cameraserver, mtk_hal_camera)
 allow cameraserver property_socket:sock_file rw_file_perms;
 allow cameraserver adb_data_file:file rw_file_perms;
 
-get_prop(mtk_hal_camera, vendor_oplus_prop)
-set_prop(mtk_hal_camera, vendor_oplus_prop)
+get_prop(mtk_hal_camera, vendor_mtk_camera_prop)
+set_prop(mtk_hal_camera, vendor_mtk_camera_prop)

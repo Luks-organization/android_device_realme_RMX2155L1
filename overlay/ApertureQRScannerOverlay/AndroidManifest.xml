@@ -11,10 +11,13 @@
      limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.qrscanner.overlay.RMX2155L1">
+    package="com.android.qrscanner.overlay">
+
     <application android:hasCode="false" />
+
     <overlay
         android:targetPackage="android"
         android:isStatic="true"
         android:priority="1"/>
+
 </manifest>

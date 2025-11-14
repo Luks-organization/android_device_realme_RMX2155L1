@@ -5,15 +5,17 @@ ro.odm.build.media_performance_class=31
 # NFC
 ro.camera.notify_nfc=1
 
-# Oplus
-persist.version.confidential=false
-ro.build.release_type=true
-ro.oplus.image.odm.version=version_stub.f62907f3
-ro.vendor.oplus.radio.project=1
-ro.version.confidential=false
-
-# Display
+# Sensor
+persist.sys.enable_mtk_scp_dump=1
 persist.sys.oppo.fusionlight=true
 persist.sys.oppo.proximity=true
 ro.vendor.oplus.aal.backlight.bits=12
 ro.vendor.oplus.sensor.report_brightness=true
+
+# Oplus
+ro.build.release_type=true
+ro.oplus.image.odm.version=version_stub.f62907f3
+ro.oplus.image.base.version=20682.2.4.2022111715201312548255
+ro.oplus.image.vendor.version=.a2aae3ba
+ro.oplus.version.base=20682.2.4.2022111715201312548255
+ro.version.confidential=false

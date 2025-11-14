@@ -5,8 +5,12 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.lineageos.settings.doze.overlay.RMX2155L1">
+
+    <application android:hasCode="false" />
+
     <overlay 
-        android:targetPackage="com.android.settings"
+        android:targetPackage="org.lineageos.settings.doze"
         android:isStatic="true"
         android:priority="600"/>
+
 </manifest>

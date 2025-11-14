@@ -13,8 +13,6 @@
         <interface>
             <name>IComponentStore</name>
             <instance>default1</instance>
-            <instance>software</instance>
-	        <instance>ozoaudio</instance>
         </interface>
     </hal>
 </compatibility-matrix>

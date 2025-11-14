@@ -7,10 +7,13 @@
     package="com.android.wifi.resources.RMX2155L1"
     android:versionCode="1"
     android:versionName="1.0">
+
     <application android:hasCode="false" />
+
     <overlay
         android:targetPackage="com.android.wifi.resources"
         android:targetName="WifiCustomization"
         android:isStatic="true"
         android:priority="0"/>
+
 </manifest>

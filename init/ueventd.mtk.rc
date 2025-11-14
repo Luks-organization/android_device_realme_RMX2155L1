@@ -148,5 +148,12 @@
 #MTK In-House TEE
 /dev/ttyACM0              0660   radio      radio
 
+# V4L2 devices
+/dev/video*               0660   camera     system
+
+#fmt mode
+/dev/vdec-fmt             0660   media      system
+/dev/fmt_sync             0660   system     system
+
 #Raw HID devices
 /dev/hidraw*              0660   system     system

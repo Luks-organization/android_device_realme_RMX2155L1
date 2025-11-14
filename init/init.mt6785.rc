@@ -5,10 +5,8 @@ import /vendor/etc/init/hw/init.mt6785.power.rc
 import /vendor/etc/init/hw/init.mt6785.usb.rc
 import /vendor/etc/init/hw/init.nfc_detect.rc
 import /vendor/etc/init/hw/init.project.rc
-import /vendor/etc/init/hw/init.sensor.rc
+import /vendor/etc/init/hw/init.sensor_1_0.rc
 import /vendor/etc/init/hw/init.oplus.rc
-import /vendor/etc/init/hw/init.target.rc
-import /vendor/etc/init/init.volte_ua.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import /vendor/etc/init/hw/init.modem.rc
@@ -78,8 +76,6 @@ on property:init.svc.vendor.charger=running
     # Turn backlight on and switch to backlight trigger
     write /sys/class/leds/lcd-backlight/brightness "1000"
     write /sys/class/leds/lcd-backlight/trigger "backlight-drm"
-
-    start vendor.light-default
 
     # Stop bootprof
     write /proc/bootprof "0"
@@ -346,12 +342,6 @@ on post-fs-data
     #Accdet
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
-    # Fingerprint
-    chmod 0660 /dev/goodix_fp
-    chown system system /dev/goodix_fp
-    mkdir /data/vendor/fpc 0777 system system
-    mkdir /data/vendor/goodix 0777 system system
-    
     #vdec-fmt
     chmod 0660 /dev/vdec-fmt
     chown media system /dev/vdec-fmt
@@ -723,6 +713,24 @@ on boot
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
 
+    # Vibrator
+    chown system system /sys/class/leds/vibrator/trigger
+    chmod 0660 /sys/class/leds/vibrator/trigger
+    chown system system /sys/class/leds/vibrator/activate
+    chmod 0660 /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/brightness
+    chmod 0660 /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/duration
+    chmod 0660 /sys/class/leds/vibrator/duration
+    chown system system /sys/class/leds/vibrator/state
+    chmod 0660 /sys/class/leds/vibrator/state
+    chown system system /sys/class/leds/vibrator/vmax
+    chmod 0660 /sys/class/leds/vibrator/vmax
+
+    # OTG
+    chown system system /sys/devices/virtual/oplus_chg/usb/otg_switch
+    chmod 0666 /sys/devices/virtual/oplus_chg/usb/otg_switch
+
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
     chown radio system /sys/power/tuxonice/do_hibernate
@@ -871,6 +879,10 @@ on boot
     chmod 660 /dev/ttyGS1
     chown system radio /dev/ttyGS1
 
+    # Fingerprint
+    chmod 0660 /dev/goodix_fp
+    chown system system /dev/goodix_fp
+
     # OTG
     write /sys/class/power_supply/usb/otg_switch 1
 
@@ -894,6 +906,10 @@ on property:sys.boot_completed=1
 
     chown system system /sys/devices/system/cpu/cpufreq/mtk/lcluster_min_freq
     chmod 0664 /sys/devices/system/cpu/cpufreq/mtk/lcluster_min_freq
+
+# Disable AOSP RIL if MTK RIL is up
+on property:vendor.ril.mtk=1
+    stop vendor.ril-daemon
 
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
@@ -949,13 +965,21 @@ on property:sys.boot_completed=1
     # Only owner can acces this node
     chmod 440 /proc/net/unix
 
+#endif /* OPLUS_FEATURE_TP_BSPFWUPDATE */
+# add meta_tst for ATM
+service meta_tst /vendor/bin/meta_tst
+    class core
+    user root
+    group radio gps system wifi audio bluetooth media
+    capabilities NET_RAW NET_ADMIN
+    socket meta-atci stream 660 radio system
+    disabled
+    oneshot
+
+# start meta_tst for ATM
+on property:sys.boot_completed=1 && property:ro.boot.atm=enable
+    start meta_tst
+
 # reset mdmode when modem crash happens in ATM
 on property:vendor.mtk.md1.status=reset
     setprop persist.vendor.atm.mdmode normal
-
-on property:persist.vendor.radio.port_index=""
-    setprop sys.usb.config adb
-
-# Disable AOSP RIL if MTK RIL is up
-on property:vendor.ril.mtk=1
-    stop vendor.ril-daemon

@@ -17,6 +17,7 @@ extern std::vector<std::string> ro_props_default_source_order;
 void property_override(const char* prop, const char* value, bool add = true);
 void set_ro_build_prop(const std::string& prop, const std::string& value, bool product = true);
 void set_device_props(void);
+void load_dalvik_properties(void);
 void vendor_load_properties(void);
 
 #endif // INIT_RMX2155L1_H

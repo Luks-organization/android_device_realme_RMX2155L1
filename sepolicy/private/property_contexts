@@ -13,6 +13,9 @@ ro.oplus.                                        u:object_r:exported_system_prop
 ro.vendor.oplus.aal.backlight.bits               u:object_r:exported_system_prop:s0
 persist.vendor.camera.privapp.list               u:object_r:exported_system_prop:s0
 oplus.debug.nvram.enable                         u:object_r:exported_system_prop:s0
+vendor.oplus.                                    u:object_r:exported_system_prop:s0
+vendor.oppo.                                     u:object_r:exported_system_prop:s0
+vendor.debug.                                    u:object_r:exported_system_prop:s0
 
 # Audio
 audio.tuning.def_path                            u:object_r:system_oplus_audio_prop:s0
@@ -22,7 +25,7 @@ sys.oplus.mm.                                    u:object_r:system_oplus_audio_p
 ro.oplus.mtk_gps_L1L5                            u:object_r:exported_system_prop:s0
 ro.oplus.mtk_gps_mpe                             u:object_r:exported_system_prop:s0
 
-# Oplus
+# Market name
 ro.product.marketname                            u:object_r:system_oplus_project_prop:s0
 ro.oplus.market.name                             u:object_r:system_oplus_project_prop:s0
 
@@ -50,6 +53,6 @@ persist.oplus.network.                           u:object_r:exported_system_prop
 ro.hardware.chipname                             u:object_r:exported_default_prop:s0
 
 # SVN
-ro.build.version.ota                             u:object_r:exported_system_prop:s0
-ro.build.version.svn                             u:object_r:exported_system_prop:s0
-ro.build.version.svn.c                           u:object_r:exported_system_prop:s0
+ro.build.version.svn                             u:object_r:build_prop:s0
+ro.build.version.svn.c                           u:object_r:build_prop:s0
+ro.build.version.ota                             u:object_r:build_prop:s0

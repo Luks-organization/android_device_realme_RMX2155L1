@@ -20,10 +20,11 @@ allow init proc:file rw_file_perms;
 allow init proc_swappiness:file rw_file_perms;
 allow init sysfs_leds:file create_file_perms;
 allow init sysfs_mem_sleep:file rw_file_perms;
-allow init socket_device:sock_file { create unlink setattr };
-allow init tmpfs:blk_file { read ioctl };
+allow init socket_device:sock_file create;
+allow init socket_device:sock_file { setattr unlink };
 
 get_prop(init, system_cabc_prop)
+get_prop(init, exported_system_prop)
 get_prop(init, system_oplus_project_prop)
 get_prop(init, vendor_variant_prop)
-get_prop(init, vendor_oplus_prop)
+get_prop(init, default_prop)

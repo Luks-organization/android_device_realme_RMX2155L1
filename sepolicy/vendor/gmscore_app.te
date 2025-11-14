@@ -1,3 +1,3 @@
 net_domain(gmscore_app)
 
-get_prop(gmscore_app, vendor_oplus_prop)
+get_prop(gmscore_app, vendor_mtk_camera_prop)

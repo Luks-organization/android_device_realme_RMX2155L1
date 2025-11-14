@@ -5,8 +5,10 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lineageos.platform.overlay.RMX2155L1">
+
     <overlay
         android:targetPackage="lineageos.platform"
         android:isStatic="true"
         android:priority="100"/>
+
 </manifest>

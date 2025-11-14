@@ -24,11 +24,11 @@ vendor/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so
 vendor/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
 
 # Audio
+system_ext/lib/libaudiotoolkit.so
 odm/etc/audio/awinic/AW_DSP.bin
 odm/lib/soundfx/awinic.haptic.effect.so
 odm/lib/soundfx/libhaptic_effect.so
 odm/lib/libawinicsmartpaparse.so
-system_ext/lib/libaudiotoolkit.so
 vendor/bin/atci_service
 vendor/bin/mt6660_calibration
 vendor/bin/rt5512_calibration
@@ -40,7 +40,6 @@ vendor/lib/libMtkSpeechEnh.so
 vendor/lib/lib_iir.so
 vendor/lib/lib_speech_enh.so
 vendor/lib/libaal_mtk.so
-vendor/lib/libadpcmdec_mtk.so
 vendor/lib/libakm.so
 vendor/lib/libapmonitor_vendor.so
 vendor/lib/libaudio_engineer_test.so
@@ -81,6 +80,9 @@ vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
 
 # Audio (Configs)
+odm/etc/virtual_audio_policy_configuration.xml
+odm/etc/audio/aurisys_config/aurisys_config.xml
+odm/etc/audio/aurisys_config_hifi3/aurisys_config_hifi3.xml
 odm/etc/audio/audio_device/common/audio_device.xml
 odm/etc/audio/audio_device/audio_device.xml
 odm/etc/audio/audio_param/AudioParamOptions.xml
@@ -197,6 +199,8 @@ odm/etc/audio/test_path/mixer_paths.xml
 odm/etc/audio/oplus_audio_features.xml
 
 # Audio (Configs) Vendor
+vendor/etc/aurisys_config.xml
+vendor/etc/aurisys_config_hifi3.xml
 vendor/etc/audio_param/AudioParamOptions.xml
 vendor/etc/audio_param/AudioParamOptions_vext.xml
 vendor/etc/audio_param/BtInfo_AudioParam.xml
@@ -308,18 +312,14 @@ vendor/etc/audio_param/Volume_AudioParam.xml
 vendor/etc/audio_param/Volume_ParamUnitDesc.xml
 
 # Audio (Engineering)
-#system/lib64/libaudio_param_parser-sys.so:system_ext/lib64/libaudio_param_parser-sys.so
-#system/lib64/libaudioutilmtk.so:system_ext/lib64/libaudioutilmtk.so;DISABLE_DEPS
-#system/lib64/libem_aoltest_jni.so:system_ext/lib64/libem_aoltest_jni.so
-#system/lib64/libem_audio_jni.so:system_ext/lib64/libem_audio_jni.so
-#system/lib64/libem_usb_jni.so:system_ext/lib64/libem_usb_jni.so
-#system/lib64/libem_wifi_jni.so:system_ext/lib64/libem_wifi_jni.so
 system/lib/libaudio_param_parser-sys.so:system_ext/lib/libaudio_param_parser-sys.so
-system/lib/libaudioutilmtk.so:system_ext/lib/libaudioutilmtk.so;DISABLE_DEPS
+system/lib/libaudioutilmtk.so:system_ext/lib/libaudioutilmtk.so
 system/lib/libem_aoltest_jni.so:system_ext/lib/libem_aoltest_jni.so
 system/lib/libem_audio_jni.so:system_ext/lib/libem_audio_jni.so
-system/lib/libem_usb_jni.so:system_ext/lib/libem_usb_jni.so
-system/lib/libem_wifi_jni.so:system_ext/lib/libem_wifi_jni.so
+system/lib64/libaudioutilmtk.so:system_ext/lib64/libaudioutilmtk.so
+system/lib64/libem_aoltest_jni.so:system_ext/lib64/libem_aoltest_jni.so
+system/lib64/libem_usb_jni.so:system_ext/lib64/libem_usb_jni.so
+system/lib64/libem_wifi_jni.so:system_ext/lib64/libem_wifi_jni.so
 
 # Audio (Firmware haptic)
 odm/firmware/awinic_haptic_gun_params.bin
@@ -341,6 +341,7 @@ odm/firmware/aw87359/aw87359_dspk_ftm.bin
 odm/bin/hw/vendor.oplus.hardware.performance@1.0-service
 odm/etc/init/vendor.oplus.hardware.performance@1.0-service.rc
 odm/etc/vintf/manifest/manifest_oplus_performance.xml
+odm/lib/vendor.oplus.hardware.performance@1.0.so;MODULE_SUFFIX=_odm
 odm/lib64/vendor.oplus.hardware.performance@1.0.so;MODULE_SUFFIX=_odm
 
 # Bluetooth
@@ -356,10 +357,14 @@ vendor/lib64/libbluetoothem_mtk.so
 vendor/lib64/libbt-vendor.so
 
 # Bluetooth (LDAC)
+system/lib/libldacBT_abr.so
+system/lib/libldacBT_enc.so
 system/lib64/libldacBT_abr.so
 system/lib64/libldacBT_enc.so
 
 # Bluetooth (LHDC)
+system/lib/liblhdc.so
+system/lib/liblhdcBT_enc.so
 system/lib64/liblhdc.so
 system/lib64/liblhdcBT_enc.so
 
@@ -404,8 +409,6 @@ odm/lib64/libstfaceunlockppl.so
 odm/lib64/libtfavib.so
 odm/lib64/vendor.oplus.hardware.engcamera@1.0.so
 vendor/bin/hw/camerahalserver
-vendor/etc/asd/class.tflite
-vendor/etc/asd/detect.tflite
 vendor/etc/init/camerahalserver.rc
 vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so
 vendor/lib64/hw/vendor.mediatek.hardware.camera.atms@1.0-impl.so
@@ -1056,7 +1059,6 @@ vendor/lib64/libaal_cust.so
 vendor/lib64/libaal_key.so
 vendor/lib64/libaal_mtk.so
 vendor/lib64/libaalservice.so
-vendor/lib64/libacdk.so
 vendor/lib64/libarcsoft_distortion_correction.so
 vendor/lib64/libarcsoft_dualcam_bokeh_api.so
 vendor/lib64/libarcsoft_dualcam_refocus_left.so
@@ -1438,13 +1440,18 @@ odm/firmware/fastchg/21651/charging_thermal_config_default.txt
 odm/firmware/fastchg/charging_thermal_config_default.txt
 odm/lib/vendor.oplus.hardware.charger@1.0.so
 odm/lib64/vendor.oplus.hardware.charger@1.0.so
-system/bin/kpoc_charger:system_ext/bin/kpoc_charger
-system/etc/init/kpoc_charger.rc:system_ext/etc/init/kpoc_charger.rc
-system/lib64/libshowlogo.so:system_ext/lib64/libshowlogo.so
 
 # Chip Info
 vendor/bin/chipinfo
 vendor/etc/init/chipinfo_init.rc
+
+# Connectivity
+odm/etc/wifi/txpowerctrl.cfg
+vendor/bin/wmt_launcher
+vendor/bin/wmt_loader
+vendor/firmware/WMT_SOC.cfg
+vendor/firmware/soc1_0_patch_mcu_2a_1_hdr.bin
+vendor/firmware/soc1_0_ram_mcu_2a_1_hdr.bin
 
 # DMC
 vendor/bin/dmc_core
@@ -1477,18 +1484,15 @@ vendor/lib64/mt6785/libmtk_drvb.so;SYMLINK=vendor/lib64/libmtk_drvb.so
 #odm/lib/soundfx/libdiraceffect.so:vendor/lib/soundfx/libdiraceffect.so
 
 # Display
-odm/lib64/android.hardware.graphics.allocator@2.0.so;MODULE_SUFFIX=_odm
-odm/lib64/android.hardware.graphics.allocator@3.0.so;MODULE_SUFFIX=_odm
-odm/lib64/android.hardware.graphics.allocator@4.0.so;MODULE_SUFFIX=_odm
 odm/lib64/libavutil.so
 odm/lib64/libdpservice.so
 odm/lib64/libswresample.so
 odm/lib64/libswscale.so
 vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
 vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service
+vendor/etc/vintf/manifest/manifest_hwcomposer.xml
 vendor/etc/init/android.hardware.graphics.allocator@4.0-service-mediatek.rc
 vendor/etc/init/vendor.mediatek.hardware.pq@2.2-service.rc
-vendor/etc/vintf/manifest/manifest_hwcomposer.xml
 vendor/lib/egl/egl.cfg
 vendor/lib/arm.graphics-V1-ndk_platform.so
 vendor/lib/libion_mtk.so
@@ -1583,9 +1587,6 @@ vendor/lib64/liboem_specific.so|4717a9f2044858c5e48ed75bf7afb4d769e2a264
 vendor/lib64/vendor.dolby.hardware.dms@2.0-impl.so|59ba0b46c622f28e34f49a334c4cfe6d4bc34be6
 vendor/lib64/vendor.dolby.hardware.dms@2.0.so|1c6b82e7da2d3e6ba712f9c9e7f96178280361de
 
-# Engineer Camera
-my_product/etc/camera/engineer_camera_config:system_ext/etc/camera/engineer_camera_config
-
 # Engineermode - from TECNO_CK8n
 system_ext/lib/libem_support_jni.so|5552e755099bbb64d7df3a5b914300881f34b145
 system_ext/lib64/libem_support_jni.so|df62aa420c0676be9d19b9917f41e1ae8363735a
@@ -1623,6 +1624,7 @@ odm/lib64/vendor.oplus.hardware.commondcs@1.0.so
 odm/init.oplus.face.rc
 odm/init.oplus.fingerprints.rc
 odm/init.oplus.seccommon.rc
+vendor/lib/vendor.oplus.hardware.commondcs@1.0.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.oplus.hardware.commondcs@1.0.so;MODULE_SUFFIX=_vendor
 
 # Firmware
@@ -1640,8 +1642,6 @@ vendor/firmware/customfilter/catcher_filter_1_ulwctg_n_SlimLog_DspAllOff.bin
 vendor/firmware/customfilter/catcher_filter_1_ulwctg_n__Default.bin
 vendor/firmware/customfilter/catcher_filter_1_ulwctg_n_meta.bin
 vendor/firmware/BT_FW.cfg
-vendor/firmware/WIFI_RAM_CODE_soc1_0_2a_1.bin
-vendor/firmware/WMT_SOC.cfg
 vendor/firmware/catcher_filter_1_ulwctg_n.bin
 vendor/firmware/em_filter_1_ulwctg_n.bin
 vendor/firmware/fm_cust.cfg
@@ -1729,9 +1729,6 @@ vendor/firmware/libccu_salaa_qtech_main_s5kgm1sp2
 vendor/firmware/mt6631_fm_v1_coeff.bin
 vendor/firmware/mt6631_fm_v1_patch.bin
 vendor/firmware/remoteproc_scp
-vendor/firmware/soc1_0_patch_mcu_2a_1_hdr.bin
-vendor/firmware/soc1_0_ram_mcu_2a_1_hdr.bin
-vendor/firmware/soc1_0_ram_wifi_2a_1_hdr.bin
 
 # GPS
 vendor/bin/mnld
@@ -1985,6 +1982,24 @@ vendor/lib64/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
+# Init hw
+vendor/etc/init/hw/factory_init.connectivity.common.rc
+vendor/etc/init/hw/factory_init.connectivity.rc
+vendor/etc/init/hw/factory_init.project.rc
+vendor/etc/init/hw/factory_init.rc
+vendor/etc/init/hw/init.connectivity.common.rc
+vendor/etc/init/hw/init.connectivity.rc
+vendor/etc/init/hw/init.modem.rc
+vendor/etc/init/hw/init.project.rc
+vendor/etc/init/hw/init.sensor_1_0.rc
+vendor/etc/init/hw/init_connectivity.rc
+vendor/etc/init/hw/meta_init.connectivity.common.rc
+vendor/etc/init/hw/meta_init.connectivity.rc
+vendor/etc/init/hw/meta_init.modem.rc
+vendor/etc/init/hw/meta_init.project.rc
+vendor/etc/init/hw/meta_init.rc
+vendor/etc/init/hw/multi_init.rc
+
 # Kernel Modules
 vendor/etc/init/init.fmradio_drv.rc
 vendor/etc/init/init.gps_drv.rc
@@ -2020,12 +2035,6 @@ vendor/lib64/vendor.mediatek.hardware.mms@1.5.so
 vendor/lib64/vendor.mediatek.hardware.mms@1.6.so
 
 # Media
-#vendor/lib/libcodec2_soft_mtk_alacdec.so
-#vendor/lib/libcodec2_soft_mtk_apedec.so
-#vendor/lib/libcodec2_soft_mtk_imaadpcmdec.so
-#vendor/lib/libcodec2_soft_mtk_mp3dec.so
-#vendor/lib/libcodec2_soft_mtk_msadpcmdec.so
-#vendor/lib/libcodec2_soft_mtk_wmadec.so
 odm/lib/libavcodec.so;DISABLE_DEPS
 odm/lib/libavformat.so;DISABLE_DEPS
 odm/lib/libavutil.so;DISABLE_DEPS
@@ -2058,19 +2067,29 @@ vendor/lib/libvp8enc_sa.ca7.so;DISABLE_CHECKELF
 vendor/lib/libvp9dec_sa.ca7.so
 vendor/lib/libvpu5.so
 vendor/lib/libvpud_vcodec.so
+vendor/lib/libadpcmdec_mtk.so
+vendor/lib/libmp3dec_mtk.so
 
 # Media (C2)
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
 vendor/etc/init/android.hardware.media.c2@1.2-mediatek.rc:vendor/etc/init/android.hardware.media.c2@1.2-mediatek-64b.rc
 vendor/etc/vintf/manifest/manifest_media_c2_V1_1_default.xml:vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml
+vendor/lib64/libcodec2_soft_mtk_alacdec.so
+vendor/lib64/libcodec2_soft_mtk_apedec.so
+vendor/lib64/libcodec2_soft_mtk_imaadpcmdec.so
+vendor/lib64/libcodec2_soft_mtk_mp3dec.so
+vendor/lib64/libcodec2_soft_mtk_msadpcmdec.so
+vendor/lib64/libcodec2_soft_mtk_wmadec.so
 vendor/lib64/libcodec2_mtk_c2store.so
 vendor/lib64/libcodec2_mtk_vdec.so
 vendor/lib64/libcodec2_mtk_venc.so
 vendor/lib64/libcodec2_vpp_qt_plugin.so
 vendor/lib64/libcodec2_vpp_rs_plugin.so
 vendor/lib64/libformatter.so
+vendor/lib64/libadpcmdec_mtk.so
+vendor/lib64/libmp3dec_mtk.so
 
-# Media (Configs)
+# Media (Policy)
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
 vendor/etc/seccomp_policy/mediacodec.policy
@@ -2088,11 +2107,12 @@ vendor/etc/mtk_platform_codecs_config.xml
 #vendor/lib/libMtkOmxGsmDec.so
 #vendor/lib/libMtkOmxMp3Dec.so
 #vendor/lib/libMtkOmxWmaDec.so
+#vendor/lib/libMtkOmxAlacDec.so
 #vendor/lib64/libMtkOmxCore.so
-vendor/lib/libMtkOmxAlacDec.so
-vendor/lib/libmp3dec_mtk.so
 
 # Misc
+vendor/lib/libminiui.so
+vendor/lib/libpixelflinger.so
 vendor/lib64/libminiui.so
 vendor/lib64/libml_util.so
 vendor/lib64/libpixelflinger.so
@@ -2160,11 +2180,14 @@ odm/etc/tm_nt37701_2048_tm_nt37701_42_srgb_eyeprotect_data.xml
 
 # ORMS
 #vendor/lib/liboppo_arcSoftBokehEngine_new.so
+odm/lib/libormshalclient.so
+odm/lib/vendor.oplus.hardware.orms@1.0.so
 odm/lib64/libormshalclient.so
 odm/lib64/vendor.oplus.hardware.orms@1.0.so
 vendor/lib64/liboppo_arcSoftBokehEngine_new.so
 
 # Power
+vendor/lib/libpowerhalwrap_vendor.so
 vendor/lib64/libpowerhalwrap_vendor.so
 vendor/lib64/vendor.mediatek.hardware.power@2.0.so
 
@@ -2303,32 +2326,28 @@ odm/bin/hw/vendor.oplus.hardware.oplusSensor@1.0-service
 odm/etc/init/vendor.oplus.hardware.oplusSensor@1.0-service.rc
 odm/etc/sensor/sensor_config.json
 odm/etc/vintf/manifest/manifest_oplusSensor.xml
-odm/lib64/libhwm-oplus.so
+odm/lib/libmxmafa.so
+odm/lib64/libhwm-oplus.so;MODULE_SUFFIX=_odm
 odm/lib64/libmmc.so
 odm/lib64/libmxmafa.so
 odm/lib64/oplus.sensors.ssc.so
 odm/lib64/vendor.oplus.hardware.oplusSensor@1.0.so
+vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so
 vendor/lib64/hw/sensors.mt6785.so
-vendor/lib64/libhwm-oplus.so;MODULE_SUFFIX=_vendor
+vendor/lib64/libhwm-oplus.so
 vendor/lib64/libhwm.so
 vendor/lib64/libimgsensorca.so
 vendor/lib64/libksensor.so
 vendor/lib64/librgbwlightsensor.so
 vendor/lib64/libsensor_custom.so
 
-# Sound (trigger)
-vendor/lib/hw/sound_trigger.primary.default.so:vendor/lib/hw/sound_trigger.primary.mt6785.so
+# Sound trigger
+vendor/lib/hw/sound_trigger.primary.default.so
 vendor/lib/libvow_ap_test_aa.so
 vendor/lib/libvow_ap_test_dd.so
 vendor/lib/libvow_ap_test_ha.so
 vendor/lib/libvow_ap_test_hh.so
 vendor/lib/libvow_ap_test_nn.so
-vendor/lib64/hw/sound_trigger.primary.default.so:vendor/lib64/hw/sound_trigger.primary.mt6785.so
-vendor/lib64/libvow_ap_test_aa.so
-vendor/lib64/libvow_ap_test_dd.so
-vendor/lib64/libvow_ap_test_ha.so
-vendor/lib64/libvow_ap_test_hh.so
-vendor/lib64/libvow_ap_test_nn.so
 
 # Subsys
 odm/lib64/vendor.oplus.hardware.subsys@1.0.so
@@ -2412,8 +2431,16 @@ vendor/lib64/vendor.trustonic.tee.tui@1.0.so
 vendor/lib64/vendor.trustonic.tee@1.0.so
 vendor/lib64/vendor.trustonic.tee@1.1.so
 
+# Tether Offload
+vendor/bin/hw/tetheroffloadservice
+vendor/bin/netdagent
+vendor/etc/init/netdagent.rc
+vendor/etc/init/tetheroffloadservice.rc
+vendor/lib64/vendor.mediatek.hardware.mdmonitor@1.0.so
+vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
+
 # Thermal
-odm/etc/temperature_profile/sys_high_temp_protect_realme_2068A.xml:odm/etc/temperature_profile/sys_high_temp_protect_realme_20682.xml
+odm/etc/temperature_profile/sys_high_temp_protect_realme_2068A.xml
 odm/etc/temperature_profile/sys_thermal_control_config.xml
 vendor/bin/thermal
 vendor/bin/thermal_manager
@@ -2438,6 +2465,7 @@ vendor/lib64/hw/thermal_hal.so
 odm/bin/hw/vendor.oplus.hardware.displaypanelfeature@1.0-service
 odm/etc/init/vendor.oplus.hardware.displaypanelfeature@1.0-service.rc
 odm/etc/vintf/manifest/manifest_oplus_displaypanelfeature.xml
+odm/lib/vendor.oplus.hardware.displaypanelfeature@1.0.so
 odm/lib64/vendor.oplus.hardware.displaypanelfeature@1.0.so
 
 # Touch - HIDL
@@ -2479,34 +2507,21 @@ vendor/lib/soundfx/libv4a_re.so|f43448e226bc9784530e55dccc7c9319d6eb1f74
 vendor/lib64/soundfx/libv4a_re.so|bc561c83d394a9615f648a6e208d28110c6e0257
 
 # WiFi
-odm/etc/wifi/txpowerctrl.cfg
 odm/etc/wifi/wifi.cfg
 odm/etc/wifi/wifi_active_channel.cfg
 odm/etc/wifi/wifi_passive_channel.cfg
-system_ext/etc/sys_wifi_par_config_list.xml
-system_ext/etc/sys_wifi_rus_config.xml
-system_ext/etc/wifi_custom_config.xml
-system_ext/etc/wifi_operator_preset_ap_list.xml
-system_ext/etc/wifi_oversea_passpoint_ap_list.xml
-vendor/bin/hw/tetheroffloadservice
-vendor/bin/netdagent
 vendor/bin/netdc
 vendor/bin/wfca
 vendor/bin/wlan_assistant
-vendor/bin/wmt_launcher
-vendor/bin/wmt_loader
 vendor/etc/init/init.wfca.rc
 vendor/etc/init/init.wod.rc
-vendor/etc/init/netdagent.rc
 vendor/etc/init/networksetting.rc
-vendor/etc/init/tetheroffloadservice.rc
 vendor/etc/init/wlan_assistant.rc
-vendor/lib/libwo.so
+vendor/firmware/WIFI_RAM_CODE_soc1_0_2a_1.bin
+vendor/firmware/soc1_0_ram_wifi_2a_1_hdr.bin
 vendor/lib64/libwifi-hal.so:vendor/lib64/libwifi-hal-mtk.so;FIX_SONAME
 vendor/lib64/libforkexecwrap.so
 vendor/lib64/libwifitest.so
 vendor/lib64/libwo.so
-vendor/lib64/vendor.mediatek.hardware.mdmonitor@1.0.so
-vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 #Device RMX2155_11_F.11, unless pinned

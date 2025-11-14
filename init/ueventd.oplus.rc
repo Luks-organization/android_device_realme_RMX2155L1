@@ -1,11 +1,28 @@
 #
-# Copyright (C) 2022 The LineageOS Project
+# Copyright (C) 2018-2020 Oplus. All rights reserved.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Reserve
+/dev/block/bootdevice/by-name/oplusreserve1         0660   root     system
+/dev/block/sdf6                                     0660   root     system
+
+/dev/block/by-name/oplusreserve3                    0660   root     system
+/dev/block/sdc6                                     0660   root     system
+
+/dev/block/platform/bootdevice/by-name/reserve1     0660   system   system
+/dev/block/sdc4                                     0660   system   system
+/dev/block/by-name/oplusreserve1                    0660   system   system
+
+/dev/block/mmcblk0p4                                0660   system   system
+/dev/block/mmcblk0p7                                0660   root     system
+
+/dev/block/platform/bootdevice/by-name/reserve_exp1 0660   system   radio
+/dev/block/platform/bootdevice/by-name/reserve2     0660   system   system
+
 # Charger
-/sys/class/oplus_chg/*  mmi_charging_enable    0660    system  system
+/sys/class/oplus_chg/*  mmi_charging_enable         0660   system   system
 
 # WiFi
 firmware_directories /odm/etc/wifi/

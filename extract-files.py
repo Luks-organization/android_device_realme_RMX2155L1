@@ -44,18 +44,15 @@ def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
-        'android.hardware.graphics.allocator@2.0',
-        'android.hardware.graphics.allocator@3.0',
-        'android.hardware.graphics.allocator@4.0',
         'vendor.oplus.hardware.performance@1.0',
         'vendor.oplus.hardware.biometrics.fingerprint@2.1',
+        'libhwm-oplus',
     ): lib_fixup_odm_suffix,
     (
         'vendor.mediatek.hardware.lbs@1.0',
         'vendor.oplus.hardware.commondcs@1.0',
         'libremosaiclib',
         'libremosaic_wrapper',
-        'libhwm-oplus',
     ): lib_fixup_vendor_suffix,
 }
 
@@ -70,9 +67,12 @@ blob_fixups: blob_fixups_user_type = {
        .regex_replace('@1.0', '@1.2'),
     'vendor/lib64/hw/hwcomposer.mt6785.so': blob_fixup()
        .add_needed('libprocessgroup_shim.so'),
-    'system_ext/etc/init/kpoc_charger.rc': blob_fixup()
-       .regex_replace('/system', '/system_ext'),
     (
+     'vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service',
+     'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.13-impl.so',
+     'vendor/lib64/libmtkcam_stdutils.so',
+    ): blob_fixup()
+       .replace_needed('libutils.so', 'libutils-v32.so'),
     'vendor/lib64/libmnl.so': blob_fixup()
        .add_needed('libcutils.so'),
     'vendor/etc/init/android.hardware.neuralnetworks@1.3-service-mtk-neuron.rc': blob_fixup()
@@ -84,6 +84,8 @@ blob_fixups: blob_fixups_user_type = {
        .regex_replace('NFC_DEBUG_ENABLED=0x01', 'NFC_DEBUG_ENABLED=0x00'),
     ('vendor/lib64/libSQLiteModule_VER_ALL.so', 'vendor/lib64/lib3a.flash.so'): blob_fixup()
        .add_needed('liblog.so'),
+    'vendor/lib/hw/audio.primary.mt6785.so': blob_fixup()
+       .replace_needed('libalsautils.so', 'libalsautils-v31.so'),
     (
      'vendor/lib/libnvram.so',
      'vendor/lib64/libnvram.so',
@@ -98,7 +100,7 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib/libthha.so',
      'vendor/lib/libvcodec_oal.so',
      'vendor/lib/libmp4enc_sa.ca7.so',
-     'vendor/lib/libmp4enc_xa.ca7.so'
+     'vendor/lib/libmp4enc_xa.ca7.so',
     ): blob_fixup()
        .clear_symbol_version('__aeabi_memclr')
        .clear_symbol_version('__aeabi_memcpy')
@@ -107,7 +109,7 @@ blob_fixups: blob_fixups_user_type = {
     (
      'vendor/lib/libvp8dec_sa.ca7.so',
      'vendor/lib/libvp9dec_sa.ca7.so',
-     'vendor/lib/libh264enc_sa.ca7.so'
+     'vendor/lib/libh264enc_sa.ca7.so',
     ): blob_fixup()
        .clear_symbol_version('__aeabi_memclr')
        .clear_symbol_version('__aeabi_memclr4')
@@ -121,75 +123,48 @@ blob_fixups: blob_fixups_user_type = {
        .add_line_if_missing('    interface android.hardware.media.c2@1.1::IComponentStore default')
        .add_line_if_missing('    interface android.hardware.media.c2@1.2::IComponentStore default')
        .regex_replace('@1.2-mediatek', '@1.2-mediatek-64b'),
-    'vendor/lib64/libsingle_camera_bokeh_native.so': blob_fixup()
-       .clear_symbol_version('AHardwareBuffer_allocate')
-       .clear_symbol_version('AHardwareBuffer_describe')
-       .clear_symbol_version('AHardwareBuffer_lock')
-       .clear_symbol_version('AHardwareBuffer_release')
-       .clear_symbol_version('AHardwareBuffer_unlock'),
     (
      'vendor/bin/mnld',
+     'vendor/lib/libaalservice.so',
      'vendor/lib64/libaalservice.so',
      'vendor/lib64/libcam.utils.sensorprovider.so',
-     'vendor/lib64/libarcsoft_supervideostabilization.so',
-     'vendor/lib64/librgbwlightsensor.so',
-     'vendor/lib64/libarcsoft_videostabilizer.so',
     ): blob_fixup()
-       .add_needed('android.hardware.sensors@1.0-convert-shared.so'),
+       .replace_needed('libsensorndkbridge.so', 'android.hardware.sensors@1.0-convert-shared.so'),
     ('vendor/lib64/libadsprpc.so', 'vendor/lib64/libcdsprpc.so'): blob_fixup()
        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
-    ('system_ext/lib/libaudiocompensationfilter.so', 'system_ext/lib64/libaudiocompensationfilter.so'): blob_fixup()
-       .remove_needed('libandroidicu.so'),
     'vendor/bin/hw/mtkfusionrild': blob_fixup()
        .add_needed('libutils-v32.so'),
-    'system_ext/bin/kpoc_charger': blob_fixup()
-       .add_needed('libbinder_shim.so'),
-    'system_ext/lib64/libsysenv_system.so': blob_fixup()
-       .add_needed('libbase_shim.so'),
-    'system_ext/lib64/libshowlogo.so': blob_fixup()
-       .add_needed('libbase_shim.so')
-       .add_needed('libshim_showlogo.so'),
-    (
-     'vendor/lib/libnvram.so',
-     'vendor/lib64/libnvram.so',
-     'vendor/lib64/libsysenv.so'
-    ): blob_fixup()
-       .add_needed('libbase_shim.so'),
-
-    'vendor/bin/mtk_agpsd': blob_fixup()
-       .replace_needed('libcrypto.so', 'libcrypto-v32.so')
-       .replace_needed('libssl.so', 'libssl-v32.so'),
-    'vendor/lib64/hw/sensors.mt6785.so': blob_fixup()
-       .add_needed('libsensors_shim.so'),
-   (
-    'vendor/lib64/libmtkcam_stdutils.so',
-    'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.13-impl.so',
-    'vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service',
-   ): blob_fixup()
-       .replace_needed('libutils.so', 'libutils-v32.so'),
     'vendor/bin/hw/camerahalserver': blob_fixup()
-       .replace_needed('libhidlbase.so', 'libhidlbase-v32.so')
-       .replace_needed('libbinder.so', 'libbinder-v32.so')
        .replace_needed('libutils.so', 'libutils-v32.so')
-       .add_needed('libhidlbase_shim.so')
-       .add_needed('libprocessgroup_shim.so'),
+       .replace_needed('libbinder.so', 'libbinder-v32.so')
+       .replace_needed('libhidlbase.so', 'libhidlbase-v32.so'),
     'vendor/lib64/hw/android.hardware.camera.provider@2.6-impl-mediatek.so': blob_fixup()
        .replace_needed('libutils.so', 'libutils-v32.so')
        .replace_needed('libhidlbase.so', 'libhidlbase-v32.so')
-       .add_needed('libcamera_metadata_shim.so'),
-    'vendor/lib/hw/audio.primary.mt6785.so': blob_fixup()
-       .add_needed('libstagefright_foundation-v33.so')
-       .replace_needed('libtinyalsa.so', 'libtinyalsa-v32.so')
-       .replace_needed('libalsautils.so', 'libalsautils-v31.so'),
-    'odm/lib64/libmmc.so': blob_fixup()
-       .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so')
-       .replace_needed('libutils.so', 'libutils-v32.so'),
+       .add_needed('libcamera_metadata_shim.so')
+       .add_needed('libbinder-v32.so'),
+    'vendor/lib64/hw/android.hardware.sensors@2.X-subhal-mediatek.so': blob_fixup()
+       .add_needed('android.hardware.sensors@1.0-convert-shared.so'),
+    (
+     'vendor/lib/libnvram.so',
+     'vendor/lib64/libnvram.so',
+     'vendor/lib64/libsysenv.so',
+    ): blob_fixup()
+       .add_needed('libbase_shim.so'),
+    (
+     'vendor/lib64/libcam.hal3a.v3.so',
+     'vendor/lib64/libeffecthal.base.so',
+     'vendor/lib64/libmtkcam_grallocutils.so',
+     'vendor/lib64/libmtkisp_metadata.so',
+     'vendor/lib64/libmtkcam_3rdparty.customer.so',
+    ): blob_fixup()
+       .replace_needed('libui.so', 'libui-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
     'RMX2155L1',
     'realme',
-    #blob_fixups=blob_fixups,
+    blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
     add_firmware_proprietary_file=True,

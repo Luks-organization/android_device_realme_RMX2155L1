@@ -3,11 +3,14 @@
 /mnt/vendor/persist/camera(/.*)?                                                                        u:object_r:persist_camera_file:s0
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.engcamera@1\.0-service                                u:object_r:mtk_hal_camera_exec:s0
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.cammidasservice@1\.0-service                          u:object_r:mtk_hal_camera_exec:s0
-/(vendor|odm)/lib(64)?/android\.hardware\.graphics\.allocator@2\.0\.so                                  u:object_r:same_process_hal_file:s0
-/(vendor|odm)/lib(64)?/android\.hardware\.graphics\.allocator@3\.0\.so                                  u:object_r:same_process_hal_file:s0
-/(vendor|odm)/lib(64)?/android\.hardware\.graphics\.allocator@4\.0\.so                                  u:object_r:same_process_hal_file:s0
-/(vendor|odm)/lib(64)?/android\.hardware\.graphics\.common-V6-ndk\.so                                   u:object_r:same_process_hal_file:s0
-/(vendor|odm)/lib(64)?/android\.hardware\.graphics\.common-V2-ndk\.so                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/android\.hardware\.graphics\.common-V6-ndk\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/android\.hardware\.graphics\.common-V2-ndk\.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libutils\.so                                                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libc++\.so                                                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libmtkperf_client_vendor\.so                                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.mediatek\.hardware\.mtkpower@1\.[0-9]\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libc\+\+_shared\.so                                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libstdc++_vendor\.so                                                                   u:object_r:same_process_hal_file:s0
 
 # Charging
 /dev/oplus_chg                                                                                          u:object_r:oplus_charger_device:s0
@@ -16,11 +19,11 @@
 
 # Display
 /dev/oplus_display                                                                                      u:object_r:graphics_device:s0
-/data/vendor/display/(/.*)?                                                                             u:object_r:vendor_display_vendor_data_file:s0
+/data/vendor/display(/.*)?                                                                              u:object_r:vendor_display_vendor_data_file:s0
 /sys/devices/platform/leds-mt65xx/leds/lcd-backlight(/.*)?                                              u:object_r:sysfs_leds:s0
 
 # Sensors
-/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors-service\.oplus-multihal                       u:object_r:hal_sensors_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.sensors@2\.0-service-multihal\.MT6785                 u:object_r:hal_sensors_default_exec:s0
 /(odm|vendor/odm)/bin/hw/vendor\.oplus\.hardware\.oplusSensor@1\.0-service                              u:object_r:hal_sensors_default_exec:s0
 /dev/m_virtual_sensor_misc                                                                              u:object_r:virtual_sensor_device:s0
 /dev/block/sdc4                                                                                         u:object_r:oplus_block_device:s0
