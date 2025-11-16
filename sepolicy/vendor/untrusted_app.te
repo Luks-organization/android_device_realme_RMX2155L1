@@ -2,6 +2,7 @@ dontaudit untrusted_app proc:file r_file_perms;
 dontaudit untrusted_app sysfs:file r_file_perms;
 allow untrusted_app unlabeled:filesystem getattr;
 
+allow untrusted_app block_device:dir { search };
 allow untrusted_app vendor_sysfs_gpu:dir { search };
 allow untrusted_app vendor_sysfs_gpu:file { read };
 allow untrusted_app vendor_sysfs_battery_supply:dir { search };

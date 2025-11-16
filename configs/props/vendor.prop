@@ -33,7 +33,7 @@ ro.mtk_audenh_support=1
 ro.mtk_audio_lossless_support=1
 ro.mtk_besloudness_support=1
 vendor.audio.feature.compr_voip.enable=true
-vendor.audio.offload.buffer.size.kb=256
+vendor.audio.offload.buffer.size.kb=32
 vendor.audio.usb.iems.period_us=5000
 vendor.audio.usb.super_hifi=true
 vendor.streamin.pcm.dump=0
@@ -101,14 +101,14 @@ persist.bg.dexopt.enable=true
 pm.dexopt.install=everything
 
 # SurfaceFlinger
-#debug.sf.hw=1
+debug.sf.hw=0
 #debug.sf.disable_client_composition_cache=1
 debug.sf.auto_latch_unsignaled=0
 debug.sf.defer_refresh_rate_when_off=1
 debug.sf.disable_backpressure=1
 debug.sf.enable_adpf_cpu_hint=true
 debug.sf.enable_advanced_sf_phase_offset=1
-debug.sf.enable_auto_power_mode=1
+#debug.sf.enable_auto_power_mode=1
 debug.sf.enable_egl_image_tracker=0
 debug.sf.enable_gl_backpressure=0
 debug.sf.enable_hwc_vds=0
@@ -133,6 +133,7 @@ debug.graphics.game_default_frame_rate.disabled=true
 ro.surface_flinger.enable_frame_rate_override=false
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.has_wide_color_display=true
 ro.surface_flinger.primary_display_orientation=ORIENTATION_0
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.set_display_power_timer_ms=1000
@@ -283,6 +284,8 @@ ro.vendor.sim_me_lock_mode=3
 ro.vendor.sim_refresh_reset_by_modem=1
 telephony.active_modems.max_count=2
 telephony.lteOnCdmaDevice=0
+vendor.rild.libargs=-d /dev/ttyC0
+vendor.rild.libpath=/vendor/lib64/libmtk-ril.so
 
 # IMS
 persist.vendor.anr.enhancement=0
@@ -323,7 +326,11 @@ ro.oem_unlock_supported=1
 
 # USB
 sys.usb.mtp.batchcancel=1
-vendor.usb.diag.func.name=diag vendor.usb.use_ffs_mtp=1 vendor.usb.use_gadget_hal=1 # Sensors
+vendor.usb.diag.func.name=diag
+vendor.usb.use_ffs_mtp=1 
+vendor.usb.use_gadget_hal=1
+
+# Sensor
 ro.vendor.mtk.sensor.support=yes
 
 # Incremental
@@ -356,10 +363,12 @@ ro.vendor.wfd.iframesize.level=0
 ro.soc.manufacturer=MediaTek
 ro.soc.model=MT6785
 ro.vendor.mediatek.platform=MT6785
+ro.vendor.mtk_prefer_64bit_proc=0
 ro.vendor.mediatek.version.branch=alps-mp-s0.mp1.tc16sp-pr6
 ro.vendor.mediatek.version.release=alps-mp-s0.mp1.tc16sp-pr6-V1.1
-ro.vendor.mtk_gamehdr_support=1
-ro.vendor.mtk_prefer_64bit_proc=0
+ro.oplus.image.base.version=20682.2.4.2024040112144924504550
+ro.oplus.version.base=20682.2.4.2024040112144924504550
+ro.oplus.image.vendor.version=.da5722b8
 
 # WiFi
 ro.vendor.ap_info_monitor=0

@@ -1,19 +1,20 @@
 /*
- * SPDX-FileCopyrightText: 2019 The Android Open Source Project
- * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * Copyright (C) 2019 The LineageOS Project
+ *
  * SPDX-License-Identifier: Apache-2.0
  */
 
 #define LOG_TAG "TouchscreenGestureService"
 
+#include "TouchscreenGesture.h"
 #include <android-base/logging.h>
 #include <fstream>
-#include "TouchscreenGesture.h"
 
-namespace aidl {
 namespace vendor {
 namespace lineage {
 namespace touch {
+namespace V1_0 {
+namespace implementation {
 
 const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGestureInfoMap = {
     {0, {251, "Two fingers down swipe", "/proc/touchpanel/double_swipe_enable"}},
@@ -29,33 +30,33 @@ const std::map<int32_t, TouchscreenGesture::GestureInfo> TouchscreenGesture::kGe
     {10, {250, "Letter O", "/proc/touchpanel/letter_o_enable"}},
     {11, {246, "Letter W", "/proc/touchpanel/letter_w_enable"}},
 };
- 
-ndk::ScopedAStatus TouchscreenGesture::getSupportedGestures(std::vector<Gesture>* _aidl_return) {
+
+Return<void> TouchscreenGesture::getSupportedGestures(getSupportedGestures_cb resultCb) {
     std::vector<Gesture> gestures;
 
     for (const auto& entry : kGestureInfoMap) {
         gestures.push_back({entry.first, entry.second.name, entry.second.keycode});
     }
-    *_aidl_return = gestures;
+    resultCb(gestures);
 
-    return ndk::ScopedAStatus::ok();
+    return Void();
 }
 
-ndk::ScopedAStatus TouchscreenGesture::setGestureEnabled(const Gesture& gesture, bool enabled) {
+Return<bool> TouchscreenGesture::setGestureEnabled(
+    const ::vendor::lineage::touch::V1_0::Gesture& gesture, bool enabled) {
     const auto entry = kGestureInfoMap.find(gesture.id);
     if (entry == kGestureInfoMap.end()) {
-        return ndk::ScopedAStatus::fromExceptionCode(EX_UNSUPPORTED_OPERATION);
+        return false;
     }
 
     std::ofstream file(entry->second.path);
     file << (enabled ? "1" : "0");
     LOG(DEBUG) << "Wrote file " << entry->second.path << " fail " << file.fail();
-    if (file.fail()) return ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
-
-    return ndk::ScopedAStatus::ok();
+    return !file.fail();
 }
 
+}  // namespace implementation
+}  // namespace V1_0
 }  // namespace touch
 }  // namespace lineage
 }  // namespace vendor
-}  // namespace aidl

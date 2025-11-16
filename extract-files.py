@@ -151,14 +151,6 @@ blob_fixups: blob_fixups_user_type = {
      'vendor/lib64/libsysenv.so',
     ): blob_fixup()
        .add_needed('libbase_shim.so'),
-    (
-     'vendor/lib64/libcam.hal3a.v3.so',
-     'vendor/lib64/libeffecthal.base.so',
-     'vendor/lib64/libmtkcam_grallocutils.so',
-     'vendor/lib64/libmtkisp_metadata.so',
-     'vendor/lib64/libmtkcam_3rdparty.customer.so',
-    ): blob_fixup()
-       .replace_needed('libui.so', 'libui-v34.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

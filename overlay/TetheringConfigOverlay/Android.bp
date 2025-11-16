@@ -4,6 +4,7 @@
 //
 runtime_resource_overlay {
     name: "TetheringConfigOverlay",
+    resource_dirs: ["res"],
     certificate: "platform",
-    vendor: true,
+    product_specific: true,
 }

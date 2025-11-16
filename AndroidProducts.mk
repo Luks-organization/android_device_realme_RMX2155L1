@@ -5,4 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_RMX2155L1.mk
+    $(LOCAL_DIR)/yaap_RMX2155L1.mk

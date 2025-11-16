@@ -5,6 +5,7 @@
 
 runtime_resource_overlay {
     name: "WifiOverlay",
+    resource_dirs: ["res"],
     certificate: "platform",
-    vendor: true,
+    product_specific: true,
 }

@@ -6,22 +6,36 @@ vendor/lib/libaedv.so
 vendor/lib64/libaedv.so
 
 # APU
+system_ext/lib/libapuwareapusys.mtk.so:vendor/lib/APUWareApusysServer.so;FIX_SONAME
+system_ext/lib/libapuwarehmp.mtk.so:vendor/lib/APUWareHmpServer.so;FIX_SONAME
+system_ext/lib/libapuwarexrp_v2.mtk.so:vendor/lib/APUWareXrpServer_v2.so;FIX_SONAME
 system_ext/lib64/libapuwareapusys.mtk.so:vendor/lib64/APUWareApusysServer.so;FIX_SONAME
 system_ext/lib64/libapuwarehmp.mtk.so:vendor/lib64/APUWareHmpServer.so;FIX_SONAME
 system_ext/lib64/libapuwarexrp_v2.mtk.so:vendor/lib64/APUWareXrpServer_v2.so;FIX_SONAME
+system_ext/lib/vendor.mediatek.hardware.apuware.apusys@1.0.so:vendor/lib/vendor.mediatek.hardware.apuware.apusys@1.0.so
+system_ext/lib/vendor.mediatek.hardware.apuware.apusys@2.0.so:vendor/lib/vendor.mediatek.hardware.apuware.apusys@2.0.so
+system_ext/lib/vendor.mediatek.hardware.apuware.apusys@2.1.so:vendor/lib/vendor.mediatek.hardware.apuware.apusys@2.1.so
+system_ext/lib/vendor.mediatek.hardware.apuware.hmp@1.0.so:vendor/lib/vendor.mediatek.hardware.apuware.hmp@1.0.so
+system_ext/lib/vendor.mediatek.hardware.apuware.utils@1.0.so:vendor/lib/vendor.mediatek.hardware.apuware.utils@1.0.so
+system_ext/lib/vendor.mediatek.hardware.apuware.xrp@2.0.so:vendor/lib/vendor.mediatek.hardware.apuware.xrp@2.0.so
+system_ext/lib/vendor.mediatek.hardware.apuware.xrp@1.0.so:vendor/lib/vendor.mediatek.hardware.apuware.xrp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@1.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.apusys@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.apusys@2.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.apusys@2.1.so:vendor/lib64/vendor.mediatek.hardware.apuware.apusys@2.1.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.hmp@1.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.hmp@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.utils@1.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.utils@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@2.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.xrp@2.0.so
-vendor/lib64/APUWareUtilsServer.so
-vendor/lib64/APUWareXrpServer.so
+system_ext/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so:vendor/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
+vendor/lib/libapu_mdw.so
+vendor/lib/libapusys.so
+vendor/lib/libapusys_edma.so
+vendor/lib/vendor.mediatek.hardware.apuware.utils@2.0.so
 vendor/lib64/libapu_mdw.so
 vendor/lib64/libapusys.so
 vendor/lib64/libapusys_edma.so
 vendor/lib64/vendor.mediatek.hardware.apuware.utils@2.0.so
-vendor/lib64/vendor.mediatek.hardware.apuware.xrp@1.0.so
+vendor/lib64/APUWareUtilsServer.so
+vendor/lib64/APUWareXrpServer.so
 
 # Audio
 system_ext/lib/libaudiotoolkit.so
@@ -78,9 +92,9 @@ vendor/lib/vendor.mediatek.hardware.audio@6.1.so
 vendor/lib/vendor.mediatek.hardware.audio@7.1.so
 vendor/lib64/vendor.mediatek.hardware.apmonitor@2.0.so
 vendor/lib64/vendor.mediatek.hardware.audio@6.1.so
+vendor/lib64/vendor.mediatek.hardware.audio@7.1.so
 
 # Audio (Configs)
-odm/etc/virtual_audio_policy_configuration.xml
 odm/etc/audio/aurisys_config/aurisys_config.xml
 odm/etc/audio/aurisys_config_hifi3/aurisys_config_hifi3.xml
 odm/etc/audio/audio_device/common/audio_device.xml
@@ -316,6 +330,9 @@ system/lib/libaudio_param_parser-sys.so:system_ext/lib/libaudio_param_parser-sys
 system/lib/libaudioutilmtk.so:system_ext/lib/libaudioutilmtk.so
 system/lib/libem_aoltest_jni.so:system_ext/lib/libem_aoltest_jni.so
 system/lib/libem_audio_jni.so:system_ext/lib/libem_audio_jni.so
+system/lib/libem_usb_jni.so:system_ext/lib/libem_usb_jni.so
+system/lib/libem_wifi_jni.so:system_ext/lib/libem_wifi_jni.so
+system/lib64/libaudio_param_parser-sys.so:system_ext/lib64/libaudio_param_parser-sys.so
 system/lib64/libaudioutilmtk.so:system_ext/lib64/libaudioutilmtk.so
 system/lib64/libem_aoltest_jni.so:system_ext/lib64/libem_aoltest_jni.so
 system/lib64/libem_usb_jni.so:system_ext/lib64/libem_usb_jni.so
@@ -1484,10 +1501,7 @@ vendor/lib64/mt6785/libmtk_drvb.so;SYMLINK=vendor/lib64/libmtk_drvb.so
 #odm/lib/soundfx/libdiraceffect.so:vendor/lib/soundfx/libdiraceffect.so
 
 # Display
-odm/lib64/libavutil.so
 odm/lib64/libdpservice.so
-odm/lib64/libswresample.so
-odm/lib64/libswscale.so
 vendor/bin/hw/android.hardware.graphics.allocator@4.0-service-mediatek
 vendor/bin/hw/vendor.mediatek.hardware.pq@2.2-service
 vendor/etc/vintf/manifest/manifest_hwcomposer.xml
@@ -1561,7 +1575,7 @@ system_ext/priv-app/daxService/daxService.apk|93adcc9c87375f06122c8e1f4bd40b059e
 vendor/bin/hw/vendor.dolby.hardware.dms@2.0-service|76fe11bc5778d47f6f88f2233b6b2b2022733241
 vendor/bin/hw/vendor.dolby.media.c2@1.0-service|64cd5aa414e40476b07affd9e794cea8740b2811
 vendor/etc/init/vendor.dolby.hardware.dms@2.0-service.rc|29296ebfe89b2697fec573be73cc3757fd97bed6
-vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc|6b84790de69c9d70edf5a56f3072079cf2069235
+vendor/etc/init/vendor.dolby.media.c2@1.0-service.rc|38ccbb48345ca07875e39073df33f2a79a55eafb
 vendor/lib/soundfx/libdlbvol.so|4430011e9603a25e06d17b635223ac9887220cef
 vendor/lib/soundfx/libspatialaudio.so|c84a1098a775401344d97d3c7638498d9207ccad
 vendor/lib/soundfx/libswdap.so|0dded004fcf5295786d5ea7a274446d4f6634722
@@ -1753,6 +1767,7 @@ vendor/etc/gnss/agps_profiles_conf2.xml
 vendor/etc/init/mtk_agpsd_p.rc
 vendor/etc/mpe.conf
 vendor/etc/slp_conf
+vendor/lib/hw/gps.default.so
 vendor/lib64/hw/gps.default.so
 vendor/lib64/libDR.so
 vendor/lib64/libmnl.so
@@ -2035,11 +2050,20 @@ vendor/lib64/vendor.mediatek.hardware.mms@1.5.so
 vendor/lib64/vendor.mediatek.hardware.mms@1.6.so
 
 # Media
-odm/lib/libavcodec.so;DISABLE_DEPS
-odm/lib/libavformat.so;DISABLE_DEPS
-odm/lib/libavutil.so;DISABLE_DEPS
+odm/lib/libswresample.so;DISABLE_DEPS
+odm/lib/libswscale.so;DISABLE_DEPS
 -odm/lib/libdav1d.so.4;DISABLE_DEPS
 odm/lib/libffmpeg_utils.so
+odm/lib/libavutil.so;DISABLE_DEPS
+odm/lib/libavcodec.so;DISABLE_DEPS
+odm/lib/libavformat.so;DISABLE_DEPS
+#-odm/lib64/libdav1d.so.4;DISABLE_DEPS
+#odm/lib64/libffmpeg_utils.so
+#odm/lib64/libavutil.so
+#odm/lib64/libavcodec.so
+#odm/lib64/libavformat.so
+#odm/lib64/libswresample.so
+#odm/lib64/libswscale.so
 vendor/bin/jpegtool
 vendor/bin/recordevent
 vendor/bin/replayevent
@@ -2067,8 +2091,12 @@ vendor/lib/libvp8enc_sa.ca7.so;DISABLE_CHECKELF
 vendor/lib/libvp9dec_sa.ca7.so
 vendor/lib/libvpu5.so
 vendor/lib/libvpud_vcodec.so
+vendor/lib/libformatter.so
 vendor/lib/libadpcmdec_mtk.so
 vendor/lib/libmp3dec_mtk.so
+vendor/lib64/libformatter.so
+vendor/lib64/libadpcmdec_mtk.so
+vendor/lib64/libmp3dec_mtk.so
 
 # Media (C2)
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
@@ -2085,9 +2113,6 @@ vendor/lib64/libcodec2_mtk_vdec.so
 vendor/lib64/libcodec2_mtk_venc.so
 vendor/lib64/libcodec2_vpp_qt_plugin.so
 vendor/lib64/libcodec2_vpp_rs_plugin.so
-vendor/lib64/libformatter.so
-vendor/lib64/libadpcmdec_mtk.so
-vendor/lib64/libmp3dec_mtk.so
 
 # Media (Policy)
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
@@ -2100,7 +2125,6 @@ vendor/etc/mtk_platform_codecs_config.xml
 
 # Media (OMX)
 ################################
-#odm/lib/libffmpeg_omx.so
 #vendor/lib/libMtkOmxAdpcmDec.so
 #vendor/lib/libMtkOmxApeDec.so
 #vendor/lib/libMtkOmxCore.so
@@ -2348,6 +2372,12 @@ vendor/lib/libvow_ap_test_dd.so
 vendor/lib/libvow_ap_test_ha.so
 vendor/lib/libvow_ap_test_hh.so
 vendor/lib/libvow_ap_test_nn.so
+vendor/lib64/hw/sound_trigger.primary.default.so
+vendor/lib64/libvow_ap_test_aa.so
+vendor/lib64/libvow_ap_test_dd.so
+vendor/lib64/libvow_ap_test_ha.so
+vendor/lib64/libvow_ap_test_hh.so
+vendor/lib64/libvow_ap_test_nn.so
 
 # Subsys
 odm/lib64/vendor.oplus.hardware.subsys@1.0.so
@@ -2436,11 +2466,13 @@ vendor/bin/hw/tetheroffloadservice
 vendor/bin/netdagent
 vendor/etc/init/netdagent.rc
 vendor/etc/init/tetheroffloadservice.rc
+vendor/lib/vendor.mediatek.hardware.mdmonitor@1.0.so
+vendor/lib/vendor.mediatek.hardware.netdagent@1.0.so
 vendor/lib64/vendor.mediatek.hardware.mdmonitor@1.0.so
 vendor/lib64/vendor.mediatek.hardware.netdagent@1.0.so
 
 # Thermal
-odm/etc/temperature_profile/sys_high_temp_protect_realme_2068A.xml
+odm/etc/temperature_profile/sys_high_temp_protect_realme_20743.xml
 odm/etc/temperature_profile/sys_thermal_control_config.xml
 vendor/bin/thermal
 vendor/bin/thermal_manager
@@ -2500,6 +2532,7 @@ odm/firmware/tp/20730/LIMIT_GT9886_SAMSUNG.img
 
 # Vibrator
 odm/etc/aac_richtap.config
+odm/lib/libaacvibrator.so:vendor/lib/libaacvibrator.so
 odm/lib64/libaacvibrator.so:vendor/lib64/libaacvibrator.so
 
 # ViperFX - from GitHub
@@ -2524,4 +2557,4 @@ vendor/lib64/libforkexecwrap.so
 vendor/lib64/libwifitest.so
 vendor/lib64/libwo.so
 
-#Device RMX2155_11_F.11, unless pinned
+#Device RMX2156_11_F.18, unless pinned

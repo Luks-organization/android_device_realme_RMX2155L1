@@ -50,13 +50,13 @@ def OTA_InstallEnd(info, incremental):
       'cam_vpu1': ['cam_vpu1'],
       'cam_vpu2': ['cam_vpu2'],
       'cam_vpu3': ['cam_vpu3'],
-      'gz': ['gz', 'gz2'],
+      'gz1': ['gz1', 'gz2'],
       'lk': ['lk', 'lk2'],
       'md1img': ['md1img'],
-      'scp': ['scp', 'scp2'],
+      'scp1': ['scp1', 'scp2'],
       'spmfw': ['spmfw'],
-      'sspm': ['sspm', 'sspm_2'],
-      'tee': ['tee', 'tee2']
+      'sspm_1': ['sspm_1', 'sspm_2'],
+      'tee1': ['tee1', 'tee2']
   }
 
   pl = 'preloader_ufs'

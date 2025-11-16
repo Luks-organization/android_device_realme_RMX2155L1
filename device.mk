@@ -32,10 +32,12 @@ TARGET_OTA_ALLOW_NON_AB := true
 PRODUCT_SOONG_NAMESPACES += \
     bootable/deprecated-ota
 
+# Platform
+TARGET_BOARD_PLATFORM := mt6785
+TARGET_BOARD_PLATFORM_GPU := mali-g76mc4
+
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
-
-# VNDK
 BOARD_SHIPPING_API_LEVEL := 31
 
 # AAPT
@@ -47,9 +49,7 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@7.0-impl:32 \
     android.hardware.audio.effect@7.0-impl:32 \
-    android.hardware.soundtrigger@2.3-impl:32
-
-PRODUCT_PACKAGES += \
+    android.hardware.soundtrigger@2.3-impl:32 \
     android.hardware.audio@7.0.vendor:64
 
 PRODUCT_PACKAGES += \
@@ -158,19 +158,19 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libcamera2ndk_vendor:64 \
-    libperfctl_vendor:64 \
-    liblz4.vendor:64
+    libcamera2ndk_vendor \
+    libperfctl_vendor \
+    liblz4.vendor
 
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey \
-    libmockdrmcryptoplugin:64
+    libmockdrmcryptoplugin
 
 # Graphics
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.2-service \
-    android.hardware.memtrack-service.mediatek
+    android.hardware.memtrack-service.mediatek-mali
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -182,15 +182,15 @@ PRODUCT_PACKAGES += \
 
 # Lineage Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch-service.MT6785
+    vendor.lineage.touch@1.0-service.MT6785
 
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@2.0-service-multihal.MT6785 \
     vendor.lineage.oplus_als.service \
-    sensors.dynamic_sensor_hal:64 \
-    sensors.als_wrapper:64 \
-    sensors.oplus_virtual:64
+    sensors.dynamic_sensor_hal \
+    sensors.als_wrapper \
+    sensors.oplus_virtual
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -203,21 +203,21 @@ PRODUCT_PACKAGES += \
 # Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service \
-    android.hardware.gatekeeper@1.0-impl:64
+    android.hardware.gatekeeper@1.0-impl
 
 # GNSS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss.measurement_corrections@1.0.vendor:64 \
-    android.hardware.gnss.measurement_corrections@1.1.vendor:64 \
-    android.hardware.gnss.visibility_control@1.0.vendor:64 \
-    android.hardware.gnss-V1-ndk.vendor:64 \
-    android.hardware.gnss@1.0.vendor:64 \
-    android.hardware.gnss@1.1.vendor:64 \
-    android.hardware.gnss@2.0.vendor:64 \
-    android.hardware.gnss@2.1.vendor:64 \
-    libexpat.vendor:64\
-    libcurl.vendor:64 \
-    libssl.vendor:64
+    android.hardware.gnss.measurement_corrections@1.0.vendor \
+    android.hardware.gnss.measurement_corrections@1.1.vendor \
+    android.hardware.gnss.visibility_control@1.0.vendor \
+    android.hardware.gnss-V1-ndk.vendor \
+    android.hardware.gnss@1.0.vendor \
+    android.hardware.gnss@1.1.vendor \
+    android.hardware.gnss@2.0.vendor \
+    android.hardware.gnss@2.1.vendor \
+    libexpat.vendor \
+    libcurl.vendor \
+    libssl.vendor
 
 PRODUCT_PACKAGES += \
     android.hardware.gnss-service.mediatek
@@ -227,12 +227,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery \
     charger_res_images_vendor
-
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
-
-$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/oplus_chg/battery/mmi_charging_enable)
 
 # Libinit
 $(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_RMX2155L1)
@@ -251,19 +245,21 @@ PRODUCT_PACKAGES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    libkeymaster4support.vendor:64 \
-    libsoft_attestation_cert.vendor:64 \
-    libpuresoftkeymasterdevice.vendor:64
+    libkeymaster4support.vendor \
+    libsoft_attestation_cert.vendor \
+    libpuresoftkeymasterdevice.vendor
 
-# Media (OMX)
-TARGET_SUPPORTS_OMX_SERVICE := false
+# MediaCodec
+PRODUCT_PACKAGES += \
+    media_codecs_c2.xml \
+    media_codecs_dolby_audio.xml \
+    media_codecs_mediatek_video.xml \
+    media_codecs_performance.xml \
+    media_profiles_V1_0.xml \
+    mtk_platform_codecs_whitelist.xml
 
 PRODUCT_PACKAGES += \
     libstagefright_softomx_plugin.vendor
-
-# Media (C2)
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
@@ -274,7 +270,7 @@ $(call soong_config_set,stagefright,target_disables_thumbnail_block_model,true)
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.2-service \
     com.android.nfc_extras \
-    libchrome.vendor:64 \
+    libchrome.vendor \
     Tag
 
 PRODUCT_COPY_FILES += \
@@ -285,8 +281,6 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # Overlays
 PRODUCT_PACKAGES += \
-    LineageSettingsOverlay \
-    LineageSDKOverlay \
     ApertureOverlay \
     DialerOverlayCommon \
     ApertureIconOverlay \
@@ -294,8 +288,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     FrameworkResOverlayPlatform \
-    DolbyFrameworksResCommon \
-    SettingsProviderOverlay \
+    SettingsProviderOverlayPlatform \
     SettingsOverlayPlatform \
     SystemUIOverlayPlatform \
     TetheringConfigOverlay \
@@ -443,8 +436,8 @@ PRODUCT_ENABLE_UFFD_GC := true
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@2.0-service.mtk \
-    android.hardware.thermal@2.0.vendor:64 \
-    android.hardware.thermal@1.0-impl:64
+    android.hardware.thermal@2.0.vendor \
+    android.hardware.thermal@1.0-impl
 
 # USB
 PRODUCT_PACKAGES += \
@@ -461,10 +454,8 @@ PRODUCT_PACKAGES += \
     android.hardware.radio-service.compat
 
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full.vendor:64 \
-    libprotobuf-cpp-lite.vendor:64 \
-    libprotobuf-cpp-full-3.9.1-vendorcompat:64 \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat:64
+    libprotobuf-cpp-lite.vendor \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Rcs Service
 PRODUCT_PACKAGES += \
@@ -482,15 +473,15 @@ PRODUCT_PACKAGES += \
 
 # Required for QPR3
 PRODUCT_PACKAGES += \
-    libdng_sdk.vendor:64 \
-    libmemunreachable.vendor:64 \
-    libjsoncpp.vendor:64
+    libdng_sdk.vendor \
+    libmemunreachable.vendor \
+    libjsoncpp.vendor
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
     android.hardware.wifi-service \
-    libkeystore-engine-wifi-hidl:64 \
-    libkeystore-wifi-hidl:64 \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl \
     libwifi-hal-wrapper:64 \
     lib_driver_cmd_mt66xx \
     wpa_supplicant \

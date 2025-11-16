@@ -4,7 +4,7 @@
 //
 
 runtime_resource_overlay {
-    name: "SettingsProviderOverlay",
+    name: "SettingsProviderOverlayPlatform",
     resource_dirs: ["res"],
-    device_specific: true,
+    product_specific: true,
 }

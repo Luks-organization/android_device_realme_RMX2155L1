@@ -5,5 +5,6 @@
 
 runtime_resource_overlay {
     name: "ApertureQRScannerOverlay",
+    resource_dirs: ["res"],
     system_ext_specific: true,
 }

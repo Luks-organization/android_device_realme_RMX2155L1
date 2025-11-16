@@ -13,9 +13,9 @@ ro.vendor.oplus.aal.backlight.bits=12
 ro.vendor.oplus.sensor.report_brightness=true
 
 # Oplus
-ro.build.release_type=true
+ro.oplus.image.odm.type=20743
 ro.oplus.image.odm.version=version_stub.f62907f3
-ro.oplus.image.base.version=20682.2.4.2022111715201312548255
-ro.oplus.image.vendor.version=.a2aae3ba
-ro.oplus.version.base=20682.2.4.2022111715201312548255
 ro.version.confidential=false
+ro.product.hw=20743
+ro.separate.soft=20743
+persist.vendor.radio.telecom.vibrate=0

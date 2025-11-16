@@ -6,5 +6,5 @@
 runtime_resource_overlay {
     name: "SettingsOverlayPlatform",
     resource_dirs: ["res"],
-    vendor: true,
+    product_specific: true,
 }

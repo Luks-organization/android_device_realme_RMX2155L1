@@ -524,7 +524,7 @@
     {
       "PowerHint": "LAUNCH",
       "Node": "CPUEfficiencyClusterMaxFreq",
-      "Duration": 5000,
+      "Duration": 3000,
       "Value": "2000000"
     },
     {
@@ -571,6 +571,12 @@
     },
     {
       "PowerHint": "EXPENSIVE_RENDERING",
+      "Node": "CPUSuperClusterMinFreq",
+      "Duration": 0,
+      "Value": "2050000"
+    },
+    {
+      "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GPUDVFSInterval",
       "Duration": 0,
       "Value": "75"
@@ -585,7 +591,7 @@
       "PowerHint": "EXPENSIVE_RENDERING",
       "Node": "GPUBlockBoost",
       "Duration": 0,
-      "Value": "50"
+      "Value": "101"
     },
     {
       "PowerHint": "DISPLAY_IDLE",

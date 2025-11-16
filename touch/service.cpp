@@ -1,30 +1,33 @@
 /*
- * SPDX-FileCopyrightText: 2019 The Android Open Source Project
- * SPDX-FileCopyrightText: 2025 The LineageOS Project
+ * Copyright (C) 2019 The LineageOS Project
+ *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#define LOG_TAG "vendor.lineage.touch-service.MT6785"
+#define LOG_TAG "vendor.lineage.touch@1.0-service.MT6785"
 
 #include <android-base/logging.h>
-#include <android/binder_manager.h>
-#include <android/binder_process.h>
+#include <binder/ProcessState.h>
+#include <hidl/HidlTransportSupport.h>
 #include "TouchscreenGesture.h"
 
-using aidl::vendor::lineage::touch::TouchscreenGesture;
+using ::vendor::lineage::touch::V1_0::ITouchscreenGesture;
+using ::vendor::lineage::touch::V1_0::implementation::TouchscreenGesture;
 
 int main() {
-    ABinderProcess_setThreadPoolMaxThreadCount(0);
+    android::sp<ITouchscreenGesture> gestureService = new TouchscreenGesture();
 
-    std::shared_ptr<TouchscreenGesture> tg = ndk::SharedRefBase::make<TouchscreenGesture>();
-    binder_status_t status = AServiceManager_addService(
-            tg->asBinder().get(), TouchscreenGesture::makeServiceName("default").c_str());
-    CHECK_EQ(status, STATUS_OK) << "Cannot register touchscreen gesture HAL service.";
+    android::hardware::configureRpcThreadpool(1, true /*callerWillJoin*/);
+
+    if (gestureService->registerAsService() != android::OK) {
+        LOG(ERROR) << "Cannot register touchscreen gesture HAL service.";
+        return 1;
+    }
 
     LOG(INFO) << "Touchscreen HAL service ready.";
 
-    ABinderProcess_joinThreadPool();
+    android::hardware::joinRpcThreadpool();
 
     LOG(ERROR) << "Touchscreen HAL service failed to join thread pool.";
-    return EXIT_FAILURE;  // should not reach
+    return 1;
 }
