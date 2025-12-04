@@ -1,2 +1,2 @@
-allow hal_radio_default hal_radio_service:service_manager { find };
-allow hal_radio_default hal_wifi_supplicant_service:service_manager { find };
+add_service(hal_radio_default, hal_radio_service)
+add_service(hal_radio_default, hal_wifi_supplicant_service)

@@ -3,10 +3,14 @@ persist.vendor.audio.tuning.def_path         u:object_r:vendor_audio_tuning_prop
 persist.vendor.audiohal.aurisys.pcm_dump_on  u:object_r:vendor_audio_tuning_prop:s0
 persist.vendor.audiohal.p2w_dump_on          u:object_r:vendor_audio_tuning_prop:s0
 persist.vendor.audiohal.pcm_mixer_dump_on    u:object_r:vendor_audio_tuning_prop:s0
+
+# Audioserver
 vendor.audiomediatek.                        u:object_r:vendor_audioserver_prop:s0
 
 # Camera
+persist.vendor.camera.privapp.list           u:object_r:vendor_mtk_camera_prop:s0
 vendor.camera.vm.parameters                  u:object_r:vendor_mtk_camera_prop:s0
+vendor.debug.tpi.                            u:object_r:vendor_mtk_camera_prop:s0
 
 # Fingerprint
 persist.vendor.fingerprint.                  u:object_r:vendor_fingerprint_prop:s0
@@ -30,7 +34,9 @@ ro.vendor.device.variant                     u:object_r:vendor_variant_prop:s0
 
 # USB string
 vendor.usb.product_string                    u:object_r:vendor_variant_prop:s0
-ro.vendor.oplus.market.name                  u:object_r:vendor_variant_prop:s0
+
+# Oplus
+ro.vendor.oplus.market.name                  u:object_r:system_oplus_project_prop:s0
 
 # PQ
 ro.vendor.mtk_hdr_video_support              u:object_r:vendor_mtk_pq_ro_prop:s0
@@ -40,6 +46,3 @@ vendor.tee.googlekey.status                  u:object_r:vendor_mtk_trustonic_tee
 
 # Light
 persist.vendor.light.                        u:object_r:vendor_persist_light_prop:s0
-
-# Power
-vendor.powerhal.                             u:object_r:vendor_power_prop:s0

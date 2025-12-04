@@ -14,4 +14,4 @@ sspm_1.img
 tee1.img
 
 # Prevent lk from setting sku prop: sed -i 's/sku/fku/' lk.img
-lk.img
+lk.img|4d28f6dfc58bf80ff72017c1746c5142328d5c2d

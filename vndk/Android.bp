@@ -1,0 +1,23 @@
+//
+// SPDX-FileCopyrightText: 2019 The Android Open Source Project
+// SPDX-FileCopyrightText: 2025 The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_prebuilt_library_shared {
+    name: "libbinder-v32",
+    vendor: true,
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm: {
+            srcs: ["arm/libbinder-v32.so"],
+        },
+        android_arm64: {
+            srcs: ["arm64/libbinder-v32.so"],
+        },
+    },
+    compile_multilib: "both",
+    check_elf_files: false,
+}

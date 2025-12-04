@@ -6,20 +6,11 @@
 
 DEVICE_PATH := device/realme/RMX2155L1
 
-# Setup dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
-
 # Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Enforce generic ramdisk allow list
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
-
-# IMS
-$(call inherit-product, vendor/mediatek/ims/ims.mk)
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -34,7 +25,10 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6785
-TARGET_BOARD_PLATFORM_GPU := mali-g76mc4
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2400
+TARGET_SCREEN_WIDTH := 1080
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -44,13 +38,23 @@ BOARD_SHIPPING_API_LEVEL := 31
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# Dex pre-opt
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
+WITH_DEXPREOPT_DEBUG_INFO := false
+DONT_DEXPREOPT_PREBUILTS := true
+
+# Inherit several Android Go Configurations (Beneficial for everyone, even on non-Go devices)
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio.service \
     android.hardware.audio@7.0-impl:32 \
     android.hardware.audio.effect@7.0-impl:32 \
-    android.hardware.soundtrigger@2.3-impl:32 \
-    android.hardware.audio@7.0.vendor:64
+    android.hardware.soundtrigger@2.3-impl:32
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default:32 \
@@ -64,7 +68,23 @@ PRODUCT_PACKAGES += \
     libalsautils:32 \
     libdynproc:32 \
     libhapticgenerator:32 \
+    libopus.vendor:32 \
     libunwindstack.vendor
+
+# Audio configuration files
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio,$(TARGET_COPY_OUT_VENDOR)/etc)
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
+
+# Speaker
+$(call soong_config_set,android_hardware_audio,skip_speaker_layout_channel_mask_field,true)
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -79,62 +99,19 @@ PRODUCT_PACKAGES += \
     libldacBT_bco.vendor \
     liblhdc
 
-# Audio configuration files
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/audio,$(TARGET_COPY_OUT_VENDOR)/etc)
+# Dolby
+$(call inherit-product, hardware/dolby/dolby.mk)
 
-PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_in_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
-
-# DAX Service
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/dax/dax-default.xml:$(TARGET_COPY_OUT_VENDOR)/etc/dolby/dax-default.xml \
-    $(DEVICE_PATH)/configs/sysconfig/config-com.dolby.daxappui2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxappui2.xml \
-    $(DEVICE_PATH)/configs/sysconfig/config-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxservice.xml \
-    $(DEVICE_PATH)/configs/sysconfig/hiddenapi-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/hiddenapi-com.dolby.daxservice.xml
-
-# DAX Permissions
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/permissions/privapp-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxservice.xml \
-    $(DEVICE_PATH)/configs/permissions/privapp-com.dolby.daxappui2.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxappui2.xml \
-    $(DEVICE_PATH)/configs/permissions/default-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/default-permissions/default-com.dolby.daxservice.xml
-
-# Spatial Audio: optimize spatializer effect
-PRODUCT_PROPERTY_OVERRIDES += \
-    audio.spatializer.effect.util_clamp_min=300
-
-# Spatial Audio: declare use of spatial audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.spatializer_enabled=true \
-    ro.audio.headtracking_enabled=true \
-    ro.audio.spatializer_transaural_enabled_default=false \
-    persist.vendor.audio.spatializer.speaker_enabled=true \
-
-# Codec2 Props
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.audio.c2.preferred=true \
-    debug.c2.use_dmabufheaps=1 \
-    vendor.qc2audio.suspend.enabled=true \
-    vendor.qc2audio.per_frame.flac.dec.enabled=true
-
-# Dolby Props
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.dolby.dax.version=DAX3_3.7.0.8_r1 \
-    vendor.audio.dolby.ds2.hardbypass=false \
-    vendor.audio.dolby.ds2.enabled=false
+# JamesDSP
+$(call inherit-product, packages/apps/JamesDSPManager/config.mk)
 
 # RealmePearts
-PRODUCT_PACKAGES += \
-    RealmeParts
+#PRODUCT_PACKAGES += \
+    #RealmeParts
 
-# Ossi
+# Dplus
 PRODUCT_PACKAGES += \
-    OssiDeviceService
+    OplusDeviceService
 
 # Doze
 PRODUCT_PACKAGES += \
@@ -182,15 +159,16 @@ PRODUCT_PACKAGES += \
 
 # Lineage Touch
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.MT6785
+    vendor.lineage.touch-service.MT6785
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@2.0-service-multihal.MT6785 \
     vendor.lineage.oplus_als.service \
-    sensors.dynamic_sensor_hal \
-    sensors.als_wrapper \
-    sensors.oplus_virtual
+    android.hardware.sensors@1.0-service \
+    android.hardware.sensors@1.0-impl:64 \
+    sensors.dynamic_sensor_hal:64 \
+    sensors.als_wrapper:64 \
+    sensors.oplus_virtual:64
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -222,14 +200,38 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss-service.mediatek
 
+# IMS
+$(call inherit-product, vendor/mediatek/ims/ims.mk)
+
+# Radio
+PRODUCT_PACKAGES += \
+    android.hardware.radio-service.compat
+
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-lite.vendor \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
+
+# Rcs Service
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    RcsService \
+    PresencePolling
+
+# Mtk In Call Service
+PRODUCT_PACKAGES += \
+    MtkInCallService
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
     android.hardware.health-service.mediatek-recovery \
     charger_res_images_vendor
 
-# Libinit
-$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_RMX2155L1)
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/oplus_chg/battery/mmi_charging_enable)
 
 # Light
 PRODUCT_PACKAGES += \
@@ -252,10 +254,10 @@ PRODUCT_PACKAGES += \
 # MediaCodec
 PRODUCT_PACKAGES += \
     media_codecs_c2.xml \
-    media_codecs_dolby_audio.xml \
     media_codecs_mediatek_video.xml \
     media_codecs_performance.xml \
     media_profiles_V1_0.xml \
+    mtk_platform_codecs_config.xml \
     mtk_platform_codecs_whitelist.xml
 
 PRODUCT_PACKAGES += \
@@ -276,15 +278,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/permissions/nfc_features.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/sku_nfc/nfc_features.xml
 
-# RRO (Runtime Resource Overlay)
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Overlays
 PRODUCT_PACKAGES += \
-    ApertureOverlay \
-    DialerOverlayCommon \
-    ApertureIconOverlay \
-    ApertureQRScannerOverlay
+    ApertureOverlayPlatform \
+    DialerOverlayPlatform \
+    ApertureQRScannerOverlay \
+    LineageSDKOverlayPlatform \
+    LineageSettingsOverlayPlatform
 
 PRODUCT_PACKAGES += \
     FrameworkResOverlayPlatform \
@@ -293,13 +293,19 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayPlatform \
     TetheringConfigOverlay \
     CarrierConfigOverlay \
-    OplusDozeOverlay \
-    NfcResOverlay \
-    WifiOverlay
+    NfcOverlayPlatform \
+    WifiOverlayPlatform \
+    OplusDozeOverlay
 
 PRODUCT_PACKAGES += \
     SettingsProviderOverlayRMX2151L1 \
     SettingsProviderOverlayRMX2155L1
+
+# RRO (Runtime Resource Overlay)
+PRODUCT_ENFORCE_RRO_TARGETS := *
+
+# Libinit
+$(call soong_config_set,libinit,vendor_init_lib,//$(DEVICE_PATH):libinit_RMX2155L1)
 
 # Permission
 PRODUCT_COPY_FILES += \
@@ -362,7 +368,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnel_migration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnel_migration.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml \
     frameworks/native/data/etc/android.hardware.gamepad.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.gamepad.xml \
-    frameworks/native/data/etc/android.hardware.sensor.dynamic.head_tracker.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.dynamic.head_tracker.xml \
     frameworks/native/data/etc/android.hardware.xr.input.hand_tracking.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.xr.input.hand_tracking.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.software.device_id_attestation.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.device_id_attestation.xml
@@ -374,16 +379,15 @@ PRODUCT_PACKAGES += \
     libmtkperf_client
 
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.pixel-libperfmgr \
-    sendhint
+    android.hardware.power-service.lineage-libperfmgr
 
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/perf/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Cgroup and task_profiles
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/profiles/cgroups_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
-    $(DEVICE_PATH)/configs/profiles/task_profiles_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
+    system/core/libprocessgroup/profiles/cgroups_30.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
+    $(DEVICE_PATH)/configs/profiles/task_profiles.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
 PRODUCT_PACKAGES += \
     PowerOffAlarm
@@ -398,27 +402,24 @@ PRODUCT_PACKAGES += \
     init.mt6785.usb.rc \
     init.nfc_detect.rc \
     init.oplus.rc \
-    init.dolby.rc \
-    init.cabc.rc \
     fstab.mt6785 \
     fstab.mt6785.ramdisk \
     ueventd.mtk.rc \
     ueventd.oplus.rc \
-    nfc_detect.sh
+    nfc_detect.sh \
+    parts.rc
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH) \
-    $(DEVICE_PATH)/touch \
+    $(DEVICE_PATH)/aidl/touch \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek/libmtkperf_client \
     hardware/mediatek \
-    hardware/oplus
-
-# Inherit several Android Go Configurations (Beneficial for everyone, even on non-Go devices)
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+    hardware/oplus \
+    hardware/dolby
 
 # Properties
 include $(DEVICE_PATH)/configs/props/vendor_prop.mk
@@ -435,37 +436,23 @@ PRODUCT_ENABLE_UFFD_GC := true
 
 # Thermal
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0-service.mtk \
-    android.hardware.thermal@2.0.vendor \
-    android.hardware.thermal@1.0-impl
+    android.hardware.thermal-service.mediatek
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/thermal/thermal_info_config.json:$(TARGET_COPY_OUT_VENDOR)/etc/thermal_info_config.json
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.3-service-mediatekv2
+    android.hardware.usb-service.mediatek \
+    android.hardware.usb.gadget-service.mediatek
+
+$(call soong_config_set,android_hardware_mediatek_usb,audio_accessory_supported,true)
 
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.mediatek
 
 $(call soong_config_set,mediatek_vibrator,supports_effects,true)
-
-# Radio
-PRODUCT_PACKAGES += \
-    android.hardware.radio-service.compat
-
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-lite.vendor \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
-
-# Rcs Service
-PRODUCT_PACKAGES += \
-    com.android.ims.rcsmanager \
-    RcsService \
-    PresencePolling
-
-# Mtk In Call Service
-PRODUCT_PACKAGES += \
-    MtkInCallService
 
 # Vendor Service Manager
 PRODUCT_PACKAGES += \

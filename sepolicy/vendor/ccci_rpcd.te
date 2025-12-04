@@ -1,4 +1,3 @@
-allow ccci_rpcd system_oplus_project_prop:file { read open map getattr };
-allow ccci_rpcd vendor_oplus_radio_prop:file { read open map getattr };
-allow ccci_rpcd vendor_mtk_radio_prop:file { read open map getattr };
-allow ccci_rpcd default_prop:file { read open map getattr };
+get_prop(ccci_rpcd, system_oplus_project_prop)
+get_prop(ccci_rpcd, vendor_oplus_radio_prop)
+get_prop(ccci_rpcd, vendor_mtk_radio_prop)

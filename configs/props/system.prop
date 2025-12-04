@@ -12,23 +12,12 @@ ro.audio.usb.period_us=16000
 ro.config.hd_voicemail=1
 ro.config.media_vol_steps=15
 ro.config.vc_call_vol_steps=7
+ro.mtk_audenh_support=1
+ro.mtk_audio_lossless_support=1
+ro.mtk_besloudness_support=1
 
 # Brand
 Build.BRAND=MTK
-
-# Touch
-MultitouchMinDistance=1px
-MultitouchSettleInterval=1ms
-TapInterval=1ms
-TapSlop=1px
-touch.coverage.calibration=box
-touch.distance.calibration=none
-touch.distance.scale=0
-touch.gestureMode=spots
-touch.pressure.scale=0.001
-touch.size.bias=0
-touch.size.isSummed=0
-touch.size.scale=1
 
 # Display
 persist.sys.enable_mtk_scp_dump=1
@@ -36,9 +25,10 @@ persist.sys.sf.color_mode=9
 persist.sys.sf.color_saturation=1.1
 persist.sys.sf.native_mode=2
 ro.opengles.version=196610
+ro.mtk_display_ovl_support=1
+ro.mtk_pq.ctrld_dpi_support=1
 
 # Camera
-persist.vendor.camera.privapp.list=com.android.camera,com.google.camera,org.lineageos.aperture,org.lineageos.aperture.dev
 persist.camera.HAL3.enabled=1
 persist.camera.eis.enable=1
 ro.camera.sound.forced=0
@@ -48,16 +38,17 @@ ro.camera.ignore.input.stream.check.enable=1
 ro.camera.portrait.blur.level.enable=1
 ro.camera.temperature.limit=440
 ro.camera.videoeis.enable=
+ro.mtk_cam.mfb.ultimate=1
+ro.mtk_cam_dualzoom_support=1
+ro.mtk_cam_stereo_camera_support=1
 
 # Misc
-persist.vendor.mdlog.flush_log_ratio=0
+persist.vendor.mdlog.flush_log_ratio=72340194296137244
 persist.vendor.pms_removable=1
 persist.vendor.vzw_device_type=0
 ro.mediatek.version.branch=alps-mp-s0.mssi1.tc16sp-pr6
+ro.mtk_key_manager_support=1
 ro.support_one_handed_mode=true
-ro.vendor.mtk_cta_set=1
-ro.vendor.mtk_gwsd_support=1
-ro.vendor.mtk_omacp_support=1
 qemu.hw.mainkeys=0
 
 # WiFi
@@ -83,11 +74,9 @@ persist.adb.nonblocking_ffs=0
 persist.service.adb.enable=1
 persist.sys.usb.config=mtp,adb
 
-# Hardware Features
-ro.hardware.nfc=true
-ro.hardware.gps=true
-ro.hardware.bluetooth=true
-ro.hardware.wifi=true
+# ScrollOptimizer
+persist.sys.perf.scroll_opt=true
+persist.sys.perf.scroll_opt.heavy_app=1
 
 # Zygote
 ro.zygote.preload.enable=0
@@ -97,11 +86,28 @@ zygote.critical_window.minute=10
 persist.sys.radio.force_lte_ca=true
 persist.radio.hvolte.enable=1
 persist.radio.multisim.config=dsds
-ro.vendor.mtk_telephony_add_on_policy=0
 ro.telephony.sim.count=2
+
+# Fastbootd
+ro.fastbootd.available=true
+
+# Dex
+persist.bg.dexopt.enable=true
+pm.dexopt.install=speed-profile
+
+# HWUI
+ro.hwui.disable_sc=false
+ro.hwui.render_ahead=20
+
+# GPU Performance
+ro.mtk_gpu_optimizations=1
+ro.mtk_perf_dds_cpu=1
 
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
+persist.mm.enable.prefetch=true
+ro.min_pointer_dur=8
+ro.mediaserver.64b.enable=true
 
 # Storage
 persist.sys.fuse.passthrough.enable=true

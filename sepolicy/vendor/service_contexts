@@ -1,8 +1,3 @@
-android.hardware.wifi.supplicant.ISupplicant/default                 u:object_r:hal_wifi_supplicant_service:s0
-android.hardware.radio.config.IRadioConfig/default                   u:object_r:hal_radio_service:s0
-android.hardware.radio.data.IRadioData/slot1                         u:object_r:hal_radio_service:s0
-android.hardware.radio.data.IRadioData/slot2                         u:object_r:hal_radio_service:s0
-android.hardware.radio.data.IRadioData/slot3                         u:object_r:hal_radio_service:s0
 android.hardware.radio.data.IRadioData/slot4                         u:object_r:hal_radio_service:s0
 android.hardware.radio.data.IRadioData/imsAospSlot1                  u:object_r:hal_radio_service:s0
 android.hardware.radio.data.IRadioData/imsAospSlot2                  u:object_r:hal_radio_service:s0
@@ -12,9 +7,6 @@ android.hardware.radio.data.IRadioData/em1                           u:object_r:
 android.hardware.radio.data.IRadioData/em2                           u:object_r:hal_radio_service:s0
 android.hardware.radio.data.IRadioData/se1                           u:object_r:hal_radio_service:s0
 android.hardware.radio.data.IRadioData/se2                           u:object_r:hal_radio_service:s0
-android.hardware.radio.modem.IRadioModem/slot1                       u:object_r:hal_radio_service:s0
-android.hardware.radio.modem.IRadioModem/slot2                       u:object_r:hal_radio_service:s0
-android.hardware.radio.modem.IRadioModem/slot3                       u:object_r:hal_radio_service:s0
 android.hardware.radio.modem.IRadioModem/slot4                       u:object_r:hal_radio_service:s0
 android.hardware.radio.modem.IRadioModem/imsAospSlot1                u:object_r:hal_radio_service:s0
 android.hardware.radio.modem.IRadioModem/imsAospSlot2                u:object_r:hal_radio_service:s0
@@ -24,9 +16,6 @@ android.hardware.radio.modem.IRadioModem/em1                         u:object_r:
 android.hardware.radio.modem.IRadioModem/em2                         u:object_r:hal_radio_service:s0
 android.hardware.radio.modem.IRadioModem/se1                         u:object_r:hal_radio_service:s0
 android.hardware.radio.modem.IRadioModem/se2                         u:object_r:hal_radio_service:s0
-android.hardware.radio.network.IRadioNetwork/slot1                   u:object_r:hal_radio_service:s0
-android.hardware.radio.network.IRadioNetwork/slot2                   u:object_r:hal_radio_service:s0
-android.hardware.radio.network.IRadioNetwork/slot3                   u:object_r:hal_radio_service:s0
 android.hardware.radio.network.IRadioNetwork/slot4                   u:object_r:hal_radio_service:s0
 android.hardware.radio.network.IRadioNetwork/imsAospSlot1            u:object_r:hal_radio_service:s0
 android.hardware.radio.network.IRadioNetwork/imsAospSlot2            u:object_r:hal_radio_service:s0
@@ -36,9 +25,6 @@ android.hardware.radio.network.IRadioNetwork/em1                     u:object_r:
 android.hardware.radio.network.IRadioNetwork/em2                     u:object_r:hal_radio_service:s0
 android.hardware.radio.network.IRadioNetwork/se1                     u:object_r:hal_radio_service:s0
 android.hardware.radio.network.IRadioNetwork/se2                     u:object_r:hal_radio_service:s0
-android.hardware.radio.sim.IRadioSim/slot1                           u:object_r:hal_radio_service:s0
-android.hardware.radio.sim.IRadioSim/slot2                           u:object_r:hal_radio_service:s0
-android.hardware.radio.sim.IRadioSim/slot3                           u:object_r:hal_radio_service:s0
 android.hardware.radio.sim.IRadioSim/slot4                           u:object_r:hal_radio_service:s0
 android.hardware.radio.sim.IRadioSim/imsAospSlot1                    u:object_r:hal_radio_service:s0
 android.hardware.radio.sim.IRadioSim/imsAospSlot2                    u:object_r:hal_radio_service:s0
@@ -48,9 +34,6 @@ android.hardware.radio.sim.IRadioSim/em1                             u:object_r:
 android.hardware.radio.sim.IRadioSim/em2                             u:object_r:hal_radio_service:s0
 android.hardware.radio.sim.IRadioSim/se1                             u:object_r:hal_radio_service:s0
 android.hardware.radio.sim.IRadioSim/se2                             u:object_r:hal_radio_service:s0
-android.hardware.radio.voice.IRadioVoice/slot1                       u:object_r:hal_radio_service:s0
-android.hardware.radio.voice.IRadioVoice/slot2                       u:object_r:hal_radio_service:s0
-android.hardware.radio.voice.IRadioVoice/slot3                       u:object_r:hal_radio_service:s0
 android.hardware.radio.voice.IRadioVoice/slot4                       u:object_r:hal_radio_service:s0
 android.hardware.radio.voice.IRadioVoice/imsAospSlot1                u:object_r:hal_radio_service:s0
 android.hardware.radio.voice.IRadioVoice/imsAospSlot2                u:object_r:hal_radio_service:s0
@@ -60,9 +43,6 @@ android.hardware.radio.voice.IRadioVoice/em1                         u:object_r:
 android.hardware.radio.voice.IRadioVoice/em2                         u:object_r:hal_radio_service:s0
 android.hardware.radio.voice.IRadioVoice/se1                         u:object_r:hal_radio_service:s0
 android.hardware.radio.voice.IRadioVoice/se2                         u:object_r:hal_radio_service:s0
-android.hardware.radio.messaging.IRadioMessaging/slot1               u:object_r:hal_radio_service:s0
-android.hardware.radio.messaging.IRadioMessaging/slot2               u:object_r:hal_radio_service:s0
-android.hardware.radio.messaging.IRadioMessaging/slot3               u:object_r:hal_radio_service:s0
 android.hardware.radio.messaging.IRadioMessaging/slot4               u:object_r:hal_radio_service:s0
 android.hardware.radio.messaging.IRadioMessaging/imsAospSlot1        u:object_r:hal_radio_service:s0
 android.hardware.radio.messaging.IRadioMessaging/imsAospSlot2        u:object_r:hal_radio_service:s0

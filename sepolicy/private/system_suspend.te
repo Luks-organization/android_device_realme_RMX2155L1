@@ -1,12 +1,11 @@
 allow system_suspend block_device:dir search;
-allow system_suspend system_file:dir { search open getattr };
-allow system_suspend system_file:file { read open map };
+allow system_suspend system_file:dir r_dir_perms;
+allow system_suspend system_file:file r_file_perms;
 allow system_suspend sysfs:file r_file_perms;
-allow system_suspend vendor_file:dir { search open getattr };
-allow system_suspend vendor_file:file { read open map };
-
-allow system_suspend hal_power_stats_server:chr_file { read open write ioctl };
-allow system_suspend same_process_hal_file:file { read open map getattr execute };
+allow system_suspend vendor_file:dir r_dir_perms;
+allow system_suspend vendor_file:file r_file_perms;
+allow system_suspend hal_power_stats_server:chr_file { ioctl };
+allow system_suspend hal_power_stats_server:chr_file r_file_perms;
 
 r_dir_file(system_suspend, sysfs_rtc)
 r_dir_file(system_suspend, sysfs_wakeup)

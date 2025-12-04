@@ -1,1 +1,1 @@
-allow mtk_hal_neuralnetworks hidl_allocator_hwservice:hwservice_manager find;
+add_hwservice(mtk_hal_neuralnetworks, hidl_allocator_hwservice)

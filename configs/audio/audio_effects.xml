@@ -22,9 +22,6 @@
         <library name="loudness_enhancer" path="libldnhncr.so"/>
         <library name="dynamics_processing" path="libdynproc.so"/>
         <library name="pre_processing" path="libaudiopreprocessing.so"/>
-        <!--ViPER4AndroidFX-->
-        <library name="v4a_re" path="libv4a_re.so"/>
-        <!--ViPER4AndroidFX-->
         <!--DOLBY DAP-->
         <library name="dap" path="libswdap.so"/>
         <library name="dvl" path="libdlbvol.so"/>
@@ -37,7 +34,10 @@
         <!--DOLBY END-->
         <!--Spatial Audio-->
         <library name="spatializer" path="libspatialaudio.so"/>
-	<!--Spatial Audio--> 
+	    <!--Spatial Audio--> 
+        <!--Jdsp-->
+        <library name="jdsp" path="libjamesdsp.so"/>
+        <!--Jdsp-->
     </libraries>
 
     <!-- list of effects to load.
@@ -86,9 +86,6 @@
         <effect name="dlb_system_listener" library="dvl" uuid="874db4d8-051d-4b7b-bd95-a3bebc837e9e"/>
         <effect name="dlb_notification_listener" library="dvl" uuid="1f0091e3-6ad8-40fe-9b09-5948f9a26e7e"/>
         <effect name="dlb_voice_call_listener" library="dvl" uuid="58d13383-b41d-05df-d94e-bb23db293260"/>
-        <!--ViPER4AndroidFX-->
-        <effect name="v4a_standard_re" library="v4a_re" uuid="90380da3-8536-4744-a6a3-5731970e640f"/>
-        <!--ViPER4AndroidFX-->
         <!--DOLBY END-->
         <!--DOLBY GAME-->
         <effect name="gamedap" library="gamedap" uuid="3783c334-d3a0-4d13-874f-0032e5fb80e2"/>
@@ -99,6 +96,9 @@
         <!--Spatial Audio-->
         <effect name="spatializer" library="spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
        	<!--Spatial Audio-->
+        <!--Jdsp-->
+        <effect name="jamesdsp" library="jdsp" uuid="f27317f4-c984-4de6-9a90-545759495bf2"/>
+        <!--Jdsp-->
     </effects>
     <!--postprocess>
         <stream type="music">

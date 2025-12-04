@@ -27,7 +27,8 @@ allow system_server proc_timer:file getattr;
 allow system_server proc_ufs_debug:file getattr;
 allow system_server proc_uptime:file getattr;
 allow system_server proc_zraminfo:file getattr;
-allow system_server proc_gpufreq:dir search;
+allow system_server proc_gpufreq:dir r_dir_perms;
+allow system_server proc_gpufreq:file r_file_perms;
 allow system_server proc_irq:dir search;
 allow system_server proc_gz_log:file getattr;
 allow system_server vendor_proc_charger:dir { search read };
@@ -48,7 +49,5 @@ allow system_server vendor_variant_prop:file { read open };
 allow system_server vendor_proc_batt_param:file getattr;
 
 get_prop(system_server, vendor_variant_prop)
-set_prop(system_server, vendor_audio_tuning_prop)
-
-# Dolby
-hal_client_domain(system_server, hal_dms)
+get_prop(system_server, vendor_audio_tuning_prop)
+get_prop(system_server, system_oplus_project_prop)

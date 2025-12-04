@@ -1,2 +1,4 @@
 r_dir_file(mtk_hal_pq, vendor_proc_oplus_version)
 r_dir_file(mtk_hal_pq, vendor_proc_display)
+
+get_prop(mtk_hal_pq, system_oplus_project_prop)

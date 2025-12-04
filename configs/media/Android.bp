@@ -17,12 +17,6 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "media_codecs_dolby_audio.xml",
-    src: "media_codecs_dolby_audio.xml",
-    vendor: true,
-}
-
-prebuilt_etc {
     name: "media_codecs_mediatek_video.xml",
     src: "media_codecs_mediatek_video.xml",
     vendor: true,
@@ -37,5 +31,11 @@ prebuilt_etc {
 prebuilt_etc {
     name: "mtk_platform_codecs_whitelist.xml",
     src: "mtk_platform_codecs_whitelist.xml",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "mtk_platform_codecs_config.xml",
+    src: "mtk_platform_codecs_config.xml",
     vendor: true,
 }

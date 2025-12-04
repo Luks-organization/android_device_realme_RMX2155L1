@@ -31,3 +31,10 @@ android_app {
         proguard_flags_files: ["proguard.flags"],
     },
 }
+
+prebuilt_etc {
+    name: "parts.rc",
+    src: "init/parts.rc",
+    relative_install_path: "init",
+    system_ext_specific: true
+}

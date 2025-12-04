@@ -7,35 +7,35 @@
 prebuilt_etc {
     name: "init.oplus.rc",
     src: "init.oplus.rc",
-    sub_dir: "init/hw",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.mt6785.power.rc",
     src: "init.mt6785.power.rc",
-    sub_dir: "init/hw",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.mt6785.rc",
     src: "init.mt6785.rc",
-    sub_dir: "init/hw",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.mt6785.usb.rc",
     src: "init.mt6785.usb.rc",
-    sub_dir: "init/hw",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
 prebuilt_etc {
     name: "init.nfc_detect.rc",
     src: "init.nfc_detect.rc",
-    sub_dir: "init/hw",
+    relative_install_path: "init/hw",
     vendor: true,
 }
 
@@ -58,20 +58,6 @@ prebuilt_etc {
     filename: "ueventd.rc",
     src: "ueventd.mtk.rc",
     vendor: true,
-}
-
-prebuilt_etc {
-    name: "init.dolby.rc",
-    src: "init.dolby.rc",
-    sub_dir: "init",
-    soc_specific: true
-}
-
-prebuilt_etc {
-    name: "init.cabc.rc",
-    src: "init.cabc.rc",
-    sub_dir: "init",
-    system_ext_specific: true
 }
 
 sh_binary {

@@ -1,2 +1,4 @@
-allow mtk_hal_memtrack vendor_sysfs_gpu:dir search;
-allow mtk_hal_memtrack vendor_sysfs_gpu:file rw_file_perms;
+allow hal_memtrack_default self:process { execmem };
+allow hal_memtrack_default sysfs_gpu:dir search;
+allow hal_memtrack_default sysfs_gpu_mtk:dir search;
+allow hal_memtrack_default sysfs_gpu_mtk:file r_file_perms;

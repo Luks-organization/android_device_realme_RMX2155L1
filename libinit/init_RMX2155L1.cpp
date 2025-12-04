@@ -79,15 +79,7 @@ void load_dalvik_properties(void) {
 
     sysinfo(&sys);
 
-    if (sys.totalram >= 7ull * 1024 * 1024 * 1024) {
-        // from - phone-xhdpi-8192-dalvik-heap.mk
-        heapstartsize = "24m";
-        heapgrowthlimit = "256m";
-        heapsize = "512m";
-        heaptargetutilization = "0.46";
-        heapminfree = "8m";
-        heapmaxfree = "48m";
-    } else if (sys.totalram >= 5ull * 1024 * 1024 * 1024){
+    if (sys.totalram >= 5ull * 1024 * 1024 * 1024) {
         // from - phone-xhdpi-6144-dalvik-heap.mk
         heapstartsize = "16m";
         heapgrowthlimit = "256m";
@@ -95,6 +87,14 @@ void load_dalvik_properties(void) {
         heaptargetutilization = "0.5";
         heapminfree = "8m";
         heapmaxfree = "32m";
+    } else if (sys.totalram >= 3ull * 1024 * 1024 * 1024) {
+        // from - phone-xhdpi-4096-dalvik-heap.mk
+        heapstartsize = "8m";
+        heapgrowthlimit = "192m";
+        heapsize = "512m";
+        heaptargetutilization = "0.6";
+        heapminfree = "8m";
+        heapmaxfree = "16m";
     } else {
         return;
     }
@@ -128,7 +128,7 @@ void set_device_props(void) {
                 model = "RMX2155";
                 device = "RMX2155L1";
                 marketname = "realme 7";
-                fingerprint = "realme/RMX2155EEA/RMX2155L1:12/SP1A.210812.016/Q.GDPR.bf75e7-1:user/release-keys";
+                fingerprint = "realme/RMX2155RU/RMX2155L1:12/SP1A.210812.016/Q.GDPR.bf75e7-1:user/release-keys";
                 break;
             default:
                 LOG(ERROR) << "Unknown operator found: " << operator_code;

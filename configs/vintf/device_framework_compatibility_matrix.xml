@@ -24,7 +24,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.nfc</name>
-        <version>1.0-2</version>
+        <version>1.2</version>
         <interface>
             <name>INfc</name>
             <instance>default</instance>
@@ -70,37 +70,10 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.media.c2</name>
-        <version>1.1-2</version>
-        <interface>
-            <name>IComponentStore</name>
-            <instance>software</instance>
-            <instance>default</instance>
-	        <instance>ozoaudio</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.sensors</name>
-        <version>2</version>
-        <interface>
-            <name>ISensors</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.tetheroffload</name>
-        <version>1</version>
         <interface>
             <name>IOffload</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.media.c2</name>
-        <version>1</version>
-        <interface>
-            <name>IComponentStore</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -113,7 +86,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.light</name>
-        <version>2</version>
         <interface>
             <name>ILights</name>
             <instance>default</instance>
@@ -121,7 +93,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.memtrack</name>
-        <version>1</version>
         <interface>
             <name>IMemtrack</name>
             <instance>default</instance>
@@ -137,7 +108,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.power</name>
-        <version>5</version>
         <interface>
             <name>IPower</name>
             <instance>default</instance>
@@ -153,7 +123,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.vibrator</name>
-        <version>2</version>
         <interface>
             <name>IVibrator</name>
             <instance>default</instance>
@@ -161,7 +130,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi.hostapd</name>
-        <version>2</version>
         <interface>
             <name>IHostapd</name>
             <instance>default</instance>
@@ -169,7 +137,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi.supplicant</name>
-        <version>3</version>
         <interface>
             <name>ISupplicant</name>
             <instance>default</instance>
@@ -177,7 +144,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi</name>
-        <version>2</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
@@ -185,7 +151,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.bluetooth</name>
-        <version>1</version>
         <interface>
             <name>IBluetoothHci</name>
             <instance>default</instance>
@@ -193,7 +158,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.bluetooth.audio</name>
-        <version>4</version>
         <interface>
             <name>IBluetoothAudioProviderFactory</name>
             <instance>default</instance>
@@ -201,7 +165,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.drm</name>
-        <version>1</version>
         <interface>
             <name>IDrmFactory</name>
             <instance>clearkey</instance>
@@ -221,7 +184,6 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.gnss</name>
-        <version>1</version>
         <interface>
             <name>IGnss</name>
             <instance>default</instance>
@@ -238,10 +200,9 @@
         </interface>
     </hal>
     <hal format="aidl" optional="true">
-        <name>android.frameworks.stats</name>
-        <version>1-2</version>
+        <name>android.hardware.thermal</name>
         <interface>
-            <name>IStats</name>
+            <name>IThermal</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -271,7 +232,7 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.soundtrigger</name>
-        <version>2.0-3</version>
+        <version>2.3</version>
         <interface>
             <name>ISoundTriggerHw</name>
             <instance>default</instance>
@@ -279,25 +240,16 @@
     </hal>
     <hal format="hidl" optional="true">
         <name>android.hardware.dumpstate</name>
-        <version>1.0-1</version>
+        <version>1.1</version>
         <interface>
             <name>IDumpstateDevice</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="aidl" optional="true">
         <name>android.hardware.power.stats</name>
-        <version>1.0</version>
         <interface>
             <name>IPowerStats</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.sensors</name>
-        <version>2.0</version>
-        <interface>
-            <name>ISensors</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -317,28 +269,17 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="aidl" optional="true">
         <name>android.hardware.usb</name>
-        <version>1.0-3</version>
         <interface>
             <name>IUsb</name>
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl" optional="true">
+    <hal format="aidl" optional="true">
         <name>android.hardware.usb.gadget</name>
-        <version>1.1</version>
         <interface>
             <name>IUsbGadget</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>android.hardware.thermal</name>
-        <version>1.0</version>
-        <version>2.0</version>
-        <interface>
-            <name>IThermal</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -746,10 +687,8 @@
         </interface>
     </hal>
     <!-- Touch -->
-    <hal format="hidl" optional="true">
+    <hal format="aidl" optional="true">
         <name>vendor.lineage.touch</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
         <interface>
             <name>ITouchscreenGesture</name>
             <instance>default</instance>
@@ -757,8 +696,18 @@
     </hal>
     <!-- Charging -->
     <hal format="aidl" optional="true">
+        <name>vendor.lineage.health</name>
+        <interface>
+            <name>IChargingControl</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IFastCharge</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
         <name>android.hardware.health</name>
-        <version>3</version>
         <interface>
             <name>IHealth</name>
             <instance>default</instance>

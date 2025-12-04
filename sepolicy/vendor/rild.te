@@ -1,5 +1,4 @@
-allow rild vendor_mtk_telephony_sensitive_prop:file { read open map getattr };
-allow rild vendor_oplus_radio_prop:file { read open map getattr };
-allow rild system_oplus_project_prop:file { read open map getattr };
-allow rild vendor_mtk_radio_prop:file { read open map getattr };
-allow rild vendor_oplus_radio_prop:file { read open map getattr };
+get_prop(rild, vendor_mtk_telephony_sensitive_prop)
+get_prop(rild, vendor_oplus_radio_prop)
+get_prop(rild, system_oplus_project_prop)
+get_prop(rild, vendor_mtk_radio_prop)

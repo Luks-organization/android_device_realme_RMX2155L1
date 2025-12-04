@@ -1,4 +1,1 @@
-allow toolbox resourcecache_data_file:dir { search read open };
-
-get_prop(toolbox, resourcecache_data_file)
-set_prop(toolbox, resourcecache_data_file)
+rw_dir_file(toolbox, resourcecache_data_file)

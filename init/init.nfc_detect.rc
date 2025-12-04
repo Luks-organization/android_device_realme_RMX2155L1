@@ -20,5 +20,5 @@ service mtk_secure_element_hal_service /vendor/bin/hw/android.hardware.secure_el
 
 on property:ro.vendor.device.variant=nfc
     setprop ro.boot.product.vendor.sku nfc
-    enable vendor.nfc_hal_service
-    enable mtk_secure_element_hal_service
+    start vendor.nfc_hal_service
+    start mtk_secure_element_hal_service
