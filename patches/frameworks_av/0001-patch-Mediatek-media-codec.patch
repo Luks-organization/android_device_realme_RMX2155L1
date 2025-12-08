@@ -679,7 +679,7 @@ index 90f35f9d04..9ee4d6dbec 100644
 -    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm
 +    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm readproc
      ioprio rt 4
-     task_profiles ProcessCapacityHigh HighPerformance
+     task_profiles AudioPolicy
 diff --git a/media/module/extractors/ogg/OggExtractor.cpp b/media/module/extractors/ogg/OggExtractor.cpp
 index 4c106b278d..7bc3cd56de 100644
 --- a/media/module/extractors/ogg/OggExtractor.cpp

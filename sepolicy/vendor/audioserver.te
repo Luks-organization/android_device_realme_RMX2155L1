@@ -1,7 +1,6 @@
 hal_client_domain(audioserver, hal_dms)
 
-add_service(audioserver, audio_service)
-
+allow audioserver audio_service:service_manager find;
 allow audioserver audio_device:chr_file r_file_perms;
 allow audioserver mediaserver:dir search;
 allow audioserver mediaserver:file r_file_perms;
@@ -9,10 +8,9 @@ allow audioserver unlabeled:dir search;
 allow audioserver unlabeled:file rw_file_perms;
 allow audioserver hal_audio_default:process signal;
 allow audioserver system_app:dir search;
+dontaudit audioserver vendor_default_prop:file read;
 
 get_prop(audioserver, vendor_mtk_hifiaudio_support_prop)
 get_prop(audioserver, vendor_mtk_audio_prop)
 get_prop(audioserver, vendor_audioserver_prop)
-get_prop(audioserver, vendor_audio_tuning_prop)
-get_prop(audioserver, vendor_default_prop)
 set_prop(audioserver, audio_prop)

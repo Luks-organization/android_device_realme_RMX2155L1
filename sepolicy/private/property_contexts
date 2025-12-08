@@ -17,6 +17,9 @@ ro.mtk_audenh_support                            u:object_r:system_oplus_audio_p
 ro.mtk_audio_lossless_support                    u:object_r:system_oplus_audio_prop:s0
 ro.mtk_besloudness_support                       u:object_r:system_oplus_audio_prop:s0
 
+# Display
+persist.sys.enable_sf_hwc_backpressure           u:object_r:exported_system_prop:s0
+
 # Bluetooth
 bluetooth.device_id.vendor_id                    u:object_r:exported_bluetooth_prop:s0
 persist.bluetooth.a2dp_aac_abr.enable            u:object_r:exported_bluetooth_prop:s0
@@ -39,8 +42,6 @@ ro.oplus.market.name                             u:object_r:system_oplus_project
 ro.separate.soft                                 u:object_r:system_oplus_project_prop:s0
 ro.oplus.version.                                u:object_r:system_oplus_project_prop:s0
 ro.oplus.image.                                  u:object_r:system_oplus_project_prop:s0
-vendor.oplus.                                    u:object_r:system_oplus_project_prop:s0
-vendor.oppo.                                     u:object_r:system_oplus_project_prop:s0
 oplus.debug.nvram.                               u:object_r:system_oplus_project_prop:s0
 
 # Fingerprint

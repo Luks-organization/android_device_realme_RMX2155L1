@@ -1,5 +1,4 @@
-add_hwservice(hal_audio_default, hal_performance_oplus_hwservice)
-
+allow hal_audio_default hal_performance_oplus_hwservice:hwservice_manager { find };
 allow hal_audio_default hal_audio_default:process { execmem };
 allow hal_audio_default mtk_audiohal_data_file:dir create_dir_perms;
 allow hal_audio_default mtk_audiohal_data_file:file create_file_perms;

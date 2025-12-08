@@ -86,6 +86,7 @@ zygote.critical_window.minute=10
 persist.sys.radio.force_lte_ca=true
 persist.radio.hvolte.enable=1
 persist.radio.multisim.config=dsds
+persist.vendor.radio.telecom.vibrate=0
 ro.telephony.sim.count=2
 
 # Fastbootd

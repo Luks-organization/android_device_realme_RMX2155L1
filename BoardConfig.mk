@@ -49,6 +49,10 @@ TARGET_EXCLUDES_AUDIOFX := true
 # Graphics
 BOARD_EGL_CFG := $(DEVICE_PATH)/configs/graphics/egl.cfg
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2000U
+TARGET_USES_VULKAN := true
+
+# HWUI
+HWUI_COMPILE_FOR_PERF := true
 
 # Display
 TARGET_SCREEN_DENSITY := 440
@@ -60,12 +64,12 @@ BOARD_TEE_VARIANT ?= trustonic
 BOARD_HAVE_MTK_FM := true
 
 # ART
-ifeq ($(TARGET_BUILD_VARIANT),user)
-ART_BUILD_TARGET_NDEBUG := true
-ART_BUILD_TARGET_DEBUG := false
-ART_BUILD_HOST_NDEBUG := true
-ART_BUILD_HOST_DEBUG := false
-endif
+#ifeq ($(TARGET_BUILD_VARIANT),user)
+#ART_BUILD_TARGET_NDEBUG := true
+#ART_BUILD_TARGET_DEBUG := false
+#ART_BUILD_HOST_NDEBUG := true
+#ART_BUILD_HOST_DEBUG := false
+#endif
 
 # Kernel Configuration
 BOARD_KERNEL_BASE := 0x40078000
@@ -119,18 +123,15 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 452984832       # ~432 MB
 BOARD_SUPER_PARTITION_SIZE := 8053063680           # ~7.5 GB
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# Reserve Size
-BOARD_PRODUCTIMAGE_MINIMAL_PARTITION_RESERVED_SIZE := false
--include vendor/lineage/config/BoardConfigReservedSize.mk
-
 # Dynamic Partitions Configuration
 BOARD_SUPER_PARTITION_GROUPS := main
 BOARD_MAIN_SIZE := 8048869376 # (8053063680 - 4194304)
 BOARD_MAIN_PARTITION_LIST := odm product system system_ext vendor
 
 # Erofs compression
+PRODUCT_FS_COMPRESSION := 1
 BOARD_EROFS_COMPRESSOR := lz4
-BOARD_EROFS_PCLUSTER_SIZE := 262144
+BOARD_EROFS_PCLUSTER_SIZE := 131072
 
 # Filesystem
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
@@ -216,7 +217,7 @@ DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 # SELinux
 include device/mediatek/sepolicy_vndr/SEPolicy.mk
 include $(DEVICE_PATH)/sepolicy/SEPolicy.mk
-SELINUX_IGNORE_NEVERALLOWS := true  # TODO: DROP THIS
+#SELINUX_IGNORE_NEVERALLOWS := true  # TODO: DROP THIS
 
 # WPA Supplicant and Driver Settings
 WPA_SUPPLICANT_VERSION := VER_0_8_X

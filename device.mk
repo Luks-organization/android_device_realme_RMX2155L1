@@ -38,16 +38,20 @@ BOARD_SHIPPING_API_LEVEL := 31
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Dex pre-opt
+# Dex compiler
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+
+# Dex pre-opt
 WITH_DEXPREOPT := true
+DEX_PREOPT_DEFAULT := generate-vdex-and-image
 WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
 WITH_DEXPREOPT_DEBUG_INFO := false
 DONT_DEXPREOPT_PREBUILTS := true
 
-# Inherit several Android Go Configurations (Beneficial for everyone, even on non-Go devices)
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/boot/boot-image-profile.txt
+# Kernel
+PRODUCT_ENABLE_UFFD_GC := true
+PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -68,8 +72,7 @@ PRODUCT_PACKAGES += \
     libalsautils:32 \
     libdynproc:32 \
     libhapticgenerator:32 \
-    libopus.vendor:32 \
-    libunwindstack.vendor
+    libopus.vendor:32
 
 # Audio configuration files
 PRODUCT_COPY_FILES += \
@@ -425,15 +428,6 @@ PRODUCT_SOONG_NAMESPACES += \
 include $(DEVICE_PATH)/configs/props/vendor_prop.mk
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
-# VINTF
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-
-# Userdata
-PRODUCT_FS_COMPRESSION := 1
-
-# Kernel
-PRODUCT_ENABLE_UFFD_GC := true
-
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal-service.mediatek
@@ -454,8 +448,9 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,mediatek_vibrator,supports_effects,true)
 
-# Vendor Service Manager
+# VNDK
 PRODUCT_PACKAGES += \
+    libunwindstack.vendor \
     vndservicemanager
 
 # Required for QPR3

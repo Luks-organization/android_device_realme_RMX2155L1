@@ -11,6 +11,8 @@ vendor.audiomediatek.                        u:object_r:vendor_audioserver_prop:
 persist.vendor.camera.privapp.list           u:object_r:vendor_mtk_camera_prop:s0
 vendor.camera.vm.parameters                  u:object_r:vendor_mtk_camera_prop:s0
 vendor.debug.tpi.                            u:object_r:vendor_mtk_camera_prop:s0
+vendor.oplus.                                u:object_r:vendor_mtk_camera_prop:s0
+vendor.oppo.                                 u:object_r:vendor_mtk_camera_prop:s0
 
 # Fingerprint
 persist.vendor.fingerprint.                  u:object_r:vendor_fingerprint_prop:s0

@@ -86,6 +86,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.light</name>
+        <version>2</version>
         <interface>
             <name>ILights</name>
             <instance>default</instance>
@@ -108,6 +109,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.power</name>
+        <version>6</version>
         <interface>
             <name>IPower</name>
             <instance>default</instance>
@@ -123,6 +125,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.vibrator</name>
+        <version>2</version>
         <interface>
             <name>IVibrator</name>
             <instance>default</instance>
@@ -130,6 +133,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi.hostapd</name>
+        <version>3</version>
         <interface>
             <name>IHostapd</name>
             <instance>default</instance>
@@ -137,6 +141,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi.supplicant</name>
+        <version>4</version>
         <interface>
             <name>ISupplicant</name>
             <instance>default</instance>
@@ -144,6 +149,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.wifi</name>
+        <version>3</version>
         <interface>
             <name>IWifi</name>
             <instance>default</instance>
@@ -158,6 +164,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.bluetooth.audio</name>
+        <version>5</version>
         <interface>
             <name>IBluetoothAudioProviderFactory</name>
             <instance>default</instance>
@@ -165,9 +172,42 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.drm</name>
+        <version>1</version>
         <interface>
             <name>IDrmFactory</name>
             <instance>clearkey</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.frameworks.stats</name>
+        <version>1-2</version>
+        <interface>
+            <name>IStats</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.power.stats</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IPowerStats</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>android.hardware.power.stats</name>
+        <interface>
+            <name>IPowerStats</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>vendor.oplus.hardware.binderstats</name>
+        <version>1.0</version>
+        <interface>
+            <name>IBinderStats</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
@@ -201,6 +241,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.thermal</name>
+        <version>3</version>
         <interface>
             <name>IThermal</name>
             <instance>default</instance>
@@ -246,13 +287,6 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="aidl" optional="true">
-        <name>android.hardware.power.stats</name>
-        <interface>
-            <name>IPowerStats</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
     <hal format="hidl" optional="true">
         <name>android.system.wifi.keystore</name>
         <version>1.0</version>
@@ -271,6 +305,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.usb</name>
+        <version>3</version>
         <interface>
             <name>IUsb</name>
             <instance>default</instance>
@@ -346,14 +381,6 @@
         <version>1.0</version>
         <interface>
             <name>IDisplayPanelFeature</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.oplus.hardware.binderstats</name>
-        <version>1.0</version>
-        <interface>
-            <name>IBinderStats</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -573,14 +600,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.oplus.hardware.virtual_device.audio</name>
-        <version>1.0</version>
-        <interface>
-            <name>IStatusProvider</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.oplus.hardware.virtual_device.camera.manager</name>
         <version>1.0</version>
         <interface>
@@ -697,6 +716,7 @@
     <!-- Charging -->
     <hal format="aidl" optional="true">
         <name>vendor.lineage.health</name>
+        <version>2</version>
         <interface>
             <name>IChargingControl</name>
             <instance>default</instance>
@@ -708,6 +728,7 @@
     </hal>
     <hal format="aidl" optional="true">
         <name>android.hardware.health</name>
+        <version>3</version>
         <interface>
             <name>IHealth</name>
             <instance>default</instance>

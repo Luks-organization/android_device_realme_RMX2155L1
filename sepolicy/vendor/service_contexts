@@ -52,3 +52,4 @@ android.hardware.radio.messaging.IRadioMessaging/em1                 u:object_r:
 android.hardware.radio.messaging.IRadioMessaging/em2                 u:object_r:hal_radio_service:s0
 android.hardware.radio.messaging.IRadioMessaging/se1                 u:object_r:hal_radio_service:s0
 android.hardware.radio.messaging.IRadioMessaging/se2                 u:object_r:hal_radio_service:s0
+vendor.google.wireless_charger.IWirelessCharger/default              u:object_r:hal_wireless_charger_service:s0

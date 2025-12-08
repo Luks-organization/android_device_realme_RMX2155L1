@@ -1,0 +1,14 @@
+allow init proc:file rw_file_perms;
+allow init system_data_file:dir rw_dir_perms;
+allow init system_file:file mounton;
+allow init sysfs_mem_sleep:file rw_file_perms;
+allow init socket_device:sock_file { create setattr unlink };
+allow init vendor_file:file mounton;
+
+get_prop(init, system_oplus_project_prop)
+get_prop(init, system_oplus_audio_prop)
+get_prop(init, system_cabc_prop)
+get_prop(init, system_prop)
+get_prop(init, default_prop)
+
+set_prop(init, system_oplus_project_prop)

@@ -15,13 +15,19 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from device makefile.
 $(call inherit-product, device/realme/RMX2155L1/device.mk)
 
-# Build flag
-TARGET_ENABLE_BLUR := true
-TARGET_DISABLE_MATLOG := true
-TARGET_FACE_UNLOCK_SUPPORTED := true
+# Evo-X flags
+BUILD_BCR := true
+EVO_BUILD_TYPE := Unofficial
+TARGET_SUPPORTS_64_BIT_APPS := true
 TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_INCLUDE_ACCORD := true
+
+# Gapps
+WITH_GMS := true
+TARGET_USES_MINI_GAPPS := true
 
 # Boot animation
+TARGET_INCLUDE_BOOT_ANIMATIONS := true
 TARGET_BOOT_ANIMATION_RES := 1920
 
 # Device Information

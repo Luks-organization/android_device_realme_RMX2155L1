@@ -1,3 +1,2 @@
-allow mobicore shell_data_file:dir search;
 get_prop(mobicore, system_oplus_project_prop)
-get_prop(mobicore, system_prop)
+get_prop(mobicore, system_cabc_prop)

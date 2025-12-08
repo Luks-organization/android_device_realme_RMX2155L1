@@ -1,1 +1,1 @@
-add_service(mediaprovider_app, radio_service)
+allow mediaprovider_app radio_service:service_manager { find };

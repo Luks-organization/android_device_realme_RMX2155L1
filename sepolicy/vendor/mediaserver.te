@@ -1,4 +1,3 @@
-add_service(mediaserver, media_quality_service)
+allow mediaserver vendor_mtk_ct_ir_engmode_prop:file { read open getattr };
 
-get_prop(mediaserver, vendor_variant_prop)
-get_prop(mediaserver, vendor_default_prop)
+get_prop(mediaserver, vendor_mtk_ct_ir_engmode_prop)
