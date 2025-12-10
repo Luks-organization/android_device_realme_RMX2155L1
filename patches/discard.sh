@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DEVICE=MT6785
+DEVICE=RMX2155L1
 VENDOR=realme
 
 export originalPath=$(pwd)
-export branch="evo"
+export branch="infinity"
 
 if [ $(pwd) == "${ANDROID_BUILD_TOP}" ] ; then export originalPath=$(pwd)/device/$VENDOR/$DEVICE/patches/ ; fi
 

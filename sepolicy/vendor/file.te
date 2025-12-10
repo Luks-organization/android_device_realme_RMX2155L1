@@ -12,10 +12,10 @@ type vendor_proc_charger, fs_type, proc_type;
 type vendor_proc_tbatt_pwroff, fs_type, proc_type;
 type vendor_proc_wireless, fs_type, proc_type;
 type vendor_proc_oplus_fastchg, fs_type, proc_type;
-type sysfs_chargelevel, sysfs_type, fs_type;
+type sysfs_chargelevel, fs_type, sysfs_type;
 
 # Display
-type sysfs_graphics, sysfs_type, fs_type;
+type vendor_sysfs_graphics, fs_type, sysfs_type;
 type vendor_proc_display, fs_type, proc_type;
 type vendor_display_vendor_data_file, file_type, data_file_type;
 

@@ -18,4 +18,3 @@ ro.oplus.image.odm.version=version_stub.f62907f3
 ro.version.confidential=false
 ro.product.hw=20743
 ro.separate.soft=20743
-persist.vendor.radio.telecom.vibrate=0

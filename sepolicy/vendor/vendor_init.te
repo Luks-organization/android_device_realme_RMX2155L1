@@ -23,9 +23,7 @@ allow vendor_init nfc_data_vendor_file:dir { r_dir_perms create_dir_perms };
 allow vendor_init mtk_hal_videotelephony_hwservice:hwservice_manager find;
 allow vendor_init hal_performance_oplus_hwservice:hwservice_manager find;
 allow vendor_init mtk_radio_device:lnk_file unlink;
-allow vendor_init sysfs_leds:file create_file_perms;
-allow vendor_init sysfs_graphics:file { rw_file_perms create_file_perms };
-
+rw_dir_file(vendor_init, vendor_sysfs_graphics)
 rw_dir_file(vendor_init, sysfs_leds)
 
 get_prop(vendor_init, system_mtk_camera_prop)

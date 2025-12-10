@@ -15,14 +15,12 @@ allow hal_fingerprint_default factorytestreport_vendor_data_file:file create_fil
 allow hal_fingerprint_default graphics_device:chr_file rw_file_perms;
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
 allow hal_fingerprint_default mobicore_user_device:chr_file rw_file_perms;
-allow hal_fingerprint_default sysfs_graphics:file w_file_perms;
 allow hal_fingerprint_default sysfs_fingerprint:file rw_file_perms;
 allow hal_fingerprint_default sysfs_fingerprint:dir r_dir_perms;
 allow hal_fingerprint_default sysfs_wakeup:file rw_file_perms;
 allow hal_fingerprint_default rootfs:dir r_dir_perms;
 allow hal_fingerprint_default mnt_vendor_file:dir search;
 allow hal_fingerprint_default persist_data_file:dir search;
-allow hal_fingerprint_default vendor_proc_fingerprint:file w_file_perms;
 allow hal_fingerprint_default vendor_proc_display:dir r_dir_perms;
 allow hal_fingerprint_default vendor_proc_display:file rw_file_perms;
 allow hal_fingerprint_default vendor_data_file:dir { read open };
@@ -35,10 +33,10 @@ add_hwservice(hal_fingerprint_default, hal_commondcs_oplus_hwservice)
 add_hwservice(hal_fingerprint_default, hal_fingerprint_oplus_hwservice)
 add_service(hal_fingerprint_default, fs_service)
 
+rw_dir_file(hal_fingerprint_default, vendor_sysfs_graphics)
+rw_dir_file(hal_fingerprint_default, vendor_proc_fingerprint)
 r_dir_file(hal_fingerprint_default, vendor_sysfs_battery_supply)
-r_dir_file(hal_fingerprint_default, vendor_proc_fingerprint)
 r_dir_file(hal_fingerprint_default, sysfs_batteryinfo)
-r_dir_file(hal_fingerprint_default, sysfs_graphics)
 
 get_prop(hal_fingerprint_default, system_oplus_project_prop)
 set_prop(hal_fingerprint_default, system_fingerprint_prop)

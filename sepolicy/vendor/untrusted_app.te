@@ -1,24 +1,19 @@
-dontaudit untrusted_app proc:file r_file_perms;
-dontaudit untrusted_app sysfs:file r_file_perms;
-
 allow untrusted_app block_device:dir r_dir_perms;
-allow untrusted_app vendor_sysfs_battery_supply:dir r_dir_perms;
-allow untrusted_app vendor_sysfs_battery_supply:file r_file_perms;
-allow untrusted_app vendor_proc_batt_param:file r_file_perms;
-allow untrusted_app vendor_proc_charger:dir r_dir_perms;
-allow untrusted_app vendor_proc_charger:file r_file_perms;
-allow untrusted_app vendor_proc_display:dir r_dir_perms;
-allow untrusted_app vendor_proc_display:file r_file_perms;
-allow untrusted_app vendor_proc_nfc_chipset:dir r_dir_perms;
-allow untrusted_app vendor_proc_nfc_chipset:file r_file_perms;
-allow untrusted_app vendor_proc_oplus_sensor_feature:dir r_dir_perms;
-allow untrusted_app vendor_proc_oplus_sensor_feature:file r_file_perms;
-allow untrusted_app vendor_proc_oplus_version:dir r_dir_perms;
-allow untrusted_app proc_bus_input:file { read open };
-allow untrusted_app proc_cpufreq:dir { read open };
+allow untrusted_app vendor_sysfs_battery_supply:file getattr;
+allow untrusted_app vendor_proc_batt_param:file getattr;
+allow untrusted_app vendor_proc_charger:file getattr;
+allow untrusted_app vendor_proc_display:file getattr;
+allow untrusted_app vendor_proc_nfc_chipset:file getattr;
+allow untrusted_app vendor_proc_oplus_sensor_feature:file getattr;
+allow untrusted_app vendor_proc_oplus_version:file getattr;
+allow untrusted_app proc:file getattr;
+allow untrusted_app proc_bus_input:file getattr;
+allow untrusted_app proc_cpufreq:dir getattr;
+allow untrusted_app proc_stat:file getattr;
 allow untrusted_app unlabeled:filesystem getattr;
 allow untrusted_app userdata_block_device:blk_file getattr;
 allow untrusted_app zygote:unix_stream_socket getopt;
 allow untrusted_app media_rw_data_file:file relabelfrom;
+dontaudit untrusted_app sysfs:file r_file_perms;
 
 get_prop(untrusted_app, system_oplus_project_prop)

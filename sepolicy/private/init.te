@@ -6,10 +6,9 @@ allow init socket_device:sock_file { create setattr unlink };
 allow init vendor_file:file mounton;
 
 get_prop(init, system_oplus_project_prop)
-get_prop(init, system_oplus_audio_prop)
 get_prop(init, system_cabc_prop)
 get_prop(init, system_prop)
 get_prop(init, default_prop)
 
-set_prop(init, system_oplus_project_prop)
-set_prop(init, bluetooth_prop)
+set_prop(init, system_mtk_camera_prop)
+set_prop(init, system_oplus_audio_prop)

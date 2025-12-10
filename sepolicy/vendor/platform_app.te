@@ -5,7 +5,7 @@ allow platform_app hal_performance_oplus_hwservice:hwservice_manager find;
 
 r_dir_file(platform_app, persist_data_file)
 r_dir_file(platform_app, persist_camera_file)
-r_dir_file(platform_app, sysfs_graphics)
+r_dir_file(platform_app, vendor_sysfs_graphics)
 
 get_prop(platform_app, system_oplus_project_prop)
 

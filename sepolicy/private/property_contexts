@@ -1,12 +1,16 @@
 # Camera
 NA                                               u:object_r:exported_system_prop:s0
 oplus.camera.                                    u:object_r:exported_system_prop:s0
-persist.sys.camera.log.                          u:object_r:exported_system_prop:s0
-oplus.camera.debug.                              u:object_r:exported_system_prop:s0
 oplus.switch.                                    u:object_r:exported_system_prop:s0
+persist.sys.camera.lao.enable                    u:object_r:exported_system_prop:s0
 demo.                                            u:object_r:exported_system_prop:s0
-ro.oppo.                                         u:object_r:exported_system_prop:s0
-ro.oplus.                                        u:object_r:exported_system_prop:s0
+ro.oplus.system.camera.                          u:object_r:exported_system_prop:s0
+sys.multiwin_for_camera                          u:object_r:exported_system_prop:s0
+
+# Version
+ro.build.release_type                            u:object_r:exported_system_prop:s0
+ro.hardware.chipname                             u:object_r:exported_system_prop:s0
+ro.version.confidential                          u:object_r:exported_default_prop:s0
 
 # Audio
 audio.tuning.def_path                            u:object_r:system_oplus_audio_prop:s0
@@ -34,10 +38,11 @@ ro.mtk_cam_dualzoom_support                      u:object_r:system_mtk_camera_pr
 ro.mtk_cam_stereo_camera_support                 u:object_r:system_mtk_camera_prop:s0
 
 # Oplus
+ro.separate.soft                                 u:object_r:system_oplus_project_prop:s0
+ro.vendor.oplus.sensor.                          u:object_r:system_oplus_project_prop:s0
 ro.vendor.oplus.aal.                             u:object_r:system_oplus_project_prop:s0
 ro.product.marketname                            u:object_r:system_oplus_project_prop:s0
 ro.oplus.market.name                             u:object_r:system_oplus_project_prop:s0
-ro.separate.soft                                 u:object_r:system_oplus_project_prop:s0
 ro.oplus.version.                                u:object_r:system_oplus_project_prop:s0
 ro.oplus.image.                                  u:object_r:system_oplus_project_prop:s0
 ro.build.version.svn                             u:object_r:system_oplus_project_prop:s0
@@ -59,10 +64,6 @@ persist.sys.assert.panic                         u:object_r:exported_system_prop
 # Modem
 ro.oplus.operator                                u:object_r:exported_system_prop:s0
 persist.oplus.network.                           u:object_r:exported_system_prop:s0
-
-# Hardware
-ro.hardware.chipname                             u:object_r:exported_default_prop:s0
-ro.version.confidential                          u:object_r:exported_default_prop:s0
 
 # Als Sensors
 vendor.sensors.als_correction.                   u:object_r:system_sensors_als_prop:s0

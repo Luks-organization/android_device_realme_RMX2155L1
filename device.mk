@@ -302,7 +302,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     SettingsProviderOverlayRMX2151L1 \
-    SettingsProviderOverlayRMX2155L1
+    SettingsProviderOverlayRMX2155L1 \
+    SettingsProviderOverlayRMX2156L1 \
+    SettingsProviderOverlayRMX2161L1 \
+    SettingsProviderOverlayRMX2163L1
 
 # RRO (Runtime Resource Overlay)
 PRODUCT_ENFORCE_RRO_TARGETS := *

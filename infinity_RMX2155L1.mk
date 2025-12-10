@@ -44,7 +44,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-$(PRODUCT_BRAND)
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc=$(call normalize-path-list, "sys_mssi_64_cn_armv82-user 12 SP1A.210812.016 1668670161293 release-keys") \
-    SystemModel=$(PRODUCT_SYSTEM_NAME) \
+    SystemDevice=$(PRODUCT_SYSTEM_DEVICE)\
     SystemName=$(PRODUCT_SYSTEM_NAME) \
-    ProductModel=$(PRODUCT_SYSTEM_NAME) \
-    DeviceProduct=$(PRODUCT_SYSTEM_DEVICE)
+    DeviceName=$(PRODUCT_SYSTEM_DEVICE) \
+    DeviceProduct=$(PRODUCT_SYSTEM_NAME)

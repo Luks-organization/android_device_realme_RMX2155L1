@@ -5,10 +5,9 @@ allow hal_graphics_composer_default vendor_display_vendor_data_file:dir create_d
 allow hal_graphics_composer_default vendor_display_vendor_data_file:file create_file_perms;
 allow hal_graphics_composer_default vendor_proc_oplus_version:file r_file_perms;
 allow hal_graphics_composer_default persist_data_file:file r_file_perms;
-allow hal_graphics_composer_default sysfs_graphics:dir search;
-allow hal_graphics_composer_default sysfs_graphics:file rw_file_perms;
-allow hal_graphics_composer_default sysfs_leds:dir search;
-allow hal_graphics_composer_default sysfs_leds:file rw_file_perms;
 allow hal_graphics_composer_default gpu_device:dir search;
 allow hal_graphics_composer_default gpu_device:chr_file rw_file_perms;
 allow hal_graphics_composer_default gpu_device:chr_file ioctl;
+
+rw_dir_file(hal_graphics_composer_default, vendor_sysfs_graphics)
+rw_dir_file(hal_graphics_composer_default, sysfs_leds)

@@ -1,3 +1,10 @@
+# Audio
+aaudio.mmap_exclusive_policy=2
+aaudio.mmap_policy=2
+
+# BPF
+#ro.bpf.kver_override=5.4.299
+
 # Radio FM
 ro.fm.band=1
 ro.fm.chip=0x6631
@@ -16,6 +23,7 @@ ro.fm.seek_space=1
 ro.fm.short_ana_sup=1
 
 # Bluetooth
+bluetooth.device.class_of_device=90,2,12
 bluetooth.device_id.vendor_id=0x0046
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
@@ -37,3 +45,14 @@ bluetooth.profile.pan.panu.enabled?=true
 bluetooth.profile.pbap.server.enabled?=true
 bluetooth.profile.sap.server.enabled?=true
 bluetooth.profile.vcp.controller.enabled?=true
+persist.bluetooth.a2dp_offload.disabled=false
+persist.bluetooth.leaudio.allow.multiple.context=false
+persist.bluetooth.leaudio_offload.disabled=false
+persist.bluetooth.leaudio.allow.multiple.context=false
+persist.bluetooth.leaudio.bypass_allow_list=true
+persist.bluetooth.leaudio.notify.idle.during.call=true
+persist.bluetooth.leaudio_offload.disabled=false
+persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac-lhdc
+persist.bluetooth.enable_power_stats=true
+ro.bluetooth.leaudio_offload.supported=true
+ro.bluetooth.a2dp_offload.supported=true
