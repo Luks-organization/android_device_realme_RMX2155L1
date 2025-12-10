@@ -1,4 +1,4 @@
-<compatibility-matrix version="4.0" type="framework">
+<compatibility-matrix version="6.0" type="framework">
     <hal format="hidl" optional="true">
         <name>vendor.dolby_v3_6.hardware.dms360</name>
         <version>2.0</version>
@@ -384,6 +384,14 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.oplus.hardware.displaypanelfeature</name>
+        <version>1</version>
+        <interface>
+            <name>IDisplayPanelFeature</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.oplus.hardware.camera.slogan</name>
         <version>1.0</version>
@@ -413,6 +421,14 @@
         <version>1.0</version>
         <interface>
             <name>ICryptoeng</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+        <name>vendor.oplus.hardware.cwb</name>
+        <version>1</version>
+        <interface>
+            <name>ICwbService</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -708,8 +724,13 @@
     <!-- Touch -->
     <hal format="aidl" optional="true">
         <name>vendor.lineage.touch</name>
+        <version>1</version>
         <interface>
             <name>ITouchscreenGesture</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IHighTouchPollingRate</name>
             <instance>default</instance>
         </interface>
     </hal>

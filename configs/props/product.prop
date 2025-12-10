@@ -17,7 +17,6 @@ ro.fm.short_ana_sup=1
 
 # Bluetooth
 bluetooth.device_id.vendor_id=0x0046
-persist.bluetooth.enable_power_stats=true
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
 bluetooth.profile.bap.broadcast.assist.enabled?=true

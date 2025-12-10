@@ -17,10 +17,8 @@ allow vendor_init vendor_sysfs_battery_supply:dir search;
 allow vendor_init vendor_sysfs_battery_supply:file rw_file_perms;
 allow init vendor_proc_oplus_version:file r_file_perms;
 allow vendor_init vendor_proc_display:file { rw_file_perms create_file_perms };
-allow vendor_init vendor_proc_decimal:file w_file_perms;
 allow vendor_init vendor_data_file:dir rw_dir_perms;
-allow vendor_init vendor_proc_fastchg_fw:file w_file_perms;
-allow vendor_init vendor_firmware_file:dir search;
+allow vendor_init vendor_proc_oplus_fastchg:file rw_file_perms;
 allow vendor_init nfc_data_vendor_file:dir { r_dir_perms create_dir_perms };
 allow vendor_init mtk_hal_videotelephony_hwservice:hwservice_manager find;
 allow vendor_init hal_performance_oplus_hwservice:hwservice_manager find;
@@ -42,4 +40,5 @@ set_prop(vendor_init, vendor_persist_light_prop)
 set_prop(vendor_init, vendor_oplus_radio_prop)
 set_prop(vendor_init, vendor_audioserver_prop)
 set_prop(vendor_init, vendor_audio_tuning_prop)
+set_prop(vendor_init, vendor_oplus_touch_prop)
 set_prop(vendor_init, vendor_mtk_pq_prop)

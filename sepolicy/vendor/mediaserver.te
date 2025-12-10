@@ -1,3 +1,1 @@
-allow mediaserver vendor_mtk_ct_ir_engmode_prop:file { read open getattr };
-
 get_prop(mediaserver, vendor_mtk_ct_ir_engmode_prop)

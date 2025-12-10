@@ -4,7 +4,7 @@ DEVICE=MT6785
 VENDOR=realme
 
 export originalPath=$(pwd)
-export branch="16.0"
+export branch="evo"
 
 if [ $(pwd) == "${ANDROID_BUILD_TOP}" ] ; then export originalPath=$(pwd)/device/$VENDOR/$DEVICE/patches/ ; fi
 

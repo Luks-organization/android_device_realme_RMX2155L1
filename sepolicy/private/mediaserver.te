@@ -1,4 +1,2 @@
 allow mediaserver media_quality_service:service_manager find;
-allow mediaserver system_mtk_graphics_sf_gll_prop:file { read open getattr };
-
 get_prop(mediaserver, system_mtk_graphics_sf_gll_prop)

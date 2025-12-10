@@ -12,3 +12,4 @@ get_prop(init, system_prop)
 get_prop(init, default_prop)
 
 set_prop(init, system_oplus_project_prop)
+set_prop(init, bluetooth_prop)

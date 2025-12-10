@@ -1,14 +1,8 @@
-binder_use(system_server)
-
 allow system_server config_gz:file getattr;
 allow system_server proc_ccci_lp_mem:file getattr;
 allow system_server proc_partition:file getattr;
 allow system_server isolated_compute_app:unix_stream_socket getopt;
-allow system_server gpuservice:binder call;
-allow system_server gpu_service:service_manager find;
-allow system_server custom_version_prop:file { read open getattr };
 
 get_prop(system_server, wifi_hal_prop)
 get_prop(system_server, default_prop)
-get_prop(system_server, custom_version_prop)
 get_prop(system_server, system_user_mode_emulation_prop)

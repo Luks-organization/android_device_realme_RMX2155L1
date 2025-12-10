@@ -1,6 +1,13 @@
 # Camera
 vendor.oplus.hardware.engcamera::IEngCamera                                   u:object_r:hal_camera_oplus_hwservice:s0
 
+# Display
+vendor.display.PanelChaplin::IPanelChaplin                                    u:object_r:hal_graphics_composer_hwservice:s0
+vendor.oplus.hardware.cwb::ICwbService                                        u:object_r:hal_graphics_composer_hwservice:s0
+vendor.oplus.hardware.displaypanelfeature::IDisplayPanelFeature               u:object_r:hal_graphics_composer_hwservice:s0
+vendor.pixelworks.hardware.display::IIris                                     u:object_r:hal_graphics_composer_hwservice:s0
+vendor.pixelworks.hardware.feature::IIrisFeature                              u:object_r:hal_graphics_composer_hwservice:s0
+
 # Charging
 vendor.oplus.hardware.charger::ICharger                                       u:object_r:hal_charger_oplus_hwservice:s0
 
@@ -22,10 +29,10 @@ vendor.nxp.nxpese::INxpEse                                                    u:
 vendor.nxp.nxpnfc::INxpNfc                                                    u:object_r:nxpnfc_hwservice:s0
 
 # Radio
-vendor.oplus.hardware.radio::IOplusRadio                                      u:object_r:hal_telephony_hwservice:s0
-vendor.oplus.hardware.appradio::IOplusAppRadio                                u:object_r:hal_telephony_hwservice:s0
-vendor.oplus.hardware.ims::IOplusImsRadio                                     u:object_r:hal_telephony_hwservice:s0
-vendor.oplus.hardware.mtkmodemaci::IMtkModemAci                               u:object_r:hal_telephony_hwservice:s0
+vendor.oplus.hardware.radio::IOplusRadio                                      u:object_r:mtk_hal_rild_hwservice:s0
+vendor.oplus.hardware.appradio::IOplusAppRadio                                u:object_r:mtk_hal_rild_hwservice:s0
+vendor.oplus.hardware.ims::IOplusImsRadio                                     u:object_r:mtk_hal_rild_hwservice:s0
+vendor.oplus.hardware.mtkmodemaci::IMtkModemAci                               u:object_r:mtk_hal_rild_hwservice:s0
 
 # Sensors
 vendor.oplus.hardware.oplusSensor::ISensorFeature                             u:object_r:hal_sensors_hwservice:s0

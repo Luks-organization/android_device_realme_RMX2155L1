@@ -9,25 +9,25 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Infinity-X OS stuff.
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 # Inherit from device makefile.
 $(call inherit-product, device/realme/RMX2155L1/device.mk)
 
-# Evo-X flags
-BUILD_BCR := true
-EVO_BUILD_TYPE := Unofficial
-TARGET_SUPPORTS_64_BIT_APPS := true
+# Infinity-X flags
+INFINITY_BUILD_TYPE := UNOFFICIAL
+INFINITY_MAINTAINER := LUKS
+TARGET_SUPPORTS_BLUR := true
 TARGET_SUPPORTS_QUICK_TAP := true
-TARGET_INCLUDE_ACCORD := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_BUILD_DEVICE_AS_WEBCAM := false
+TARGET_SUPPORTS_64_BIT_APPS := true
 
 # Gapps
-WITH_GMS := true
-TARGET_USES_MINI_GAPPS := true
+WITH_GAPPS := true
 
 # Boot animation
-TARGET_INCLUDE_BOOT_ANIMATIONS := true
 TARGET_BOOT_ANIMATION_RES := 1920
 
 # Device Information

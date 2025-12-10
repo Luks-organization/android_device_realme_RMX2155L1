@@ -2,6 +2,7 @@ net_domain(gmscore_app)
 
 allow gmscore_app apex_system_server_data_file:dir r_dir_perms;
 allow gmscore_app apex_mnt_dir:dir r_dir_perms;
+allow gmscore_app bluetooth_manager_service:service_manager find;
 allow gmscore_app metadata_file:dir r_dir_perms;
 allow gmscore_app system_dlkm_file:dir r_dir_perms;
 allow gmscore_app system_file:file r_file_perms;
@@ -16,4 +17,3 @@ get_prop(gmscore_app, system_adbd_prop)
 get_prop(gmscore_app, system_oplus_project_prop)
 
 binder_call(gmscore_app, system_server)
-binder_call(gmscore_app, bluetooth_manager_service)

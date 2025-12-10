@@ -40,12 +40,21 @@ vendor.usbsph.srcaws.pcm.dump=0
 vendor.usbsph.ul.pcm.dump=0
 
 # Bluetooth
-vendor.bluetooth.ldac.abr=true
 bluetooth.device.class_of_device=90,2,12
-persist.bluetooth.a2dp_offload.disabled=false
 ro.bluetooth.a2dp_offload.supported=true
 ro.vendor.bt.platform=connac1x
 ro.vendor.mtk.bt_sap_enable=true
+ro.bluetooth.leaudio_offload.supported=true
+persist.bluetooth.a2dp_offload.disabled=false
+persist.bluetooth.leaudio.allow.multiple.context=false
+persist.bluetooth.leaudio_offload.disabled=false
+persist.bluetooth.leaudio.allow.multiple.context=false
+persist.bluetooth.leaudio.bypass_allow_list=true
+persist.bluetooth.leaudio.notify.idle.during.call=true
+persist.bluetooth.leaudio_offload.disabled=false
+persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac-lhdc
+persist.bluetooth.enable_power_stats=true
+vendor.bluetooth.ldac.abr=true
 
 # Camera
 persist.vendor.camera.privapp.list=com.android.camera,com.google.camera,org.lineageos.aperture,org.lineageos.aperture.dev
@@ -93,7 +102,7 @@ debug.sf.auto_latch_unsignaled=0
 debug.sf.enable_advanced_sf_phase_offset=1
 #debug.sf.enable_auto_power_mode=1
 debug.sf.enable_egl_image_tracker=0
-debug.sf.enable_gl_backpressure=1
+debug.sf.enable_gl_backpressure=0
 debug.sf.enable_hwc_vds=0
 debug.sf.predict_hwc_composition_strategy=0
 debug.sf.recomputecrop=0
@@ -108,9 +117,9 @@ debug.sf.early.app.duration=16600000
 debug.sf.earlyGl.sf.duration=16600000
 debug.sf.earlyGl.app.duration=16600000
 debug.graphics.game_default_frame_rate.disabled=true
-ro.surface_flinger.supports_background_blur=1
 ro.surface_flinger.enable_frame_rate_override=false
 ro.surface_flinger.has_HDR_display=true
+ro.surface_flinger.has_wide_color_display=true
 ro.surface_flinger.primary_display_orientation=ORIENTATION_0
 ro.surface_flinger.protected_contents=true
 ro.surface_flinger.set_display_power_timer_ms=1000
@@ -186,9 +195,9 @@ ro.vendor.pq.mtk_video_transition=1
 ro.vendor.pref_scale_enable_cfg=1
 vendor.mtk_thumbnail_optimization=true
 persist.vendor.light.max_brightness=2047
-debug.mediatek.disp_decompress=1
 service.sf.prime_shader_cache=0
 debug.renderengine.backend=skiaglthreaded
+debug.mediatek.disp_decompress=1
 
 # LMK
 ro.lmk.kill_heaviest_task=true
@@ -299,7 +308,6 @@ ro.oem_unlock_supported=1
 #ro.usb.uvc.payload_transfer_size=1024
 
 # USB
-sys.usb.mtp.batchcancel=1
 vendor.usb.use_ffs_mtp=1 
 vendor.usb.use_gadget_hal=1
 vendor.usb.diag.func.name=ffs

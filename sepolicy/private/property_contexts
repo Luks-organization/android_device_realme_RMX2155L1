@@ -3,10 +3,8 @@ NA                                               u:object_r:exported_system_prop
 oplus.camera.                                    u:object_r:exported_system_prop:s0
 persist.sys.camera.log.                          u:object_r:exported_system_prop:s0
 oplus.camera.debug.                              u:object_r:exported_system_prop:s0
-demo.hole                                        u:object_r:exported_system_prop:s0
-demo.near                                        u:object_r:exported_system_prop:s0
-demo.far                                         u:object_r:exported_system_prop:s0
-demo.fb                                          u:object_r:exported_system_prop:s0
+oplus.switch.                                    u:object_r:exported_system_prop:s0
+demo.                                            u:object_r:exported_system_prop:s0
 ro.oppo.                                         u:object_r:exported_system_prop:s0
 ro.oplus.                                        u:object_r:exported_system_prop:s0
 
@@ -42,6 +40,10 @@ ro.oplus.market.name                             u:object_r:system_oplus_project
 ro.separate.soft                                 u:object_r:system_oplus_project_prop:s0
 ro.oplus.version.                                u:object_r:system_oplus_project_prop:s0
 ro.oplus.image.                                  u:object_r:system_oplus_project_prop:s0
+ro.build.version.svn                             u:object_r:system_oplus_project_prop:s0
+ro.build.version.svn.c                           u:object_r:system_oplus_project_prop:s0
+ro.build.version.ota                             u:object_r:system_oplus_project_prop:s0
+ro.product.hw                                    u:object_r:system_oplus_project_prop:s0
 oplus.debug.nvram.                               u:object_r:system_oplus_project_prop:s0
 
 # Fingerprint
@@ -50,6 +52,10 @@ oplus.optical.                                   u:object_r:system_fingerprint_p
 oplus.goodix.fp                                  u:object_r:system_fingerprint_prop:s0
 gf.debug.                                        u:object_r:system_fingerprint_prop:s0
 
+# Logging
+persist.camera.assert.panic                      u:object_r:exported_system_prop:s0
+persist.sys.assert.panic                         u:object_r:exported_system_prop:s0
+
 # Modem
 ro.oplus.operator                                u:object_r:exported_system_prop:s0
 persist.oplus.network.                           u:object_r:exported_system_prop:s0
@@ -57,12 +63,6 @@ persist.oplus.network.                           u:object_r:exported_system_prop
 # Hardware
 ro.hardware.chipname                             u:object_r:exported_default_prop:s0
 ro.version.confidential                          u:object_r:exported_default_prop:s0
-ro.product.hw                                    u:object_r:exported_default_prop:s0
-
-# SVN
-ro.build.version.svn                             u:object_r:build_prop:s0
-ro.build.version.svn.c                           u:object_r:build_prop:s0
-ro.build.version.ota                             u:object_r:build_prop:s0
 
 # Als Sensors
 vendor.sensors.als_correction.                   u:object_r:system_sensors_als_prop:s0

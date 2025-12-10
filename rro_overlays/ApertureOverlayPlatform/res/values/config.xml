@@ -21,6 +21,9 @@
         <item>6</item>
     </string-array>
 
+    <!-- New flag to allow aperture in aux package allowlist -->
+    <bool name="config_cameraAuxPackageAllowlist">true</bool>
+
     <!-- An array of triplets made of (camera ID, qualities, framerates).
          These video modes will be added to the available
          quality/frame rate combinations of a camera device.

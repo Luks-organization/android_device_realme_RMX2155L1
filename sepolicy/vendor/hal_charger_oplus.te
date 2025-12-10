@@ -14,9 +14,6 @@ allow hal_charger_oplus vendor_proc_batt_param:dir r_dir_perms;
 allow hal_charger_oplus vendor_proc_batt_param:file r_file_perms;
 allow hal_charger_oplus vendor_proc_batt_param:lnk_file r_file_perms;
 allow hal_charger_oplus vendor_proc_charger:file rw_file_perms;
-allow hal_charger_oplus vendor_proc_decimal:file rw_file_perms;
-allow hal_charger_oplus vendor_proc_devinfo_fastchg:file rw_file_perms;
-allow hal_charger_oplus vendor_proc_fastchg_fw:file rw_file_perms;
 allow hal_charger_oplus vendor_proc_tbatt_pwroff:file rw_file_perms;
 allow hal_charger_oplus vendor_proc_wireless:file rw_file_perms;
 allow hal_charger_oplus sysfs_thermal:file r_file_perms;
@@ -29,13 +26,13 @@ allow hal_charger_oplus vendor_sysfs_usb_supply:lnk_file rw_file_perms;
 allow hal_charger_oplus vendor_sysfs_battery_supply:dir search;
 allow hal_charger_oplus vendor_sysfs_battery_supply:file rw_file_perms;
 allow hal_charger_oplus vendor_sysfs_battery_supply:lnk_file rw_file_perms;
+allow hal_charger_oplus vendor_proc_oplus_fastchg:file rw_file_perms;
+allow hal_charger_oplus vendor_configs_file:file r_file_perms;
 allow hal_charger_oplus oplus_block_device:dir search;
 allow hal_charger_oplus oplus_block_device:file r_file_perms;
 allow hal_charger_oplus oplus_block_device:blk_file r_file_perms;
 allow hal_charger_oplus block_device:dir search;
 allow hal_charger_oplus block_device:file rw_file_perms;
-allow hal_charger_oplus vendor_firmware_file:dir search;
-allow hal_charger_oplus vendor_firmware_file:file r_file_perms;
 
 r_dir_file(hal_charger_oplus, vendor_proc_oplus_version)
 r_dir_file(hal_charger_oplus, sysfs_batteryinfo)

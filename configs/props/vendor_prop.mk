@@ -277,5 +277,4 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.log.tag.C2MtkBufferManager=$(VENDOR_LOG_LEVEL) \
     persist.log.tag.ContrastColorUtil=$(VENDOR_LOG_LEVEL) \
     persist.log.tag.Situation=$(VENDOR_LOG_LEVEL) \
-    persist.log.tag.Choreographer=$(VENDOR_LOG_LEVEL) \
-    persist.log.tag.ServiceManagerCppClient=$(VENDOR_LOG_LEVEL)
+    persist.log.tag.Choreographer=$(VENDOR_LOG_LEVEL)

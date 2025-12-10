@@ -1,0 +1,3 @@
+get_prop(untrusted_app, qemu_hw_prop)
+get_prop(untrusted_app, qemu_sf_lcd_density_prop)
+get_prop(untrusted_app, system_oplus_project_prop)
