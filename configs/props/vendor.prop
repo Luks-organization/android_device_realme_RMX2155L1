@@ -80,14 +80,12 @@ ro.vendor.fm.platform=mt6631
 ro.vendor.fm.use_audio_session=true
 
 # Media
-ro.opengles.version=196610
-ro.netflix.bsp_rev=MTK6785-18787-1
+media.c2.dmabuf.padding=3072
 ro.vendor.mtk_mvpu_security_support=0
 ro.vendor.mtk_sec_video_path_support=1
 ro.vendor.mtk_widevine_drm_l1_support=1
 ro.vendor.mtk.c2.vdec.fmt.support.level=3
 ro.vendor.mtk_video_hevc_enc_support=1
-media.c2.dmabuf.padding=3072
 vendor.mtk.vdec.waitkeyframeforplay=15
 vendor.media.omx=0
 
@@ -96,9 +94,6 @@ ro.vendor.composer_version=2.2
 ro.vendor.smvr.p2batch.fhd=4
 ro.vendor.smvr.p2batch.hd=8
 ro.vendor.smvr.p2batch.vga=16
-ro.hardware.egl=meow
-ro.hardware.vulkan=mt6785
-ro.hardware.hwcomposer=mt6785
 ro.vendor.jpeg_decode_sw_opt=1
 ro.vendor.mml.mtk_mml_support=0
 ro.vendor.mtk_flv_playback_support=1
@@ -132,17 +127,6 @@ ro.vendor.pq.mtk_video_transition=1
 ro.vendor.pref_scale_enable_cfg=1
 vendor.mtk_thumbnail_optimization=true
 persist.vendor.light.max_brightness=2047
-service.sf.prime_shader_cache=0
-
-# LMK
-ro.lmk.kill_heaviest_task=true
-ro.lmk.downgrade_pressure=60
-ro.lmk.kill_timeout_ms=100
-ro.lmk.psi_complete_stall_ms=150
-ro.lmk.swap_free_low_percentage=20
-ro.lmk.swap_util_max=90
-ro.lmk.thrashing_limit=30
-ro.lmk.thrashing_limit_decay=50
 
 # GPS
 ro.vendor.gps.chrdev=gps_drv

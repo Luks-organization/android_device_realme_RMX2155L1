@@ -69,9 +69,12 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.oplus           u:object_r:hal_fingerprint_default_exec:s0
 
 # Emmc 
-/sys/devices/platform/11270000\.ufshci/mmc_host/mmc0/mmc0:0001(/.*)?                                     u:object_r:emmc_base_info_node:s0
-/sys/devices/platform/soc/11270000\.ufshci/mmc_host/mmc0/mmc0:0001(/.*)?                                 u:object_r:emmc_base_info_node:s0
+/sys/devices/platform/11270000\.ufshci/mmc_host/mmc0/mmc0:0001(/.*)?                                    u:object_r:emmc_base_info_node:s0
+/sys/devices/platform/soc/11270000\.ufshci/mmc_host/mmc0/mmc0:0001(/.*)?                                u:object_r:emmc_base_info_node:s0
 /sys/devices/platform/bootdevice/mmc_host/mmc0/mmc0:0001(/.*)?                                          u:object_r:emmc_base_info_node:s0
+
+# Trustonic TEE system files
+/(odm|vendor/odm)/vendor/app/mcRegistry(/.*)?                                                           u:object_r:mobicore_vendor_file:s0
 
 # Firmwares
 /vendor/firmware(/.*)?                                                                                  u:object_r:vendor_configs_file:s0

@@ -39,7 +39,7 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Dex compiler
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
 
 # Dex pre-opt
 WITH_DEXPREOPT := true
@@ -105,8 +105,8 @@ PRODUCT_PACKAGES += \
 # Dolby
 $(call inherit-product, hardware/dolby/dolby.mk)
 
-# JamesDSP
-$(call inherit-product, packages/apps/JamesDSPManager/config.mk)
+# ViperFX
+$(call inherit-product, packages/apps/ViperFX/config.mk)
 
 # RealmePearts
 #PRODUCT_PACKAGES += \

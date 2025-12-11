@@ -17,19 +17,6 @@ ro.mtk_besloudness_support=1
 # Brand
 Build.BRAND=MTK
 
-# Display
-persist.sys.enable_mtk_scp_dump=1
-persist.sys.sf.color_mode=9
-persist.sys.sf.color_saturation=1.1
-persist.sys.sf.native_mode=2
-ro.opengles.version=196610
-ro.mtk_display_ovl_support=1
-ro.mtk_pq.ctrld_dpi_support=1
-debug.mediatek.disp_decompress=1
-debug.cpurend.vsync=false
-debug.renderengine.backend=skiaglthreaded
-qemu.hw.mainkeys=0
-
 # Camera
 persist.camera.HAL3.enabled=1
 persist.camera.eis.enable=1
@@ -44,14 +31,45 @@ ro.mtk_cam.mfb.ultimate=1
 ro.mtk_cam_dualzoom_support=1
 ro.mtk_cam_stereo_camera_support=1
 
+# Dalvik
+dalvik.vm.systemuicompilerfilter=speed
+dalvik.vm.image-dex2oat-filter=speed
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.dex2oat64.enabled=true
+
+# Dex2oat
+pm.dexopt.boot=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.install=speed-profile
+persist.bg.dexopt.enable=true
+
+# Display
+ro.hardware.egl=meow
+ro.hardware.vulkan=mt6785
+ro.hardware.hwcomposer=mt6785
+ro.opengles.version=196610
+ro.netflix.bsp_rev=MTK6785-18787-1
+ro.mtk_display_ovl_support=1
+ro.mtk_pq.ctrld_dpi_support=1
+persist.sys.enable_mtk_scp_dump=1
+persist.sys.sf.color_mode=9
+persist.sys.sf.color_saturation=1.1
+persist.sys.sf.native_mode=2
+debug.mediatek.disp_decompress=1
+debug.cpurend.vsync=false
+debug.renderengine.backend=skiaglthreaded
+qemu.hw.mainkeys=0
+
 # HWUI
+#debug.hwui.skia_use_perfetto_track_events=false
 debug.hwui.render_dirty_regions=false
 debug.hwui.skia_atrace_enabled=false
 debug.hwui.skia_tracing_enabled=false
-#debug.hwui.skia_use_perfetto_track_events=false
 debug.hwui.target_cpu_time_percent=30
 debug.hwui.trace_gpu_resources=false
 debug.hwui.use_hint_manager=true
+ro.hwui.disable_sc=false
+ro.hwui.render_ahead=20
 
 # SurfaceFlinger
 #debug.sf.hw=0
@@ -90,6 +108,7 @@ ro.surface_flinger.use_content_detection_for_refresh_rate=true
 ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
 ro.surface_flinger.use_color_management=true
+service.sf.prime_shader_cache=0
 
 # Misc
 persist.vendor.mdlog.flush_log_ratio=72340194296137244
@@ -140,14 +159,6 @@ ro.telephony.sim.count=2
 
 # Fastbootd
 ro.fastbootd.available=true
-
-# Dex
-persist.bg.dexopt.enable=true
-pm.dexopt.install=speed-profile
-
-# HWUI
-ro.hwui.disable_sc=false
-ro.hwui.render_ahead=20
 
 # GPU Performance
 ro.mtk_gpu_optimizations=1
